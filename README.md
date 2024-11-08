@@ -42,19 +42,24 @@ Sigue estos pasos para clonar el repositorio e instalar las dependencias necesar
 ## Cargar datos de prueba
 Antes de cargar los datos de prueba, asegúrate de haber creado y migrado la base de datos:
 
-1. Crea las migraciones de la base de datos:
+1. Asegúrate de estar en la carpeta del proyecto:
+   ```bash
+   cd chill_and_sweet
+   ```
+
+2. Crea las migraciones de la base de datos:
    ```bash
    python manage.py makemigrations
    ```
 
-2. Realiza las migraciones de la base de datos:
+3. Realiza las migraciones de la base de datos:
    ```bash
    python manage.py migrate
    ```
 
-3. Carga los datos de prueba ejecutando:
+4. Carga los datos de prueba ejecutando:
    ```bash
-   python manage.py loaddata app_name/fixtures/datos_prueba.json
+   python manage.py loaddata main/fixtures/datos_prueba.json
    ```
 
 Esto te permitirá trabajar con datos de ejemplo en tu base de datos.
@@ -71,3 +76,4 @@ Sigue estos pasos para ejecutar el proyecto localmente:
 
 ## Licencia
 Este proyecto está bajo la licencia [Nombre de la Licencia].
+
