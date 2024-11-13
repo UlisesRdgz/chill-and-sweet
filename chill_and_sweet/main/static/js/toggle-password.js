@@ -1,15 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const togglePassword = document.querySelector(".toggle-password");
-    const passwordInput = document.querySelector("#password");
+document.addEventListener("DOMContentLoaded", function () {
+    const togglePasswordIcons = document.querySelectorAll(".toggle-password");
 
-    togglePassword.addEventListener("click", function() {
-        // Alterna el tipo de input entre "password" y "text"
-        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-        passwordInput.setAttribute("type", type);
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            const passwordInput = this.previousElementSibling;
+            const iconElement = this.querySelector("i");
 
-        // Cambia entre el ícono de ojo abierto y cerrado de Font Awesome
-        const icon = this.querySelector('i');
-        icon.classList.toggle("fa-eye");
-        icon.classList.toggle("fa-eye-slash");
+            // Alterna el tipo de input entre "password" y "text"
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                iconElement.classList.remove("fa-eye-slash");
+                iconElement.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                iconElement.classList.remove("fa-eye");
+                iconElement.classList.add("fa-eye-slash");
+            }
+        });
     });
 });

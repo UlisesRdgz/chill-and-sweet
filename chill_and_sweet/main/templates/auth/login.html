@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 </head>
-<body>
+<body class="background-blur background-login">
     <!-- Logo en la esquina superior derecha -->
     <a href="{% url 'index' %}" class="logo">
-        <img src="{% static 'img/letras-blanco.svg' %}" alt="Logo Blanco" />
+        <img src="{% static 'img/white-name.svg' %}" alt="Logo Blanco" />
     </a>
 
     <!-- Flecha para regresar a la página de inicio -->
@@ -37,7 +37,7 @@
                 <div class="password-wrapper">
                     <input type="password" name="password" id="password" placeholder="Contraseña" required class="form-control" value="{% if password_intento %} {{ password_intento }} {% endif %}">
                     <span class="toggle-password">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-eye-slash"></i>
                     </span>
                 </div>
 

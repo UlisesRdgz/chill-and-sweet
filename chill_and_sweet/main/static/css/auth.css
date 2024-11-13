@@ -8,7 +8,6 @@
 /* Estilos del cuerpo */
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #dd99a7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +30,35 @@ p {
     font-size: 18px;
     color: #21272A;
     margin-bottom: 48px;
+}
+
+/* Clase base para el fondo con blur y obscurecimiento */
+.background-blur {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.background-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/* Estilos específicos para las páginas de login y registro */
+.background-login {
+    background-image: url('/static/img/background-login.jpg');
+}
+
+.background-register {
+    background-image: url('/static/img/background-register.jpg');
 }
 
 /* Contenedor de autenticación */
@@ -188,6 +216,30 @@ input[type="tel"] {
     margin-bottom: 3px;
 }
 
+/* Estilo para el contenedor de mensajes */
+.messages-container {
+    width: 100%;
+    margin-top: 25px; 
+    text-align: center;
+}
+
+/* Estilo para el mensaje genérico */
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;   
+    margin-bottom: 5px; 
+}
+
+/* Estilo para mensajes de error */
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* Estilo del texto de placeholder */
 input::placeholder {
     font-family: 'Roboto', sans-serif;
@@ -301,8 +353,14 @@ input::placeholder {
 
 /* Media queries para pantallas pequeñas (móviles) */
 @media screen and (max-width: 768px) {
+    .logo {
+        position: absolute;
+        top: 5px;       
+        right: 0px;    
+    }
+
     .logo img {
-        width: 120px;
+        width: 110px;
     }
 
     .auth-container {
