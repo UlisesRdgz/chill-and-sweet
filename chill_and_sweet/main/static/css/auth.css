@@ -1,0 +1,352 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del cuerpo */
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #dd99a7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    overflow-y: auto; 
+}
+
+/* Estilo para el título y el párrafo */
+h1 {
+    font-weight: 700;
+    font-size: 42px;
+    color: #21272A;
+    margin-bottom: 10px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 18px;
+    color: #21272A;
+    margin-bottom: 48px;
+}
+
+/* Contenedor de autenticación */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Caja de autenticación */
+.auth-box {
+    width: 650px;
+    max-width: 100%;
+    background-color: white;
+    padding: 55px 60px 0px 60px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Centrar texto dentro de .auth-box */
+.auth-box h1,
+.auth-box p {
+    text-align: center;
+}
+
+/* Estilo del logo en la esquina superior derecha */
+.logo {
+    position: absolute;
+    top: 10px;       
+    right: 20px;    
+    text-decoration: none;
+}
+
+.logo img {
+    width: 150px;  
+    height: auto;
+}
+
+/* Estilo de la flecha para regresar */
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+}
+
+/* Círculo alrededor del icono de la flecha */
+.circle {
+    width: 40px; 
+    height: 40px;
+    background-color: white; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Icono de la flecha */
+.circle i {
+    font-size: 18px; 
+    color: #21272A; 
+}
+
+/* Efecto hover para la flecha */
+.back-arrow:hover i {
+    color: #EF6486; 
+}
+
+/* Estilo de las etiquetas */
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+/* Estilo de los campos de entrada */
+input[type="email"], 
+input[type="password"], 
+input[type="text"], 
+input[type="tel"] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000000;
+}
+
+/* Fila de formulario para diseño de dos columnas */
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 540px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Columna dentro de la fila del formulario */
+.form-column {
+    flex: 1;
+}
+
+/* Contenedor del campo de contraseña para posicionar el icono */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Estilo del icono para mostrar/ocultar contraseña */
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-110%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Entrada dentro de password-wrapper para agregar espacio para el icono */
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; 
+}
+
+/* Lista de requisitos de contraseña */
+.password-requirements {
+    list-style-type: disc;
+    padding-left: 20px; 
+    font-size: 12px;
+    color: #697077;
+    margin-top: -10px; 
+}
+
+.password-requirements li {
+    margin-bottom: 3px;
+}
+
+/* Estilo del texto de placeholder */
+input::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #697077;
+}
+
+/* Botón principal (para login y registro) */
+.auth-button {
+    width: 540px;
+    height: 48px;
+    background-color: #EF6486; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease; 
+}
+
+/* Efecto hover para el botón */
+.auth-button:hover {
+    background-color: #cf5473;
+}
+
+/* Línea separadora */
+.separator {
+    width: 540px;
+    height: 1px;
+    background-color: #DDE1E6;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+/* Texto para el enlace de registro */
+.auth-text {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #616161; 
+    margin-top: 48px;
+}
+
+/* Estilo para los enlaces dentro de auth-text */
+.auth-text a, .register-text a {
+    font-weight: 700;
+    color: #EF6486; 
+    text-decoration: none; 
+}
+
+/* Efecto hover para enlaces dentro de auth-text */
+.auth-text a:hover, .register-text a:hover {
+    color: #cf5473; 
+    text-decoration: underline;
+}
+
+/* Media queries para pantallas medianas (tabletas) */
+@media screen and (max-width: 1024px) {
+    .logo img {
+        width: 130px;
+    }
+    
+    .auth-box {
+        width: 60%;
+        padding: 60px 20px 10px 20px;
+        height: auto;
+        align-items: center;
+    }
+
+    /* Ajuste del tamaño de inputs y labels */
+    input[type="email"], 
+    input[type="password"], 
+    input[type="text"], 
+    input[type="tel"], 
+    .password-wrapper, 
+    .auth-button, 
+    .separator {
+        width: 400px;
+    }
+
+    /* Ajuste del tamaño del título */
+    h1 {
+        font-size: 36px;
+    }
+
+    /* Ajuste del tamaño del texto en párrafos y etiquetas */
+    p, label {
+        font-size: 16px;
+    }
+
+    /* Ajuste de la fila del formulario */
+    .form-row {
+        width: 400px; 
+        max-width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    .form-column {
+        flex: 1;
+    }
+
+    .form-column input {
+        width: 100%; 
+        box-sizing: border-box;
+    }
+}
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    .logo img {
+        width: 120px;
+    }
+
+    .auth-container {
+        padding: 0 10px;
+    }
+
+    .auth-box {
+        width: 60%;
+        padding: 50px 15px 0px 20px;
+        height: auto;
+        align-items: center;
+    }
+
+    /* Inputs y etiquetas a pantalla completa en móviles */
+    input[type="email"], 
+    input[type="password"], 
+    input[type="text"], 
+    input[type="tel"], 
+    .password-wrapper, 
+    .auth-button, 
+    .separator {
+        width: 100%;
+    }
+
+    /* Ajuste de tamaño de los títulos en móviles */
+    h1 {
+        font-size: 28px;
+    }
+
+    /* Tamaño más pequeño para párrafos, etiquetas y auth-text en móviles */
+    p, label, .auth-text {
+        font-size: 12px;
+    }
+
+    /* Altura más pequeña para el botón en móviles */
+    .auth-button {
+        height: 44px;
+    }
+
+    /* Fila del formulario ajustada para apilar los campos verticalmente en móviles */
+    .form-row {
+        flex-direction: column;
+        width: 100%; 
+        gap: 0; 
+        margin-bottom: 0;
+    }
+}
