@@ -19,7 +19,7 @@ def register_view(request):
             user.contrasena = make_password(form.cleaned_data['contrasena']) 
             user.save() 
             # messages.success(request, 'Te has registrado correctamente.')
-            return redirect('login')
+            return redirect('index')
         
         # Si el formulario no es válido, muestra los errores
         for field, errors in form.errors.items():
@@ -64,7 +64,7 @@ def login_view(request):
 # Vista de cierre de sesión
 def logout_view(request):
     if 'user_id' in request.session:
-        del request.session['user_id']  # Eliminar la sesión de usuario
+        del request.session['user_id'] 
     messages.success(request, 'Has cerrado sesión correctamente.')
     return redirect('login')
 
