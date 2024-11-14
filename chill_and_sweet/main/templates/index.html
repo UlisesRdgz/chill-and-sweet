@@ -29,12 +29,16 @@
         
         <!-- Menú desplegable para móviles -->
         <div class="nav-links-mobile-overlay" id="mobileOverlay" onclick="toggleMenu()">
-            <div class="nav-links-mobile" id="mobileMenu" onclick="event.stopPropagation()">
+            <div class="nav-links-mobile" id="mobileMenu">
                 <a href="{% url 'register' %}">
-                    <i class="fas fa-user-plus"></i> Regístrate
+                    <span class="icon-container"><i class="fas fa-user-plus"></i></span> Regístrate
                 </a>
+
+                <!-- Línea separadora -->
+                <div class="separator"></div>
+
                 <a href="{% url 'login' %}">
-                    <i class="fas fa-sign-in-alt"></i> Inicia Sesión
+                    <span class="icon-container"><i class="fas fa-sign-in-alt"></i></span> Inicia Sesión
                 </a>
             </div>
         </div>
@@ -57,23 +61,6 @@
     </footer>
 
     <!-- JavaScript para el menú hamburguesa -->
-    <script>
-        function toggleMenu() {
-            const overlay = document.getElementById('mobileOverlay');
-            const menu = document.getElementById('mobileMenu');
-            
-            if (overlay.style.display === 'flex') {
-                overlay.style.display = 'none';
-                overlay.classList.remove('show-overlay');
-                menu.classList.remove('show');
-            } else {
-                overlay.style.display = 'flex';
-                setTimeout(() => {
-                    overlay.classList.add('show-overlay');
-                    menu.classList.add('show');
-                }, 10);
-            }
-        }        
-    </script>
+    <script src="{% static 'js/menu.js' %}"></script>
 </body>
 </html>
