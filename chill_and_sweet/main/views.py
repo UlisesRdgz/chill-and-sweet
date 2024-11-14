@@ -19,7 +19,7 @@ def register_view(request):
             user.contrasena = make_password(form.cleaned_data['contrasena']) 
             user.save() 
             # messages.success(request, 'Te has registrado correctamente.')
-            return redirect('index')
+            return redirect('login')
         
         # Si el formulario no es válido, muestra los errores
         for field, errors in form.errors.items():
@@ -50,7 +50,7 @@ def login_view(request):
                     # Inicio de sesión exitoso, guardar ID de usuario en la sesión
                     request.session['user_id'] = user.id
                     # messages.success(request, 'Has iniciado sesión correctamente.')
-                    return redirect('index')
+                    return redirect('home')
                 else:
                     messages.error(request, 'La contraseña es incorrecta.')
 
@@ -67,3 +67,13 @@ def logout_view(request):
         del request.session['user_id']  # Eliminar la sesión de usuario
     messages.success(request, 'Has cerrado sesión correctamente.')
     return redirect('login')
+
+# Vista de inicio después de loguearse (Home)
+def home_view(request):
+    user_id = request.session.get('user_id')
+    if user_id:
+        # Obtener el usuario de la base de datos
+        user = Usuario.objects.get(id=user_id)
+        return render(request, 'home.html', {'user': user})
+    else:
+        return redirect('login')
