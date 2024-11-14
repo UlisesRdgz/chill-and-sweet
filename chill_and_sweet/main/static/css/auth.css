@@ -299,7 +299,7 @@ input::placeholder {
     text-decoration: underline;
 }
 
-/* Media queries para pantallas medianas (tabletas) */
+/* Media queries para pantallas medianas (Laptops) */
 @media screen and (max-width: 1024px) {
     .logo img {
         width: 130px;
@@ -333,6 +333,14 @@ input::placeholder {
         font-size: 16px;
     }
 
+    p {
+        margin-bottom: 28px;
+    }
+
+    .auth-text {
+        margin-top: 38px;
+    }
+
     /* Ajuste de la fila del formulario */
     .form-row {
         width: 400px; 
@@ -351,30 +359,9 @@ input::placeholder {
     }
 }
 
-/* Media queries para pantallas pequeñas (móviles) */
+/* Ajustes para pantallas pequeñas (Tablets) */
 @media screen and (max-width: 768px) {
-    .logo {
-        position: absolute;
-        top: 5px;       
-        right: 0px;    
-    }
-
-    .logo img {
-        width: 110px;
-    }
-
-    .auth-container {
-        padding: 0 10px;
-    }
-
-    .auth-box {
-        width: 60%;
-        padding: 50px 15px 0px 20px;
-        height: auto;
-        align-items: center;
-    }
-
-    /* Inputs y etiquetas a pantalla completa en móviles */
+    /* Ajuste del tamaño de inputs y labels */
     input[type="email"], 
     input[type="password"], 
     input[type="text"], 
@@ -382,7 +369,78 @@ input::placeholder {
     .password-wrapper, 
     .auth-button, 
     .separator {
+        width: 260px;
+    }
+
+    /* Fila del formulario ajustada para apilar los campos verticalmente en móviles */
+    .form-row {
+        flex-direction: column;
+        width: 100%; 
+        gap: 0; 
+        margin-bottom: 0;
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media screen and (max-width: 480px) {
+    /* Quitar el fondo en móviles */
+    .background-blur {
+        background: none;
+    }
+
+    /* Ocultar el logo en móviles */
+    .logo {
+        display: none;
+    }
+
+    /* Quitar el fondo y el borde redondeado de la flecha */
+    .back-arrow .circle {
+        background: none;
+        box-shadow: none; /* Quita la sombra */
+    }
+
+    .back-arrow .circle i {
+        color: #21272A; /* Ajusta el color si es necesario */
+    }
+
+    /* Centrar y ajustar la caja de autenticación */
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
+        min-height: 100vh; /* Ocupa toda la pantalla */
+        padding: 0;
+        margin: 0;
+        background-color: white; /* Fondo blanco en móviles */
+    }
+
+    .auth-box {
+        width: 100%;
+        max-width: 90%; /* Ocupa el 90% de la pantalla */
+        padding: 20px; /* Padding de 20px */
+        height: auto;
+        box-shadow: none; /* Quita la sombra */
+        border-radius: 0; /* Quita el borde redondeado */
+    }
+
+    /* Ajustes para inputs y otros elementos */
+    input[type="email"], 
+    input[type="password"], 
+    input[type="text"], 
+    input[type="tel"], 
+    .password-wrapper, 
+    .auth-button, 
+    .separator {
+        width: 100%; /* Ocupa todo el ancho de la caja */
+    }
+
+    /* Ajustes para el separador en móviles */
+    .separator {
+        width: 100%; /* Asegura que el separador ocupe el ancho de la caja */
+        height: 1px;
+        margin: 20px 0;
+        background-color: #DDE1E6;
     }
 
     /* Ajuste de tamaño de los títulos en móviles */
@@ -393,18 +451,5 @@ input::placeholder {
     /* Tamaño más pequeño para párrafos, etiquetas y auth-text en móviles */
     p, label, .auth-text {
         font-size: 12px;
-    }
-
-    /* Altura más pequeña para el botón en móviles */
-    .auth-button {
-        height: 44px;
-    }
-
-    /* Fila del formulario ajustada para apilar los campos verticalmente en móviles */
-    .form-row {
-        flex-direction: column;
-        width: 100%; 
-        gap: 0; 
-        margin-bottom: 0;
     }
 }
