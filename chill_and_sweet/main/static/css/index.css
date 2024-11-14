@@ -38,19 +38,23 @@ body {
 }
 
 .nav-links a {
-    margin-left: 1.5rem;
+    margin-left: 3rem;
     font-size: 1rem;
     color: #000;
     text-decoration: none;
-}
-
-.nav-links .button {
-    background-color: #4fb9bf7e;
     padding: 0.8rem 2rem;
     border-radius: 10px;
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
+    font-weight: 600; /* Semibold */
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #4fb9bfc7; /* Color de fondo al hacer hover */
+}
+
+/* Botón específico para "Inicia Sesión" */
+.nav-links .button {
+    background-color: transparent; /* Color de fondo original */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,10 +77,18 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links-mobile-overlay.show-overlay {
+    display: flex;
+    opacity: 1; /* Aparece con efecto de desvanecimiento */
 }
 
 .nav-links-mobile {
-    width: 75%; 
+    width: 75%;
     max-width: 300px;
     height: 100%;
     position: fixed;
@@ -88,29 +100,43 @@ body {
     display: flex;
     flex-direction: column;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .nav-links-mobile.show {
-    transform: translateX(0);
+    transform: translateX(0); /* Desliza el menú a la vista */
+    opacity: 1; /* Incrementa la opacidad gradualmente */
 }
 
+/* Estilos para los enlaces del side menú */
 .nav-links-mobile a {
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
-    padding: 1rem 0;
+    padding: 0.8rem 1.5rem; /* Más padding para los botones */
     color: #2b3b4e;
     text-align: left;
     text-decoration: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-radius: 15px; /* Bordes redondeados */
+    font-weight: 600; /* Semibold */
     transition: background-color 0.3s;
+}
+
+
+.nav-links-mobile a i {
+    margin-right: 1rem;
+    color: #EF6486;
+    font-size: 1.5rem;
+}
+
+/* Hover más oscuro y transparente para los botones */
+.nav-links-mobile a:hover {
+    background-color: rgba(79, 185, 191, 0.285); /* Fondo más oscuro y transparente */
 }
 
 .nav-links-mobile a:last-child {
     border-bottom: none;
-}
-
-.nav-links-mobile a:hover {
-    background-color: #f1f1f1;
 }
 
 /* Contenido principal */
@@ -165,21 +191,28 @@ a {
     color: inherit;
 }
 
+/* Media queries para pantallas medianas (Laptops) */
+@media screen and (max-width: 1024px) {
+    .nav-links a {
+        margin-left: 1.5rem;
+    }
+}
+
 /* Media Query para pantallas móviles */
 @media (max-width: 480px) {
     .navbar {
-        justify-content: center; 
+        justify-content: center; /* Centra el logo */
         padding: 1.5rem 2rem 1rem 2rem;
     }
 
     .nav-links {
-        display: none; 
+        display: none; /* Oculta los enlaces normales en pantallas móviles */
     }
     
     .hamburger {
-        display: block; 
+        display: block; /* Muestra el icono de menú hamburguesa */
         position: absolute;
-        left: 1.8rem; 
+        left: 1.8rem; /* Coloca el icono de menú hamburguesa a la izquierda */
         top: 2.2rem;
     }
 }

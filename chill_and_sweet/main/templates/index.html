@@ -30,8 +30,12 @@
         <!-- Menú desplegable para móviles -->
         <div class="nav-links-mobile-overlay" id="mobileOverlay" onclick="toggleMenu()">
             <div class="nav-links-mobile" id="mobileMenu" onclick="event.stopPropagation()">
-                <a href="{% url 'register' %}">Regístrate</a>
-                <a href="{% url 'login' %}">Inicia Sesión</a>
+                <a href="{% url 'register' %}">
+                    <i class="fas fa-user-plus"></i> Regístrate
+                </a>
+                <a href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt"></i> Inicia Sesión
+                </a>
             </div>
         </div>
     </header>
@@ -57,9 +61,19 @@
         function toggleMenu() {
             const overlay = document.getElementById('mobileOverlay');
             const menu = document.getElementById('mobileMenu');
-            overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-            menu.classList.toggle('show');
-        }
+            
+            if (overlay.style.display === 'flex') {
+                overlay.style.display = 'none';
+                overlay.classList.remove('show-overlay');
+                menu.classList.remove('show');
+            } else {
+                overlay.style.display = 'flex';
+                setTimeout(() => {
+                    overlay.classList.add('show-overlay');
+                    menu.classList.add('show');
+                }, 10);
+            }
+        }        
     </script>
 </body>
 </html>
