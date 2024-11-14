@@ -56,7 +56,7 @@
                     <li>Al menos un carácter especial (ej: !@#$%)</li>
                 </ul>
 
-                <!-- Mensajes de error (si existen) -->
+                <!-- Mensajes de error -->
                 {% if messages %}
                     <div class="messages-container">
                         {% for message in messages %}
@@ -70,7 +70,7 @@
                 <button type="submit" class="auth-button">Registrarse</button>
 
                 <!-- Texto para iniciar sesión si ya tiene cuenta -->
-                <p class="auth-text">¿Ya tienes cuenta? <a href="#">Inicia sesión</a></p>
+                <p class="auth-text">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
             </form>
         </div>
     </div>

@@ -82,3 +82,13 @@ class RegisterForm(forms.ModelForm):
             raise ValidationError("Las contraseñas no coinciden.")
 
         return cleaned_data
+
+class LoginForm(forms.Form):
+    correo = forms.EmailField(
+        label="Correo electrónico", 
+        widget=forms.EmailInput(attrs={'placeholder': 'Correo electrónico'})
+    )
+    contrasena = forms.CharField(
+        label="Contraseña", 
+        widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'})
+    )
