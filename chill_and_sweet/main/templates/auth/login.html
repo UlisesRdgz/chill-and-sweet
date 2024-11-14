@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Chill & Sweet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="background-blur background-login">
+    <!-- Logo en la esquina superior derecha -->
+    <a href="{% url 'index' %}" class="logo">
+        <img src="{% static 'img/white-name.svg' %}" alt="Logo Blanco" />
+    </a>
+
+    <!-- Flecha para regresar a la página de inicio -->
+    <a href="{% url 'index' %}" class="back-arrow">
+        <div class="circle">
+            <i class="fas fa-arrow-left"></i> 
+        </div>
+    </a>
+
+    <!-- Contenedor del login -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1>Iniciar sesión</h1>
+            <p>¡Continúa creando tus sabores únicos!</p>
+
+            <!-- Formulario de login -->
+            <form method="POST" class="login-form">
+                {% csrf_token %}
+                <!-- Campo de correo electrónico -->
+                {{ form.correo.label_tag }}{{ form.correo }}
+
+                <!-- Campo de contraseña -->
+                {{ form.contrasena.label_tag }}
+                <div class="password-wrapper">
+                    {{ form.contrasena }}
+                    <span class="toggle-password"><i class="fas fa-eye-slash"></i></span>
+                </div>
+
+                <!-- Mensajes de error -->
+                {% if messages %}
+                    <div class="messages-container">
+                        {% for message in messages %}
+                            <p class="message {{ message.tags }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Botón de iniciar sesión -->
+                <button type="submit" class="auth-button">Iniciar Sesión</button>
+
+                <div class="after-auth-button"></div>
+
+                <div class="separator"></div>
+
+                <!-- Texto para registrarse si no tiene cuenta -->
+                <p class="auth-text">
+                    ¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script para mostrar/ocultar la contraseña -->
+    <script src="{% static 'js/toggle-password.js' %}"></script>
+</body>
+</html>

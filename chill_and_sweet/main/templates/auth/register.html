@@ -1,0 +1,72 @@
+<!-- register.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - Chill & Sweet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="background-blur background-register">
+    <!-- Flecha y Logo -->
+    <a href="{% url 'index' %}" class="logo"><img src="{% static 'img/white-name.svg' %}" alt="Logo Blanco" /></a>
+    <a href="{% url 'index' %}" class="back-arrow"><div class="circle"><i class="fas fa-arrow-left"></i></div></a>
+
+    <!-- Contenedor de registro -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1>Regístrate</h1>
+            <p>¡Crea postres únicos con beneficios exclusivos!</p>
+
+            <!-- Formulario de registro -->
+            <form method="POST" class="register-form">
+                {% csrf_token %}
+                <!-- Primera fila: Nombre y Apellido -->
+                <div class="form-row">
+                    <div class="form-column">{{ form.nombre.label_tag }}{{ form.nombre }}</div>
+                    <div class="form-column">{{ form.apellido.label_tag }}{{ form.apellido }}</div>
+                </div>
+
+                <!-- Segunda fila: Correo Electrónico -->
+                {{ form.correo.label_tag }}{{ form.correo }}
+
+                <!-- Tercera fila: Contraseña -->
+                {{ form.contrasena.label_tag }}
+                <div class="password-wrapper">
+                    {{ form.contrasena }}
+                    <span class="toggle-password"><i class="fas fa-eye-slash"></i></span>
+                </div>
+
+                <!-- Cuarta fila: Confirmar contraseña -->
+                {{ form.confirmar_contrasena.label_tag }}
+                <div class="password-wrapper">
+                    {{ form.confirmar_contrasena }}
+                    <span class="toggle-password"><i class="fas fa-eye-slash"></i></span>
+                </div>
+
+                <!-- Mensajes de error -->
+                {% if messages %}
+                    <div class="messages-container">
+                        {% for message in messages %}
+                            <p class="message {{ message.tags }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+                <!-- Botón de registro -->
+                <button type="submit" class="auth-button">Registrarse</button>
+
+                <!-- Texto para iniciar sesión si ya tiene cuenta -->
+                <p class="auth-text">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script para mostrar/ocultar la contraseña -->
+    <script src="{% static 'js/toggle-password.js' %}"></script>
+</body>
+</html>
