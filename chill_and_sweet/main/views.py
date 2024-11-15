@@ -8,8 +8,16 @@ from .models import Usuario
 def index(request):
     return render(request, 'index.html')
 
+# Vista de ayuda
+def help_view(request):
+    return render(request, 'help.html')
+
 # Vista de registro
 def register_view(request):
+    # Si el usuario ya está autenticado, redirigir a la página de inicio
+    if 'user_id' in request.session:
+        return redirect('home')
+    
     if request.method == 'POST':
         form = RegisterForm(request.POST) 
 
@@ -34,6 +42,10 @@ def register_view(request):
 
 # Vista de inicio de sesión
 def login_view(request):
+    # Si el usuario ya está autenticado, redirigir a la página de inicio
+    if 'user_id' in request.session:
+        return redirect('home')
+    
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
@@ -66,7 +78,7 @@ def logout_view(request):
     if 'user_id' in request.session:
         del request.session['user_id'] 
     messages.success(request, 'Has cerrado sesión correctamente.')
-    return redirect('login')
+    return redirect('index')
 
 # Vista de inicio después de loguearse (Home)
 def home_view(request):

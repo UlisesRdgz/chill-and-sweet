@@ -1,0 +1,38 @@
+{% extends "base/base-index.html" %}
+
+{% load static %}
+
+{% block title %}Ayuda - Chill & Sweet{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="help-header">
+        <h1>Centro de Ayuda</h1>
+        <p>Encuentra respuestas a preguntas frecuentes y aprende cómo aprovechar al máximo Chill & Sweet.</p>
+    </section>
+
+    <section class="faq-section">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <h3>¿Cómo puedo registrarme?</h3>
+            <p>Para registrarte, haz clic en el botón "Regístrate" en la esquina superior derecha y completa el formulario de registro.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Cómo personalizo mi postre?</h3>
+            <p>Al iniciar sesión, selecciona la pestaña crear y podrás personalizarlo con los ingredientes que prefieras antes de realizar tu pedido.</p>
+        </div>
+        <div class="faq-item">
+            <h3>¿Es posible cambiar o cancelar un pedido?</h3>
+            <p>Para cambios o cancelaciones, contáctanos dentro de los primeros 10 minutos después de realizar el pedido para confirmar si es posible realizar ajustes.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>¿Necesitas más ayuda?</h2>
+        <p>Si no encuentras la respuesta que buscas, contáctanos a través de nuestro correo electrónico o redes sociales.</p>
+        <p><strong>Email:</strong> soporte@chillandsweet.com</p>
+    </section>
+{% endblock %}

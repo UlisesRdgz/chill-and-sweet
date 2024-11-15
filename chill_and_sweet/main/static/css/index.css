@@ -5,24 +5,29 @@
     box-sizing: border-box;
 }
 
-/* Fuente global */
+/* Evita el desplazamiento horizontal en la página */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Fuente global para todo el documento */
 body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Estilos de la barra de navegación */
+/* Barra de navegación principal */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 3rem 1rem 3rem;
+    padding: 1rem 3rem 1rem 3rem;
     background-color: white;
     height: 100px;
     border-bottom: 2px solid #e0e0e0;
-    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Logo en la barra de navegación */
+/* Contenedor del logo dentro de la barra de navegación */
 .logo {
     display: flex;
     align-items: center;
@@ -33,13 +38,13 @@ body {
     margin-right: 10px;
 }
 
-/* Enlaces de navegación */
+/* Contenedor de los enlaces en la barra de navegación */
 .nav-links {
     display: flex;
     align-items: center;
 }
 
-/* Estilos generales para los enlaces de navegación */
+/* Estilo general para los enlaces de la barra de navegación */
 .nav-links a {
     margin-left: 3rem;
     font-size: 1rem;
@@ -47,16 +52,16 @@ body {
     text-decoration: none;
     padding: 0.8rem 2rem;
     border-radius: 10px;
-    font-weight: 600; /* Semibold */
+    font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
-/* Hover para los enlaces de navegación */
+/* Efecto hover en los enlaces de navegación */
 .nav-links a:hover {
     background-color: #4fb9bfc7;
 }
 
-/* Botón específico para "Inicia Sesión" en la navegación */
+/* Botón específico para la opción "Inicia Sesión" */
 .nav-links .button {
     background-color: transparent;
     display: flex;
@@ -71,7 +76,19 @@ body {
     cursor: pointer;
 }
 
-/* Overlay del side menú en dispositivos móviles */
+/* Contenedor para mostrar el logo en el side menú (solo en móviles) */
+.mobile-logo-container {
+    display: none; 
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.mobile-logo {
+    width: 100%;
+    max-width: 160px;
+}
+
+/* Overlay para el side menú en dispositivos móviles */
 .nav-links-mobile-overlay {
     display: none;
     position: fixed;
@@ -121,17 +138,17 @@ body {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 1rem;
     text-align: left;
     text-decoration: none;
     border-radius: 15px;
-    font-weight: 600;
+    font-weight: 500;
     transition: background-color 0.3s;
-    width: 100%;
+    width: 95%;
     background-color: #ffffff;
 }
 
-/* Contenedor del ícono en los enlaces del side menú */
+/* Contenedor para íconos dentro de los enlaces del side menú */
 .nav-links-mobile a .icon-container {
     width: 30px;
     display: flex;
@@ -140,47 +157,146 @@ body {
     margin-right: 1rem;
 }
 
-/* Estilo del ícono en los enlaces del side menú */
+/* Estilo para los íconos dentro del side menú */
 .nav-links-mobile a i {
     color: #EF6486;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
-/* Hover para los enlaces en el side menú */
+/* Efecto hover en los enlaces del side menú */
 .nav-links-mobile a:hover {
     background-color: rgba(79, 185, 191, 0.3);
 }
 
-/* Línea separadora entre enlaces en el side menú */
-.separator {
-    width: 95%;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 0.5rem 0;
-}
-
-/* Elimina el margin-bottom en el último enlace del side menú */
+/* Estilo para eliminar el margen inferior del último enlace del side menú */
 .nav-links-mobile a:last-child {
     margin-bottom: 0;
 }
 
-/* Contenido principal de la página */
+/* Contenedor principal de contenido */
 .main-content {
     padding: 2rem;
     text-align: center;
 }
 
-/* Título principal en el contenido de la página */
+/* Título principal dentro del contenido */
 .main-content h1 {
     font-size: 2rem;
     color: #2b3b4e;
     margin-bottom: 1rem;
 }
 
-/* Párrafo en el contenido principal */
+/* Párrafo dentro del contenido principal */
 .main-content p {
     font-size: 1.1rem;
     color: #555;
+}
+
+/* Contenedor para el carrusel */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: auto;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Contenedor del contenido dentro del carrusel */
+.carousel-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Texto dentro del carrusel */
+.carousel-text {
+    flex: 1;
+    max-width: 40%;
+    text-align: left;
+}
+
+.carousel-text h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.carousel-text p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+    color: #000000;
+}
+
+/* Botón para realizar pedidos dentro del carrusel */
+.order-button {
+    padding: 1rem 2.5rem;
+    background-color: #EF6486;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.order-button:hover {
+    background-color: #c7596c;
+}
+
+/* Contenedor para imágenes del carrusel */
+.carousel-image {
+    position: relative;
+    flex: 1;
+    max-width: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    opacity: 0; 
+    transition: opacity 0.8s ease-in-out; 
+}
+
+.carousel-image img.active {
+    opacity: 1;
+    position: relative;
+}
+
+/* Puntos de navegación del carrusel */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 6px;
+    width: 16px;
+    margin: 0 5px;
+    background-color: #f8a5c2;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.dot.active {
+    background-color: #d46a7e;
+    opacity: 1;
 }
 
 /* Footer de la página */
@@ -193,7 +309,7 @@ body {
     color: white;
 }
 
-/* Contenido del footer */
+/* Contenido dentro del footer */
 .footer-content {
     text-align: center;
 }
@@ -203,36 +319,68 @@ body {
     margin-bottom: 10px;
 }
 
-/* Estilo para el título en el footer */
 .footer-content h1 {
     font-size: 1.5rem;
     line-height: 1.2;
 }
 
-/* Estilo para el texto en el footer */
 .footer-content p {
     font-size: 0.9rem;
     font-weight: 300;
 }
 
-/* Elimina el subrayado y conserva el color de los enlaces */
+/* Estilo para los enlaces en general */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Media queries para pantallas medianas (Laptops) */
+/* Media queries para pantallas medianas */
 @media screen and (max-width: 1024px) {
     .nav-links a {
         margin-left: 1.5rem;
     }
+
+    .carousel-text h2 {
+        font-size: 2.4rem;
+    }
+
+    .carousel-text p {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
 }
 
-/* Media Query para pantallas móviles */
+/* Media queries para pantallas móviles */
+@media (max-width: 768px) {
+    .carousel-content {
+        flex-direction: column;
+    }
+
+    .carousel-text {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .carousel-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .carousel-image {
+        margin-top: 40px;
+        max-width: 100%;
+    }
+}
+
+/* Media queries para pantallas pequeñas */
 @media (max-width: 480px) {
     .navbar {
         justify-content: center;
         padding: 1.5rem 2rem 1rem 2rem;
+    }
+
+    .nav-links-mobile .mobile-logo-container {
+        display: flex;
     }
 
     .nav-links {
@@ -244,5 +392,29 @@ a {
         position: absolute;
         left: 1.8rem;
         top: 2.2rem;
+    }
+
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-image {
+        max-width: 100%;
+        height: 250px;
+    }
+
+    .carousel-image img {
+        width: auto;
+        height: 100%;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .carousel-text h2 {
+        font-size: 2rem;
+    }
+
+    .carousel-text p {
+        font-size: 0.9rem;
     }
 }
