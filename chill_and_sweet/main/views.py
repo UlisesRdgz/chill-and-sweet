@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import RegisterForm, LoginForm
 from .models import Usuario
+from .models import *
 
 # Vista de inicio
 def index(request):
@@ -77,3 +78,29 @@ def home_view(request):
         return render(request, 'home.html', {'user': user})
     else:
         return redirect('login')
+
+
+# Vista de menu de categorias de postres para crear un postre personalizado
+def create(request):
+    categorias = Categoria.objects.all()
+
+    return render(request, 'custom/crear.html', {"categorias":categorias})
+
+
+
+# Vista de menu para personaizar un postre 
+def customDessert(request, categoria_id):
+
+    # Filtrar los ingredientes de la categoría específica usando categoria_id
+    ingredientes = Ingrediente.objects.filter(categoriaingrediente__categoria__id=categoria_id)
+
+    # Agrupar ingredientes por tipo (ej. Tipo de café, Tamaño)
+    ingredientes_por_tipo = {}
+    for ingrediente in ingredientes:
+        if ingrediente.tipo not in ingredientes_por_tipo:
+            ingredientes_por_tipo[ingrediente.tipo] = []
+        ingredientes_por_tipo[ingrediente.tipo].append(ingrediente)
+
+   
+
+    return render(request,'custom/personalizar.html',{'ingredientes_por_tipo': ingredientes_por_tipo})

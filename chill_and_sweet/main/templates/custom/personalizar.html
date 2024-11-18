@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/crear.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>chill & sweet</title>
+</head>
+<body>
+
+   <!-- Navegación -->
+   <header class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo.svg' %}" alt="Logo Chill & Sweet">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="">
+                Inicio
+            </a>
+
+            <a href="">
+                Menú
+            </a>
+
+            <a href="">
+                Crear
+            </a>
+
+            <a href="">
+                Contacto
+            </a>
+        </div>
+
+        <div class="icons-container">
+            <div class="icon">
+                <a href="">
+                    <img src="{% static 'img/love.png'%}" alt="icono favoritos">
+                </a>
+            </div>
+
+            <div class="icon">
+                <a href="">
+                    <img src="{% static 'img/cart.png'%}" alt="icono carrito">
+                </a>
+            </div>
+
+            <div class="icon">
+                <a href="">
+                    <img src="{% static 'img/user.png'%}" alt="icono usuario">
+                </a>
+            </div>
+        </div>
+
+        <!-- Icono de menú hamburguesa para móviles -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Menú desplegable para móviles -->
+        <div class="nav-links-mobile-overlay" id="mobileOverlay" onclick="toggleMenu()">
+            <div class="nav-links-mobile" id="mobileMenu">
+                <a href="">
+                    <span class="icon-container"><i class="fas fa-home"></i></span> Inicio
+                </a>
+
+                <!-- Línea separadora -->
+                <div class="separator"></div>
+
+                <a href="">
+                    <span class="icon-container"><i class="fas fa-bars"></i></span> Menú
+                </a>
+
+                <!-- Línea separadora -->
+                <div class="separator"></div>
+
+                <!-- Línea separadora -->
+                <div class="separator"></div>
+
+                <a href="">
+                    <span class="icon-container"><i class="fas fa-envelope"></i></span> Contacto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!--
+    
+        Manú de personalización de postres
+
+    -->
+    <main class="main-content">
+        <div class="title-container">
+            <h1 class="title">
+                Diseña
+            </h1>
+            <p class="instruction">Elige en base a tus gustos cada detalle de tu postre</p>
+        </div>
+    
+        <form method="POST" class="form_custom">
+            {% for tipo, ingredientes in ingredientes_por_tipo.items %}
+            <h2 class="category_name"> 
+                {{ tipo }}
+            </h2>
+    
+            <div class="options_ingredients">
+                {% for ingrediente in ingredientes %}
+                <div class="ingredient">
+                    <div class="ingredient_info">
+                        <input 
+                            name="opcion_{{ tipo }}" 
+                            id="{{ tipo|slugify }}{{ forloop.counter }}" 
+                            type="radio" 
+                            class="input_option" 
+                            data-nombre="{{ ingrediente.nombre }}" 
+                            data-precio="{{ ingrediente.precio_adicional }}"
+                            data-calorias="{{ ingrediente.calorias }}">
+
+                       <div class="info_ingredient_container">
+                            <label for="{{ tipo|slugify }}{{ forloop.counter }}" class="label_option">
+                                {{ ingrediente.nombre }}
+                            </label>
+                            <p class="calories">
+                                {{ ingrediente.calorias }} cal
+                            </p>
+                       </div>
+                    </div>
+                    <p class="price">${{ ingrediente.precio_adicional }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </form>
+    
+        <!-- Resumen de selección y precio total -->
+        <div id="resumen">
+            <h2 class="category_name">Resumen de tu pedido:</h2>
+
+           <div class="resume-container">
+                <div class="ingredients-select-container">
+
+                    <p class="tittle-description">Ingredientes:</p>
+
+                    <ul id="ingredientes-seleccionados">
+                        <!-- Aquí se mostrarán los ingredientes seleccionados -->
+                    </ul>
+                </div>
+
+                <div class="calories-select-container">
+
+                    <p class="tittle-description">Calorias totales:</p>
+
+                    <p class="total-calories">0 cal</p>
+
+
+                </div>
+
+                <div class="total-container">
+
+                    <p class="total-resume">Total:</p>
+                    <p class="total-resume">$ <span id="total-precio">0.00</span></p>
+
+                </div>
+           </div>
+
+           <div class="btn-caontainer">
+                <button class="btn_add_cart">Agregar al carrito</button>
+           </div>
+        </div>
+    </main>
+
+
+     <!--
+        Alerta de éxito
+    -->
+    <div id="alerta-carrito" class="alerta oculto">
+        <img src="{% static 'img/succes_alert.png' %}" alt="Éxito" class="alerta-icono">
+        <p>Se añadió con éxito a tu carrito</p>
+    </div>
+    
+    <script>
+        document.querySelector('.btn_add_cart').addEventListener('click', function (e) {
+            e.preventDefault(); // Evita comportamiento por defecto del botón si es un submit
+            
+            const alerta = document.getElementById('alerta-carrito');
+    
+            // Muestra la alerta
+            alerta.classList.remove('oculto');
+    
+            // Oculta la alerta después de 3 segundos
+            setTimeout(() => {
+                alerta.classList.add('oculto');
+            }, 3000);
+        });
+    </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
+            </a>
+
+            <nav class="options_footer_container">
+                <ul class="options_footer">
+                    <li class="option_footer">
+                        <a href="">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li class="option_footer">
+                        <a href="">
+                            Menú
+                        </a>
+                    </li>
+
+                    <li class="option_footer">
+                        <a href="">
+                            Crear
+                        </a>
+                    </li>
+
+                    <li class="option_footer">
+                        <a href="">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <p>&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript para el menú hamburguesa -->
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/calculate_summary.js' %}"></script>
+</body>
+</html>
