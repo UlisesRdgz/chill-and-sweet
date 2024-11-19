@@ -427,7 +427,7 @@
     "model": "main.categoriaingrediente",
     "pk": 1,
     "fields": {
-      "categoria_id": 19,
+      "categoria_id": 1,
       "ingrediente_id": 19
     }
   },
