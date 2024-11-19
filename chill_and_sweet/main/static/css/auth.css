@@ -319,7 +319,8 @@ input::placeholder {
     input[type="tel"], 
     .password-wrapper, 
     .auth-button, 
-    .separator {
+    .separator,
+    .messages-container {
         width: 400px;
     }
 
@@ -368,7 +369,8 @@ input::placeholder {
     input[type="tel"], 
     .password-wrapper, 
     .auth-button, 
-    .separator {
+    .separator,
+    .messages-container {
         width: 260px;
     }
 
@@ -431,7 +433,8 @@ input::placeholder {
     input[type="tel"], 
     .password-wrapper, 
     .auth-button, 
-    .separator {
+    .separator,
+    .messages-container {
         width: 100%; /* Ocupa todo el ancho de la caja */
     }
 
