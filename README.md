@@ -64,6 +64,26 @@ Antes de cargar los datos de prueba, asegúrate de haber creado y migrado la bas
 
 Esto te permitirá trabajar con datos de ejemplo en tu base de datos.
 
+### Usuarios de prueba
+
+Tras cargar los datos de prueba, podrás iniciar sesión en la plataforma con las siguientes cuentas:
+
+#### Usuario Femenino
+- **Nombre:** Sofía  
+- **Apellido:** Gómez  
+- **Correo:** `sofia.gomez@example.com`  
+- **Contraseña:** `Sofia2024!`  
+- **Puntos acumulados:** 150  
+
+#### Usuario Masculino
+- **Nombre:** Pedro  
+- **Apellido:** Morales  
+- **Correo:** `pedro.morales@example.com`  
+- **Contraseña:** `Pedro2024!`  
+- **Puntos acumulados:** 200  
+
+Utiliza estas cuentas para explorar la funcionalidad de la plataforma con datos precargados.
+
 ## Ejecución
 Sigue estos pasos para ejecutar el proyecto localmente:
 

@@ -3,10 +3,10 @@
     "model": "main.usuario",
     "pk": 1,
     "fields": {
-      "nombre": "Carlos",
-      "apellido": "Hernández",
-      "correo": "carlos.hernandez@gmail.com",
-      "contrasena": "hashedpassword1",
+      "nombre": "Sofía",
+      "apellido": "Gómez",
+      "correo": "sofia.gomez@example.com",
+      "contrasena": "pbkdf2_sha256$870000$cYNJyBrzKJe2nD1lBJaRGG$bJtYRWP23XhIKPTbvWS0bsNfX0WulGPDUvv0BkI8EoE=", 
       "puntos_acumulados": 200
     }
   },
@@ -14,10 +14,10 @@
     "model": "main.usuario",
     "pk": 2,
     "fields": {
-      "nombre": "María",
-      "apellido": "García",
-      "correo": "maria.garcia@yahoo.com",
-      "contrasena": "hashedpassword2",
+      "nombre": "Pedro",
+      "apellido": "Morales",
+      "correo": "pedro.morales@example.com",
+      "contrasena": "pbkdf2_sha256$870000$jgBWomim7kMnQ06nD0QqWL$6KjG+5CwxOl3mXo6m60obcLr0uM+CxwTdaOw8jyJq3s=", 
       "puntos_acumulados": 150
     }
   },
