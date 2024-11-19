@@ -398,11 +398,11 @@ input::placeholder {
     /* Quitar el fondo y el borde redondeado de la flecha */
     .back-arrow .circle {
         background: none;
-        box-shadow: none; /* Quita la sombra */
+        box-shadow: none;
     }
 
     .back-arrow .circle i {
-        color: #21272A; /* Ajusta el color si es necesario */
+        color: #21272A; 
     }
 
     /* Centrar y ajustar la caja de autenticación */
@@ -411,19 +411,19 @@ input::placeholder {
         justify-content: center;
         align-items: center;
         width: 100%;
-        min-height: 100vh; /* Ocupa toda la pantalla */
+        min-height: 100vh;
         padding: 0;
         margin: 0;
-        background-color: white; /* Fondo blanco en móviles */
+        background-color: white; 
     }
 
     .auth-box {
         width: 100%;
-        max-width: 90%; /* Ocupa el 90% de la pantalla */
-        padding: 20px; /* Padding de 20px */
+        max-width: 90%; 
+        padding: 20px; 
         height: auto;
-        box-shadow: none; /* Quita la sombra */
-        border-radius: 0; /* Quita el borde redondeado */
+        box-shadow: none; 
+        border-radius: 0;
     }
 
     /* Ajustes para inputs y otros elementos */
@@ -435,12 +435,12 @@ input::placeholder {
     .auth-button, 
     .separator,
     .messages-container {
-        width: 100%; /* Ocupa todo el ancho de la caja */
+        width: 100%;
     }
 
     /* Ajustes para el separador en móviles */
     .separator {
-        width: 100%; /* Asegura que el separador ocupe el ancho de la caja */
+        width: 100%; 
         height: 1px;
         margin: 20px 0;
         background-color: #DDE1E6;

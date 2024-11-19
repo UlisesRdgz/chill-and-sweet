@@ -9,6 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('home/', views.home_view, name='home'),
     path('create/', views.create, name = 'create'),
-    path('customdesert/<int:categoria_id>/', views.customDessert, name = 'personalizar'),
+    path('customdesert/<int:categoria_id>/', views.customDessert, name = 'personalize'),
     path('help/', views.help_view, name='help'),
 ]

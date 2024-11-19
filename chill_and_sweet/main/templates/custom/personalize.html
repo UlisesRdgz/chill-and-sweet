@@ -1,0 +1,116 @@
+{% extends "layout/layout-logged.html" %}
+
+{% load static %}
+
+{% block title %}Chill & Sweet{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock %}
+
+{% block content %}
+<!--
+
+    Manú de personalización de postres
+
+-->
+<main class="main-content">
+    <div class="title-container">
+        <h1 class="title">
+            Diseña
+        </h1>
+        <p class="instruction">Elige en base a tus gustos cada detalle de tu postre</p>
+    </div>
+
+    <form method="POST" class="form_custom">
+        {% for tipo, ingredientes in ingredientes_por_tipo.items %}
+        <h2 class="category_name"> 
+            {{ tipo }}
+        </h2>
+
+        <div class="options_ingredients">
+            {% for ingrediente in ingredientes %}
+            <div class="ingredient">
+                <div class="ingredient_info">
+                    <input 
+                        name="opcion_{{ tipo }}" 
+                        id="{{ tipo|slugify }}{{ forloop.counter }}" 
+                        type="radio" 
+                        class="input_option" 
+                        data-nombre="{{ ingrediente.nombre }}" 
+                        data-precio="{{ ingrediente.precio_adicional }}"
+                        data-calorias="{{ ingrediente.calorias }}">
+
+                    <div class="info_ingredient_container">
+                        <label for="{{ tipo|slugify }}{{ forloop.counter }}" class="label_option">
+                            {{ ingrediente.nombre }}
+                        </label>
+                        <p class="calories">
+                            {{ ingrediente.calorias }} cal
+                        </p>
+                    </div>
+                </div>
+                <p class="price">${{ ingrediente.precio_adicional }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </form>
+
+    <!-- Resumen de selección y precio total -->
+    <div id="resumen">
+        <h2 class="category_name">Resumen de tu pedido:</h2>
+
+        <div class="resume-container">
+            <div class="ingredients-select-container">
+
+                <p class="tittle-description">Ingredientes:</p>
+
+                <ul id="ingredientes-seleccionados">
+                    <!-- Aquí se mostrarán los ingredientes seleccionados -->
+                </ul>
+            </div>
+
+            <div class="calories-select-container">
+
+                <p class="tittle-description">Calorias totales:</p>
+
+                <p class="total-calories">0 cal</p>
+
+
+            </div>
+
+            <div class="total-container">
+
+                <p class="total-resume">Total:</p>
+                <p class="total-resume">$ <span id="total-precio">0.00</span></p>
+
+            </div>
+        </div>
+
+        <div class="btn-caontainer">
+            <button class="btn_add_cart">Agregar al carrito</button>
+        </div>
+    </div>
+</main>
+
+    <!--
+    Alerta de éxito
+-->
+<div id="alerta-carrito" class="alerta oculto">
+    <img src="{% static 'img/succes_alert.png' %}" alt="Éxito" class="alerta-icono">
+    <p>Se añadió con éxito a tu carrito</p>
+</div>
+
+<script>
+    document.querySelector('.btn_add_cart').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        window.location.href = "{% url 'home' %}?success=true";
+    });
+</script>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/calculate-summary.js' %}"></script>
+{% endblock %}
