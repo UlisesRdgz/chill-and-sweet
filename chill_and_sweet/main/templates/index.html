@@ -4,8 +4,14 @@
 
 {% block title %}Chill & Sweet{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="page-container">
     <div class="carousel">
+        <!-- Contenido del carrusel -->
         <div class="carousel-content">
             <div class="carousel-text">
                 <h2>Cada sabor, tan único como tú</h2>
@@ -13,12 +19,10 @@
                 <a href="{% url 'login' %}" class="order-button">Ordenar ahora</a>
             </div>
             <div class="carousel-image">
-                <img src="{% static 'img/fconcrema.png' %}" alt="Postre único" class="slide" />
-                <img src="{% static 'img/pastel-queso.png' %}" alt="Postre delicioso" class="slide" />
-                <img src="{% static 'img/smoothie.png' %}" alt="Postre especial" class="slide" />
+                <img src="{% static 'img/pastel-chocolate-sinfondo.png' %}" alt="Postre único" class="slide" />
+                <img src="{% static 'img/fconcrema.png' %}" alt="Postre delicioso" class="slide" />
+                <img src="{% static 'img/pastel-queso.png' %}" alt="Postre especial" class="slide" />
                 <img src="{% static 'img/smoothie.png' %}" alt="Postre deli" class="slide" />
-                
-                <!-- Dots debajo de la imagen -->
                 <div class="carousel-dots">
                     <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
@@ -27,5 +31,46 @@
                 </div>
             </div>
         </div>
-    </div>        
+    </div>
+</div>
+
+<div class="page-container">
+    <div class="contact-section">
+        <h2 class="contact-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="icon-circle location-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="contact-subtitle">Ubicación</h3>
+                <p class="contact-description">Av. Ejemplo 123<br>CDMX, CP 45678</p>
+            </div>
+            <div class="contact-item">
+                <div class="icon-circle phone-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3 class="contact-subtitle">Teléfono</h3>
+                <p class="contact-description">+1 (123) 456-7890<br>+1 (987) 654-3210</p>
+            </div>
+            <div class="contact-item">
+                <div class="icon-circle schedule-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="contact-subtitle">Horario</h3>
+                <p class="contact-description">Lunes a Viernes<br>9:00 am a 9:00 pm</p>
+            </div>
+        </div>
+        <div class="contact-map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7530.170637898942!2d-99.19548280642093!3d19.322103700000024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0008de1eddf5%3A0x95a3d1762fcedcd8!2sInstituto%20de%20Ciencias%20Aplicadas%20y%20Tecnolog%C3%ADa%2C%20UNAM!5e0!3m2!1ses-419!2smx!4v1732032647481!5m2!1ses-419!2smx" 
+                class="google-map-iframe"
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    </div>
+</div>
 {% endblock %}

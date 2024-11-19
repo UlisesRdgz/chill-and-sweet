@@ -1,12 +1,18 @@
-/* Estilo general */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
+/* Configuración global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2 {
-    color: #1f1f1f;
+/* Contenedor principal con ancho máximo */
+.page-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1rem;
+    width: 100%; 
 }
 
 /* Encabezado de la sección de ayuda */
@@ -47,6 +53,7 @@ h1, h2 {
     text-align: center;
 }
 
+/* Elemento individual de preguntas frecuentes */
 .faq-item {
     margin-bottom: 1.5rem;
     padding: 1rem;
@@ -97,7 +104,14 @@ h1, h2 {
     color: #292929;
 }
 
-/* Media queries para pantallas pequeñas */
+/* Media queries para pantallas medianas */
+@media (max-width: 1024px) {
+    .page-container {
+        max-width: 800px; 
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .help-header h1 {
         font-size: 2rem;

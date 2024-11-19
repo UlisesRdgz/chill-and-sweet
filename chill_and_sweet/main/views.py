@@ -6,6 +6,9 @@ from .models import Usuario
 
 # Vista de inicio
 def index(request):
+    if 'user_id' in request.session:
+        return redirect('home')
+    
     return render(request, 'index.html')
 
 # Vista de ayuda

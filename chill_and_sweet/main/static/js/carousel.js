@@ -43,7 +43,7 @@ function currentSlide(n) {
 // Cambia automáticamente al siguiente slide cada 5 segundos
 setInterval(() => {
     nextSlide(1);
-}, 5000);
+}, 3000);
 
 // Variables para controlar el deslizamiento táctil
 let startX;

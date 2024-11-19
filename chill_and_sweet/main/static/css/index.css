@@ -1,176 +1,18 @@
-/* Reset: elimina márgenes y padding predeterminados */
-* {
+/* Configuración global para bordes, márgenes y rellenos */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Evita el desplazamiento horizontal en la página */
-html, body {
-    overflow-x: hidden;
-}
-
-/* Fuente global para todo el documento */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Barra de navegación principal */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem 1rem 3rem;
-    background-color: white;
-    height: 100px;
-    border-bottom: 2px solid #e0e0e0;
-    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Contenedor del logo dentro de la barra de navegación */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 60px;
-    margin-right: 10px;
-}
-
-/* Contenedor de los enlaces en la barra de navegación */
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-/* Estilo general para los enlaces de la barra de navegación */
-.nav-links a {
-    margin-left: 3rem;
-    font-size: 1rem;
-    color: #000;
-    text-decoration: none;
-    padding: 0.8rem 2rem;
-    border-radius: 10px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-/* Efecto hover en los enlaces de navegación */
-.nav-links a:hover {
-    background-color: #4fb9bfc7;
-}
-
-/* Botón específico para la opción "Inicia Sesión" */
-.nav-links .button {
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Icono de menú hamburguesa para dispositivos móviles */
-.hamburger {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Contenedor para mostrar el logo en el side menú (solo en móviles) */
-.mobile-logo-container {
-    display: none; 
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.mobile-logo {
+/* Contenedor principal con ancho máximo */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; 
     width: 100%;
-    max-width: 160px;
-}
-
-/* Overlay para el side menú en dispositivos móviles */
-.nav-links-mobile-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: flex-start;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Estado visible del overlay del side menú */
-.nav-links-mobile-overlay.show-overlay {
-    display: flex;
-    opacity: 1;
-}
-
-/* Contenedor del side menú en dispositivos móviles */
-.nav-links-mobile {
-    width: 75%;
-    max-width: 300px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-/* Estado visible del side menú */
-.nav-links-mobile.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-/* Estilos para los enlaces dentro del side menú */
-.nav-links-mobile a {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    padding: 0.8rem 1rem;
-    text-align: left;
-    text-decoration: none;
-    border-radius: 15px;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    width: 95%;
-    background-color: #ffffff;
-}
-
-/* Contenedor para íconos dentro de los enlaces del side menú */
-.nav-links-mobile a .icon-container {
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-}
-
-/* Estilo para los íconos dentro del side menú */
-.nav-links-mobile a i {
-    color: #EF6486;
-    font-size: 1rem;
-}
-
-/* Efecto hover en los enlaces del side menú */
-.nav-links-mobile a:hover {
-    background-color: rgba(79, 185, 191, 0.3);
-}
-
-/* Estilo para eliminar el margen inferior del último enlace del side menú */
-.nav-links-mobile a:last-child {
-    margin-bottom: 0;
 }
 
 /* Contenedor principal de contenido */
@@ -194,12 +36,11 @@ body {
 
 /* Contenedor para el carrusel */
 .carousel {
+    width: 100%;
+    padding: 2rem 0; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 80%;
-    margin: auto;
-    padding: 2rem;
     position: relative;
 }
 
@@ -261,7 +102,7 @@ body {
 .carousel-image img {
     width: 100%;
     height: auto;
-    max-height: 300px;
+    max-height: 400px;
     object-fit: contain;
     position: absolute; 
     top: 0;
@@ -299,55 +140,163 @@ body {
     opacity: 1;
 }
 
-/* Footer de la página */
-.footer {
-    background-color: #216164;
-    height: 250px;
+/* Sección de contacto */
+.contact-section {
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+/* Título en la sección de contacto */
+.contact-title {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; /* Roboto Medium */
+    margin-bottom: 2.5rem;
+    color: #000000;
+}
+
+/* Información de contacto, con elementos flexibles */
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 2rem;
+}
+
+/* Elementos individuales de contacto */
+.contact-item {
+    flex: 1 1 0;
+    min-width: 280px; 
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Iconos circulares en la sección de contacto */
+.icon-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    margin: 0 auto 2rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenido dentro del footer */
-.footer-content {
-    text-align: center;
+.icon-circle i {
+    font-size: 2.5rem;
 }
 
-.footer-content img {
-    height: 100px; 
-    margin-bottom: 10px;
+/* Icono y color específico para ubicación */
+.location-icon {
+    background-color: #E1F4F4;
 }
 
-.footer-content h1 {
-    font-size: 1.5rem;
-    line-height: 1.2;
+.location-icon i {
+    color: #216164;
 }
 
-.footer-content p {
-    font-size: 0.9rem;
+/* Icono y color específico para teléfono */
+.phone-icon {
+    background-color: #FFC9E8;
+}
+
+.phone-icon i {
+    color: #EF6486;
+}
+
+/* Icono y color específico para horario */
+.schedule-icon {
+    background-color: #BFBFD8;
+}
+
+.schedule-icon i {
+    color: #5D2279;
+}
+
+/* Subtítulo en la sección de contacto */
+.contact-subtitle {
+    font-size: 34px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+/* Descripción en la sección de contacto */
+.contact-description {
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    color: #000000;
+    line-height: 1.5;
 }
 
-/* Estilo para los enlaces en general */
-a {
-    text-decoration: none;
-    color: inherit;
+/* Contenedor del mapa de contacto */
+.contact-map {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    border-radius: 15px; 
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    margin-top: 3rem;
+}
+
+/* Estilización del iframe del mapa */
+.google-map-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(30%) contrast(1.1) brightness(0.9); 
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+.google-map-iframe:hover {
+    transform: scale(1.02);
+    filter: grayscale(0%) contrast(1) brightness(1); 
 }
 
 /* Media queries para pantallas medianas */
 @media screen and (max-width: 1024px) {
-    .nav-links a {
-        margin-left: 1.5rem;
+    /* Ajuste del contenedor principal */
+    .page-container {
+        max-width: 800px; 
     }
 
-    .carousel-text h2 {
+    .carousel-image img {
+        max-height: 300px;
+    }
+
+    .carousel-text h2,
+    .contact-title {
         font-size: 2.4rem;
     }
 
     .carousel-text p {
         font-size: 1rem;
         margin-bottom: 3rem;
+    }
+
+    .contact-item {
+        min-width: 180px; 
+    }
+
+    .icon-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .contact-subtitle,
+    .icon-circle i {
+        font-size: 2rem;
+    }
+    
+    .contact-description {
+        font-size: 1.8rem;
     }
 }
 
@@ -362,7 +311,8 @@ a {
         text-align: center;
     }
 
-    .carousel-text h2 {
+    .carousel-text h2,
+    .contact-title  {
         font-size: 2.2rem;
     }
 
@@ -370,30 +320,28 @@ a {
         margin-top: 40px;
         max-width: 100%;
     }
+
+    .contact-item {
+        min-width: 140px; 
+    }
+
+    .icon-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .contact-subtitle,
+    .icon-circle i {
+        font-size: 1.8rem;
+    }
+    
+    .contact-description {
+        font-size: 1.6rem;
+    }
 }
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 480px) {
-    .navbar {
-        justify-content: center;
-        padding: 1.5rem 2rem 1rem 2rem;
-    }
-
-    .nav-links-mobile .mobile-logo-container {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-    }
-    
-    .hamburger {
-        display: block;
-        position: absolute;
-        left: 1.8rem;
-        top: 2.2rem;
-    }
-
     .carousel {
         max-width: 100%;
     }
@@ -410,11 +358,36 @@ a {
         object-fit: contain;
     }
 
-    .carousel-text h2 {
+    .carousel-text h2,
+    .contact-title  {
         font-size: 2rem;
     }
 
     .carousel-text p {
         font-size: 0.9rem;
+    }
+
+    .icon-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .contact-subtitle,
+    .icon-circle i {
+        font-size: 1.6rem;
+    }
+    
+    .contact-description {
+        font-size: 1.4rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px 50px;
+    }
+
+    .contact-item {
+        margin-bottom: 0.5rem;
     }
 }
