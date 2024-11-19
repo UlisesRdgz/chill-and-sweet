@@ -158,13 +158,13 @@ a {
 
 /* Estilo para los íconos dentro del side menú */
 .nav-links-mobile a i {
-    color: #EF6486;
+    color: #4fb9bf;
     font-size: 1rem;
 }
 
 /* Efecto hover en los enlaces del side menú */
 .nav-links-mobile a:hover {
-    background-color: rgba(79, 185, 191, 0.3);
+    background-color: #4fb9bf46;
 }
 
 /* Estilo para eliminar el margen inferior del último enlace del side menú */
