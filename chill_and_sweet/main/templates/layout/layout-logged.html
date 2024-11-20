@@ -37,6 +37,9 @@
                 Crear
             </a>
             <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                Favoritos
+            </a>
+            <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                 Contacto
             </a>
         </div>
@@ -44,13 +47,13 @@
          <!-- Íconos -->
          <div class="nav-icons">
             <a href="">
-                <img src="{% static 'svg/love.svg' %}" alt="icono favoritos">
+                <img src="{% static 'svg/cart.svg' %}" alt="icono favoritos">
             </a>
             <a href="">
-                <img src="{% static 'svg/cart.svg' %}" alt="icono carrito">
+                <img src="{% static 'svg/user.svg' %}" alt="icono carrito">
             </a>
-            <a href="">
-                <img src="{% static 'svg/user.svg' %}" alt="icono usuario">
+            <a href="{% url 'logout' %}">
+                <img src="{% static 'svg/logout.svg' %}" alt="icono usuario">
             </a>
         </div>
 
@@ -68,6 +71,9 @@
                 </a>
                 <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-edit"></i></span> Crear
+                </a>
+                <a href="#" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
+                    <span class="icon-container"><i class="fas fa-heart"></i></span> Favoritos
                 </a>
                 <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-envelope"></i></span> Contacto
