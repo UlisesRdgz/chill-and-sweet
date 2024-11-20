@@ -45,7 +45,7 @@ a {
 
 /* Estilo general para los enlaces de la barra de navegación */
 .nav-links a {
-    margin-left: 3rem;
+    margin-left: 1rem;
     font-size: 1rem;
     color: #000;
     text-decoration: none;
@@ -252,8 +252,12 @@ a {
 
 /* Media queries para pantallas medianas */
 @media screen and (max-width: 1024px) {
+    .nav-links {
+        margin-right: 1rem;
+    }
+    
     .nav-links a {
-        margin-left: 1.5rem;
+        margin-left: .5rem;
         padding: 0.8rem 1rem;
     }
 }
