@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de Pago - Chill & Sweet</title>
+    <!-- Script para el modal -->
+    <script src="{% static 'js/pagopagina.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/pagopagina.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo.svg' %}" alt="Logo Chill & Sweet" class="w-full h-20">
+            </a>
+        </div>
+        <nav class="flex space-x-10">
+            <a onclick="window.location.href='../../'" class="text-gray-700 hover:text-pink-500">Inicio</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Menú</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Crear</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Contacto</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <button onclick="window.location.href=''" class="">♡</button>
+            <button onclick="window.location.href='../orden'" class="">🛒</button>
+            <button onclick="window.location.href='../login'" class="">👤</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto p-6">
+        <form id="paymentForm" class="flex flex-col md:flex-row md:space-x-6">
+            <!-- Payment Form -->
+            <div class="flex-1 bg-white shadow p-6 rounded">
+                <h2 class="text-2xl font-bold mb-4">DATOS DE PAGO</h2>
+                <!-- Payment Options -->
+                <div id="paymentOptions" class="mb-4 flex space-x-4">
+                    <button type="button" class="px-4 py-2 bg-blue-100 text-blue-700 font-semibold rounded"
+                        onclick="selectPaymentMethod(this)">Tarjeta</button>
+                    <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 font-semibold rounded">PayPal</button>
+                    <button type="button" class="px-4 py-2 bg-gray-100 text-gray-700 font-semibold rounded">Google Pay</button>
+                </div>
+                <!-- Payment Details -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700">Nombre del titular de la tarjeta</label>
+                        <input type="text" class="w-full border rounded p-2" placeholder="Nombre"
+                               pattern="[A-Za-z\s]+" title="Solo letras y espacios" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700">Número de la tarjeta</label>
+                            <input id="cardNumber" type="text" class="w-full border rounded p-2" placeholder="0000 0000 0000 0000" 
+                                   pattern="\d{16}" inputmode="numeric" title="Debe contener exactamente 16 dígitos" required>
+                            <span class="error-message hidden">El número de tarjeta debe tener 16 dígitos.</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700">Expiración</label>
+                                <input type="text" class="w-full border rounded p-2" placeholder="MM/YY"
+                                       pattern="(0[1-9]|1[0-2])\/\d{2}" inputmode="numeric" title="Formato MM/YY (mes de 01 a 12)" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700">CVV</label>
+                                <input type="text" class="w-full border rounded p-2" placeholder="123"
+                                       pattern="\d{3,4}" inputmode="numeric" title="Debe contener 3 o 4 dígitos" required>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700">Ciudad</label>
+                            <input type="text" class="w-full border rounded p-2" placeholder="Ciudad"
+                                   pattern="[A-Za-z\s]+" title="Solo letras y espacios" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700">C.P.</label>
+                            <input type="text" class="w-full border rounded p-2" placeholder="12345"
+                                   pattern="\d{5}" inputmode="numeric" title="Debe contener 5 dígitos" required>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="mt-4">
+                        <button type="submit" class="w-full py-2 rounded custom-button">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu de orden -->
+            <div class="custom-menu lg:w-1/3 rounded shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">Datos del pedido</h2>
+                <div class="mb-4 flex items-center">
+                    <label class="block text-sm font-medium mr-4">Fecha:</label>
+                    <p>{{ fecha }}</p>
+                </div>
+                <div class="mb-4 flex items-center">
+                    <p class="block text-sm font-medium mr-4">Hora: {{ hora }}</p>
+                </div>
+                <div class="mb-4 flex flex-col">
+                    <p class="text-sm">Inicial: </p>
+                    <p class="text-sm">Puntos:</p>
+                    <p class="text-lg font-semibold">Total:</p>
+                </div>
+                <!-- Botón de Pagar -->
+                <button type="button" id="payButton" class="w-full py-2 rounded custom-button" onclick="showModal()" disabled>Pagar</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <img src="{% static 'img/compra.png' %}" alt="Chill & Sweet Logo" class="w-10 h-10">
+            <h1>¡Gracias por tu compra!</h1>
+            <p>Tu pedido ha sido confirmado.</p>
+            <p>Número de pedido: <strong>#123456</strong></p>
+            <h4>Recibirás un correo con los detalles de tu compra.</h4>
+            <h4>¡Esperamos que disfrutes tu delicioso postre!</h4>
+            <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content container mx-auto text-center">
+            <a href="{% url 'index' %}" class="flex justify-center">
+                <img src="{% static 'img/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
+            </a>
+            <div class="flex justify-center space-x-10">
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Inicio</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Menú</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Crear</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Contacto</a>
+            </div>
+            <p class="mt-4">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

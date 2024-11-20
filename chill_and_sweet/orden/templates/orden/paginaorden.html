@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Orden - Chill & Sweet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--Script para el boton de mas u menos y para el ajuste del precio-->
+
+    <script src="{% static 'jss/precios.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/paginaorden.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style> </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo.svg' %}" alt="Logo Chill & Sweet" class="w-full h-20">
+            </a>
+        </div>
+        <nav class="flex space-x-10">
+            <a onclick="window.location.href='../../'" class="text-gray-700 hover:text-pink-500">Inicio</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Menú</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Crear</a>
+            <a href="#" class="text-gray-700 hover:text-pink-500">Contacto</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <button onclick="window.location.href=''" class="">♡</button>
+            <button onclick="window.location.href=''" class="">🛒</button>
+            <button onclick="window.location.href='../login'" class="">👤</button>
+        </div>
+    </header>
+
+    <!-- menu de orden -->
+    <main class="container mx-auto p-4">
+        <h1 class="text-center text-3xl mb-8">MI ORDEN</h1>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- tabla de orden -->
+            <div class="w-full lg:w-2/3 bg-white rounded shadow p-4">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="custom-table rounded border-b py-2">Producto</th>
+                            <th class="custom-table rounded border-b py-2">Precio</th>
+                            <th class="custom-table rounded border-b py-2">Cantidad</th>
+                            <th class="custom-table rounded border-b py-2">Subtotal</th>
+                            <th class="custom-table rounded border-b py-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo 1 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/smoothie_chocolate.jpg' %}" alt="Smoothie"
+                                    class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Smoothie</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Ejemplo 2 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/cafe_baileys.jpg' %}" alt="moka" class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Mocha Cappuccino</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Ejemplo 3 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Smoothie"
+                                    class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Smoothie</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Aquí se agregan más ejemplos -->
+                         
+                    </tbody>
+                </table>
+            </div>
+            <!-- Menu de los datos del pedido -->
+            <div class="custom-menu lg:w-1/3 rounded shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">Datos del pedido</h2>
+                <form method="post" action="{% url 'orden:guardar_orden' %}">
+                    {% csrf_token %}
+                    <div class="mb-4 flex items-center">
+                        <label for="fecha" class="block text-sm font-medium mr-4">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" class="w-full border rounded px-3 py-2 mt-1">
+                    </div>
+                    <div class="mb-4 flex items-center">
+                        <label for="hora" class="block text-sm font-medium mr-6">Hora:</label>
+                        <input type="time" id="hora" name="hora" class="w-full border rounded px-3 py-2 mt-1">
+                    </div>
+                    <div class="mb-4 flex items-center">
+                        <label for="forma" class="block text-sm font-medium mr-4">Forma:</label>
+                        <select id="forma" name="forma" class="w-full border bg-white rounded px-3 py-2 mt-1">
+                            <option>Para llevar</option>
+                            <option>En tienda</option>
+                        </select>
+                    </div>
+                    <div class="mb-4 flex flex-col">
+                        <p class="text-sm initial">Inicial: $0.00</p>
+                        <p class="text-sm">Puntos: <span class="points">12.50</span></p>
+                        <p class="text-lg font-semibold total">Total: $0.00</p>
+                    </div>
+
+                    <button type="submit" class="w-full py-2 rounded custom-button">Confirmar</button>
+                </form>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content container mx-auto text-center">
+            <a href="{% url 'index' %}" class="flex justify-center">
+                <img src="{% static 'img/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
+            </a>
+            <div class="flex justify-center space-x-10">
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Inicio</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Menú</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Crear</a>
+                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Contacto</a>
+            </div>
+            <p class="mt-4">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+        </div>
+    </footer>
+</body>
+</body>
+
+</html>
