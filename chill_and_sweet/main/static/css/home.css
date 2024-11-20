@@ -30,21 +30,6 @@
     margin-bottom: 20px;
 }
 
-.container .button-logout {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff6b6b; 
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.container .button-logout:hover {
-    background-color: #ff3b3b; 
-}
-
 .alerta {
     position: fixed;
     top: 20px;
