@@ -78,6 +78,18 @@
                 <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-envelope"></i></span> Contacto
                 </a>
+                <!-- Íconos solo para móviles -->
+                <div class="mobile-only-icons">
+                    <a href="#">
+                        <span class="icon-container"><i class="fas fa-shopping-cart"></i></span> Carrito
+                    </a>
+                    <a href="#">
+                        <span class="icon-container"><i class="fas fa-user"></i></span> Perfil
+                    </a>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon-container"><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión
+                    </a>
+                </div>
             </div>
         </div>
     </header>
