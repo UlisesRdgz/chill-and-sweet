@@ -240,6 +240,11 @@ input[type="tel"] {
     border: 1px solid #f5c6cb;
 }
 
+/* Ocultar mensajes de éxito */
+.message.success {
+    display: none;
+}
+
 /* Estilo del texto de placeholder */
 input::placeholder {
     font-family: 'Roboto', sans-serif;
