@@ -10,7 +10,10 @@ def index(request):
     if 'user_id' in request.session:
         return redirect('home')
     
-    return render(request, 'index.html')
+    # Obtener los postres más vendidos o recomendados
+    best_sellers = Postre.objects.filter(es_recomendado=True)[:4] 
+    
+    return render(request, 'index.html', {'best_sellers': best_sellers})
 
 # Vista de ayuda
 def help_view(request):

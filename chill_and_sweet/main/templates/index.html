@@ -11,18 +11,20 @@
 {% block content %}
 <div class="page-container">
     <div class="carousel">
-        <!-- Contenido del carrusel -->
+        <!-- Carrusel de imágenes y texto promocional -->
         <div class="carousel-content">
             <div class="carousel-text">
                 <h2>Cada sabor, tan único como tú</h2>
                 <p>Crea postres únicos y obtén beneficios exclusivos al iniciar sesión.</p>
                 <a href="{% url 'login' %}" class="order-button">Ordenar ahora</a>
             </div>
+            <!-- Imágenes del carrusel -->
             <div class="carousel-image">
                 <img src="{% static 'img/pastel-chocolate-sinfondo.png' %}" alt="Postre único" class="slide" />
                 <img src="{% static 'img/fconcrema.png' %}" alt="Postre delicioso" class="slide" />
                 <img src="{% static 'img/pastel-queso.png' %}" alt="Postre especial" class="slide" />
                 <img src="{% static 'img/smoothie.png' %}" alt="Postre deli" class="slide" />
+                 <!-- Navegación por puntos del carrusel -->
                 <div class="carousel-dots">
                     <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
@@ -32,12 +34,53 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="page-container">
+     <!-- Sección de descripción destacada -->
+    <div class="highlight-section">
+        <p>
+            Diseña tus postres desde cero, obtén descuentos especiales, acumula puntos 
+            para recompensas futuras y ahorra tiempo con opciones de recogida rápida. 
+            ¡Haz de cada pedido una experiencia personalizada y deliciosa!
+        </p>
+    </div>
+
+    <!-- Sección de más vendidos -->
+    <div class="best-sellers-section">
+        <h2 class="contact-title">Más vendidos</h2>
+        <div class="postres-grid">
+            {% for postre in best_sellers %}
+            <!-- Card de cada postre -->
+            <div class="postre-item" onclick="window.location.href='{% url 'login' %}'">
+                <div class="postre-image-container">
+                    <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="postre-image">
+                </div>
+                <div class="postre-details">
+                    <div class="postre-header">
+                        <h3 class="postre-name">{{ postre.nombre }}</h3>
+                        <span class="postre-calories">{{ postre.calorias }} cal</span>
+                    </div>
+                    <p class="postre-description">{{ postre.descripcion|truncatewords:18 }}</p>
+                    <span class="postre-price">$ {{ postre.precio }}</span>
+                </div>              
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Sección de ayuda -->
+    <div class="help-section">
+        <p>
+            ¿Tienes dudas adicionales? Descubre cómo utilizar Chill & Sweet de manera efectiva. 
+            Haz clic en el botón de abajo para explorar nuestro Centro de Ayuda con guías y preguntas frecuentes.
+        </p>
+        <a href="{% url 'help' %}" class="help-button">Centro de ayuda</a>
+    </div>    
+
+    <!-- Sección de contacto -->
     <div class="contact-section">
         <h2 class="contact-title">Contacto</h2>
         <div class="contact-info">
+            <!-- Información de contacto -->
             <div class="contact-item">
                 <div class="icon-circle location-icon">
                     <i class="fas fa-map-marker-alt"></i>
@@ -60,6 +103,7 @@
                 <p class="contact-description">Lunes a Viernes<br>9:00 am a 9:00 pm</p>
             </div>
         </div>
+        <!-- Mapa de Google -->
         <div class="contact-map">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7530.170637898942!2d-99.19548280642093!3d19.322103700000024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0008de1eddf5%3A0x95a3d1762fcedcd8!2sInstituto%20de%20Ciencias%20Aplicadas%20y%20Tecnolog%C3%ADa%2C%20UNAM!5e0!3m2!1ses-419!2smx!4v1732032647481!5m2!1ses-419!2smx" 

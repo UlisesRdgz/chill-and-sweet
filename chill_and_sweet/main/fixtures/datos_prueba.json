@@ -70,24 +70,56 @@
     }
   },
   {
-    "model": "main.postre",
-    "pk": 1,
-    "fields": {
-      "nombre": "Pastel Tres Leches",
-      "descripcion": "Delicioso pastel con tres tipos de leche, decorado con fruta fresca.",
-      "precio": "250.00",
-      "categoria": 1
-    }
+      "model": "main.postre",
+      "pk": 1,
+      "fields": {
+          "nombre": "Mocha Cremoso",
+          "descripcion": "Disfruta de la combinación perfecta de café y chocolate en este cappuccino suave y cremoso, decorado con crema batida y un toque de cacao. ¡Un abrazo cálido en una taza!",
+          "precio": "80.00",
+          "categoria": 1,
+          "es_recomendado": true,
+          "calorias": 250,
+          "imagen": "postres/cafe-baileys.jpg"
+      }
   },
   {
-    "model": "main.postre",
-    "pk": 2,
-    "fields": {
-      "nombre": "Concha",
-      "descripcion": "Pan dulce tradicional con cubierta de azúcar.",
-      "precio": "15.00",
-      "categoria": 2
-    }
+      "model": "main.postre",
+      "pk": 2,
+      "fields": {
+          "nombre": "Frappe Fresa Mágica",
+          "descripcion": "Un frappe refrescante hecho con fresas frescas, leche y un toque dulce de frambuesa. Decorado con crema batida y fresas. ¡Ideal para esos momentos felices!",
+          "precio": "65.00",
+          "categoria": 2,
+          "es_recomendado": true,
+          "calorias": 220,
+          "imagen": "postres/smoothie-rosa.jpg"
+      }
+  },
+  {
+      "model": "main.postre",
+      "pk": 3,
+      "fields": {
+          "nombre": "Choco Pancakes",
+          "descripcion": "Esponjosos pancakes cubiertos de chocolate fundido y decorados con trocitos de fresas frescas. ¡Perfectos para compartir o disfrutar en tu momento especial!",
+          "precio": "90.00",
+          "categoria": 4,
+          "es_recomendado": true,
+          "calorias": 600,
+          "imagen": "postres/pancakes-chocolate.jpg"
+      }
+  },
+  {
+      "model": "main.postre",
+      "pk": 4,
+      "fields": {
+          "nombre": "Crepa Tropical",
+          "descripcion": "Una delicada crepa rellena de crema suave y fresca fruta: kiwi y uvas. Decorada con un toque de miel y azúcar glas para un dulce momento refrescante.",
+          "precio": "85.00",
+          "categoria": 3,
+          "es_recomendado": true,
+          "calorias": 320,
+          "imagen": "postres/crepa-uva-kiwi.jpg"
+      }
   },
   {
     "model": "main.ingrediente",

@@ -78,7 +78,7 @@
     background-color: #EF6486;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
 }
@@ -140,6 +140,160 @@
     opacity: 1;
 }
 
+.highlight-section,
+.help-section {
+    padding: 3rem;
+    line-height: 2rem;
+    margin: 4rem 0;
+    text-align: center;
+    border-radius: 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+.highlight-section {
+    background-color: rgba(79, 186, 191, 0.25); 
+}
+
+.highlight-section p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+/* Sección de ayuda */
+.help-section {
+    background-color: #ffcce985; 
+}
+
+.help-section p {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-bottom: 2rem;
+}
+
+/* Botón para realizar pedidos dentro del carrusel */
+.help-button {
+    padding: 1rem 2.5rem;
+    background-color: #FBB0CF;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.help-button:hover {
+    background-color: #df9eb9;
+}
+
+/* Grid para los postres */
+.postres-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    padding: 20px 0;
+}
+
+/* Contenedor de cada postre */
+.postre-item {
+    display: flex;
+    flex-direction: row; 
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 150px; 
+    cursor: pointer;
+}
+
+.postre-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del postre (a la izquierda) */
+.postre-image-container {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.postre-image {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+/* Detalles del postre (a la derecha) */
+.postre-details {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    padding: 15px;
+    overflow: hidden;
+}
+
+/* Contenedor para el título y calorías */
+.postre-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px;
+}
+
+/* Título del postre */
+.postre-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Calorías del postre */
+.postre-calories {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+/* Descripción del postre */
+.postre-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    text-align: left; 
+    overflow: hidden; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    text-overflow: ellipsis;
+}
+
+
+/* Precio del postre */
+.postre-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: auto;
+    text-align: left;
+}
+
+/* Footer con el precio */
+.postre-footer {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
 /* Sección de contacto */
 .contact-section {
     width: 100%;
@@ -152,7 +306,7 @@
 .contact-title {
     font-size: 40px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500; /* Roboto Medium */
+    font-weight: 500; 
     margin-bottom: 2.5rem;
     color: #000000;
 }
@@ -281,6 +435,15 @@
         margin-bottom: 3rem;
     }
 
+    .postres-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .postre-item {
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
     .contact-item {
         min-width: 180px; 
     }
@@ -365,6 +528,73 @@
 
     .carousel-text p {
         font-size: 0.9rem;
+    }
+
+    .postre-item {
+        flex-direction: column; 
+        align-items: flex-start;
+        height: auto; 
+        padding: 10px;
+    }
+
+    .postre-image-container {
+        width: 100%;
+        padding-top: 100%; 
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    .postre-image {
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .postre-details {
+        flex: unset; 
+        width: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .postre-header {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start; 
+        margin-bottom: 10px; 
+    }
+
+    .postre-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .postre-calories {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+    }
+
+    .postre-description {
+        margin-bottom: 10px; 
+        text-align: left;
+        display: -webkit-box; 
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden; 
+        text-overflow: ellipsis;
+    }
+
+    .postre-price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 10px;
     }
 
     .icon-circle {
