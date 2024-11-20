@@ -25,6 +25,9 @@ class Postre(models.Model):
     descripcion = models.TextField(max_length=500)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    es_recomendado = models.BooleanField(default=False)
+    calorias = models.IntegerField(default=0)
+    imagen = models.ImageField(upload_to='postres/', null=True, blank=True)
 
     def __str__(self):
         return self.nombre
