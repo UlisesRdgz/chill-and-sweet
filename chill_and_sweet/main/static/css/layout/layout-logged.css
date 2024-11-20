@@ -205,6 +205,11 @@ a {
     background-color: #ef64872a;
 }
 
+/* Estilo por defecto para ocultar el contenedor mobile-only-icons */
+.mobile-only-icons {
+    display: none;
+}
+
 /* Footer de la página */
 .footer {
     background-color: #216164;
@@ -245,7 +250,6 @@ a {
 }
 
 
-
 /* Media queries para pantallas medianas */
 @media screen and (max-width: 1024px) {
     .nav-links a {
@@ -269,7 +273,7 @@ a {
         display: flex;
         justify-content: center; /* Centra el logo */
         align-items: center;
-        margin-left: 4.1rem;
+        margin-left: 4.9rem;
         margin-top: .5rem;
     }
 
@@ -278,16 +282,56 @@ a {
         font-size: 1.5rem;
         cursor: pointer;
         margin-left: .3rem;
-        margin-top: .1rem; /* Empuja el menú hamburguesa hacia la izquierda */
+        margin-top: .1rem;
     }
 
     .nav-icons {
         display: flex;
-        gap: 0.5rem; /* Espacio entre íconos */
+        gap: 0.5rem;
     }
 
     .nav-links-mobile .mobile-logo-container {
         display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Media queries para pantallas de 480px o menos */
+@media (max-width: 480px) {
+    .logo {
+        margin-right: 105px;
+    }
+
+    .mobile-only-icons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer {
+        width: 100%; 
+        height: auto;
+        padding: 2rem 2rem; 
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .footer-nav {
+        flex-direction: column; 
+        gap: 1rem; 
+    }
+
+    .footer-content p {
+        margin-bottom: 1rem;
+    }
+
+    .nav-icons {
+        display: none;
     }
 
     .nav-links {
