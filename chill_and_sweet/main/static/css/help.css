@@ -1,0 +1,128 @@
+/* Configuración global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal con ancho máximo */
+.page-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1rem;
+    width: 100%; 
+}
+
+/* Encabezado de la sección de ayuda */
+.help-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #4fb9bf72;
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 80%;
+}
+
+.help-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.help-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+/* Sección de preguntas frecuentes */
+.faq-section {
+    max-width: 80%;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Elemento individual de preguntas frecuentes */
+.faq-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-item h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+/* Sección de contacto */
+.contact-section {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffcce981;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.contact-section strong {
+    color: #292929;
+}
+
+/* Media queries para pantallas medianas */
+@media (max-width: 1024px) {
+    .page-container {
+        max-width: 800px; 
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .help-header h1 {
+        font-size: 2rem;
+    }
+
+    .faq-section h2,
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .faq-item h3 {
+        font-size: 1.3rem;
+    }
+}

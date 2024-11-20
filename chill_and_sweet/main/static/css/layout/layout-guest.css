@@ -1,0 +1,242 @@
+/* Evita el desplazamiento horizontal en la página */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Fuente global para todo el documento */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilo para los enlaces en general */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Barra de navegación principal */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem 1rem 3rem;
+    background-color: white;
+    height: 100px;
+    border-bottom: 2px solid #e0e0e0;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Contenedor del logo dentro de la barra de navegación */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+/* Contenedor de los enlaces en la barra de navegación */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo general para los enlaces de la barra de navegación */
+.nav-links a {
+    margin-left: 3rem;
+    font-size: 1rem;
+    color: #000;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en los enlaces de navegación */
+.nav-links a:hover {
+    background-color: #4fb9bfc7;
+}
+
+/* Botón específico para la opción "Inicia Sesión" */
+.nav-links .button {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono de menú hamburguesa para dispositivos móviles */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Contenedor para mostrar el logo en el side menú (solo en móviles) */
+.mobile-logo-container {
+    display: none; 
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.mobile-logo {
+    width: 100%;
+    max-width: 160px;
+}
+
+/* Overlay para el side menú en dispositivos móviles */
+.nav-links-mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Estado visible del overlay del side menú */
+.nav-links-mobile-overlay.show-overlay {
+    display: flex;
+    opacity: 1;
+}
+
+/* Contenedor del side menú en dispositivos móviles */
+.nav-links-mobile {
+    width: 75%;
+    max-width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Estado visible del side menú */
+.nav-links-mobile.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Estilos para los enlaces dentro del side menú */
+.nav-links-mobile a {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    width: 95%;
+    background-color: #ffffff;
+}
+
+/* Contenedor para íconos dentro de los enlaces del side menú */
+.nav-links-mobile a .icon-container {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+/* Estilo para los íconos dentro del side menú */
+.nav-links-mobile a i {
+    color: #4fb9bf;
+    font-size: 1rem;
+}
+
+/* Efecto hover en los enlaces del side menú */
+.nav-links-mobile a:hover {
+    background-color: #4fb9bf46;
+}
+
+/* Estilo para eliminar el margen inferior del último enlace del side menú */
+.nav-links-mobile a:last-child {
+    margin-bottom: 0;
+}
+
+/* Footer de la página */
+.footer {
+    background-color: #216164;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Contenido dentro del footer */
+.footer-content {
+    text-align: center;
+}
+
+.footer-content img {
+    height: 100px; 
+    margin-bottom: 10px;
+}
+
+.footer-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Media queries para pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .nav-links a {
+        margin-left: 1.5rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+
+/* Media queries para pantallas móviles */
+@media (max-width: 768px) {
+    .nav-links a {
+        margin-left: 0.5rem;
+    }
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 480px) {
+    .navbar {
+        justify-content: center;
+        padding: 1.5rem 2rem 1rem 2rem;
+    }
+
+    .nav-links-mobile .mobile-logo-container {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 1.8rem;
+        top: 2.2rem;
+    }
+}

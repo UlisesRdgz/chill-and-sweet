@@ -1,0 +1,325 @@
+/* Configuración global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Estilos del header y la barra de navegación */
+.header {
+    max-height: 130px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.24);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.24);
+}
+
+.img-logo {
+    height: 130px;
+}
+
+.header-options {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.header-option {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.header-option a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.selected {
+    background-color: #FBB0CF75;
+    padding: 10px 40px;
+    border-radius: 15px;
+}
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 156px;
+}
+
+.icon img {
+    width: 22px;
+    height: 22px;
+}
+
+/* Estilos para el contenido principal */
+
+.title-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 20px;
+}
+
+.instruction {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 0px;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+}
+
+.food-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.food-option-img {
+    height: 255px;
+    height: 192px;
+}
+
+.food-category {
+    font-family: "Robo", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+
+/*
+    Estilos para el footer
+*/
+
+.options_footer {
+    list-style: none;
+    display: flex;
+    gap: 60px;
+    margin-bottom: 25px;
+}
+
+.option_footer a{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/*
+    Estilos para alerta de éxito
+*/
+
+.alerta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.alerta-icono {
+    width: 40px;
+    height: 40px;
+}
+
+.oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+/*
+ Estilos del menú de personalización del postre
+*/
+
+
+.category_name {
+    background-color:#d1f2eb;
+    padding: 5px 20px;
+    font-family: "Roboto", sans-serif;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 10px;
+}
+
+.options_ingredients {
+    display: flex;
+    flex-direction: column;
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
+.ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ingredient_info {
+    display: flex;
+    gap: 20px;
+}
+
+.info_ingredient_container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.price {
+    font-family: "Roboto", sans-serif;
+}
+
+.label_option {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+
+.input_option:checked {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.tittle-description {
+    font-family: "Roboto", sans-serif;
+}
+
+.resume-container {
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
+.ingredients-select-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calories-select-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-resume, #total-precio {
+    font-family: "Roboto",sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.total-calories {
+    font-family: "Roboto", sans-serif;
+}
+
+.btn-caontainer {
+    display: flex;
+    margin-left: 350px;
+    margin-right: 350px;
+    margin-top: 50px;
+}
+
+.btn_add_cart {
+    background-color: #EF6486;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    border: none;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/*
+    Responsive
+*/
+
+@media (max-width: 768px) {
+
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .icons-container {
+      display: none; /* Oculta el div */
+    }
+
+    .options_footer {
+        gap: 40px;
+    }
+
+    .resume-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .category_name {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .options_ingredients {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .btn-caontainer {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+  }

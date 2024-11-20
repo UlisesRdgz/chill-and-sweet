@@ -14,6 +14,7 @@ class Usuario(models.Model):
 # Modelo que representa las categorías de postres
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
+    imagen = models.TextField(null=False, blank=False)
 
     def __str__(self):
         return self.nombre
@@ -33,6 +34,7 @@ class Ingrediente(models.Model):
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=50)
     precio_adicional = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    calorias = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nombre
