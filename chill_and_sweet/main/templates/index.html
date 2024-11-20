@@ -1,66 +1,80 @@
+{% extends "layout/layout-guest.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chill & Sweet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+{% block title %}Chill & Sweet{% endblock %}
+
+{% block head %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
-<body>
-    <!-- Navegación -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="{% url 'index' %}">
-                <img src="{% static 'img/logo.svg' %}" alt="Logo Chill & Sweet">
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="{% url 'register' %}">Regístrate</a>
-            <a href="{% url 'login' %}" class="button">Inicia Sesión</a>
-        </div>
+{% endblock %}
 
-        <!-- Icono de menú hamburguesa para móviles -->
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        
-        <!-- Menú desplegable para móviles -->
-        <div class="nav-links-mobile-overlay" id="mobileOverlay" onclick="toggleMenu()">
-            <div class="nav-links-mobile" id="mobileMenu">
-                <a href="{% url 'register' %}">
-                    <span class="icon-container"><i class="fas fa-user-plus"></i></span> Regístrate
-                </a>
-
-                <!-- Línea separadora -->
-                <div class="separator"></div>
-
-                <a href="{% url 'login' %}">
-                    <span class="icon-container"><i class="fas fa-sign-in-alt"></i></span> Inicia Sesión
-                </a>
+{% block content %}
+<div class="page-container">
+    <div class="carousel">
+        <!-- Contenido del carrusel -->
+        <div class="carousel-content">
+            <div class="carousel-text">
+                <h2>Cada sabor, tan único como tú</h2>
+                <p>Crea postres únicos y obtén beneficios exclusivos al iniciar sesión.</p>
+                <a href="{% url 'login' %}" class="order-button">Ordenar ahora</a>
+            </div>
+            <div class="carousel-image">
+                <img src="{% static 'img/pastel-chocolate-sinfondo.png' %}" alt="Postre único" class="slide" />
+                <img src="{% static 'img/fconcrema.png' %}" alt="Postre delicioso" class="slide" />
+                <img src="{% static 'img/pastel-queso.png' %}" alt="Postre especial" class="slide" />
+                <img src="{% static 'img/smoothie.png' %}" alt="Postre deli" class="slide" />
+                <div class="carousel-dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+</div>
 
-    <!-- Contenido principal -->
-    <main class="main-content">
-        <h1>Bienvenido a Chill & Sweet</h1>
-        <p>¡Explora nuestra plataforma y personaliza tus postres favoritos!</p>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="{% url 'index' %}">
-                <img src="{% static 'img/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
-            </a>
-            <p>&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+<div class="page-container">
+    <div class="contact-section">
+        <h2 class="contact-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="icon-circle location-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="contact-subtitle">Ubicación</h3>
+                <p class="contact-description">Av. Ejemplo 123<br>CDMX, CP 45678</p>
+            </div>
+            <div class="contact-item">
+                <div class="icon-circle phone-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3 class="contact-subtitle">Teléfono</h3>
+                <p class="contact-description">+1 (123) 456-7890<br>+1 (987) 654-3210</p>
+            </div>
+            <div class="contact-item">
+                <div class="icon-circle schedule-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="contact-subtitle">Horario</h3>
+                <p class="contact-description">Lunes a Viernes<br>9:00 am a 9:00 pm</p>
+            </div>
         </div>
-    </footer>
+        <div class="contact-map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7530.170637898942!2d-99.19548280642093!3d19.322103700000024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0008de1eddf5%3A0x95a3d1762fcedcd8!2sInstituto%20de%20Ciencias%20Aplicadas%20y%20Tecnolog%C3%ADa%2C%20UNAM!5e0!3m2!1ses-419!2smx!4v1732032647481!5m2!1ses-419!2smx" 
+                class="google-map-iframe"
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-    <!-- JavaScript para el menú hamburguesa -->
-    <script src="{% static 'js/menu.js' %}"></script>
-</body>
-</html>
+{% block scripts %}
+<script src="{% static 'js/carousel.js' %}"></script>
+{% endblock %}

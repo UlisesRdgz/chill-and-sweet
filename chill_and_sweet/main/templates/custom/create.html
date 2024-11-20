@@ -1,0 +1,37 @@
+{% extends "layout/layout-logged.html" %}
+
+{% load static %}
+
+{% block title %}Chill & Sweet{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock %}
+
+{% block content %}
+<!--
+    Cntenido principal, titulo y menú de categorias
+-->
+<main class="page-container">
+    <div class="title-container">
+        <h1 class="title">
+            Crea tu postre
+        </h1>
+        <p class="instruction">Elige la categoría del postre que deseas personalizar</p>
+    </div>
+
+    <!--
+        menu de categorias de comida
+    -->
+    <div class="menu-container">
+
+        {% for category in categorias %}
+            <a class="food-option" href="{% url 'personalize' categoria_id=category.id %}">
+                <img class="food-option-img" src="{{category.imagen}}" alt="Imagen de café">
+                
+                <p class="food-category">{{category.nombre}}</p>
+            </a>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

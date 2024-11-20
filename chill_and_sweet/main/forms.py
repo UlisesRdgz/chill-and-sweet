@@ -34,15 +34,15 @@ class RegisterForm(forms.ModelForm):
     # Validación personalizada para nombre
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')
-        if not re.match(r'^[a-zA-Z]+$', nombre):
-            raise ValidationError("El nombre solo debe contener letras, sin espacios ni caracteres especiales.")
+        if not re.match(r'^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$', nombre):
+            raise ValidationError("El nombre solo debe contener letras, espacios y caracteres acentuados.")
         return nombre
 
     # Validación personalizada para apellido
     def clean_apellido(self):
         apellido = self.cleaned_data.get('apellido')
-        if not re.match(r'^[a-zA-Z]+$', apellido):
-            raise ValidationError("El apellido solo debe contener letras, sin espacios ni caracteres especiales.")
+        if not re.match(r'^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$', apellido):
+            raise ValidationError("El apellido solo debe contener letras, espacios y caracteres acentuados.")
         return apellido
 
     # Validación personalizada para el campo de contraseña
