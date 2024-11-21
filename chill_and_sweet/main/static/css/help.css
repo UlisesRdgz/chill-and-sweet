@@ -31,7 +31,7 @@
 }
 
 .help-header p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #555;
     margin-top: 0.5rem;
 }
@@ -42,20 +42,21 @@
     margin: 2rem auto;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.169);
     padding: 1.5rem;
 }
 
 .faq-section h2 {
     font-size: 2rem;
     font-weight: 600;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
 /* Elemento individual de preguntas frecuentes */
 .faq-item {
-    margin-bottom: 1.5rem;
+    margin: 1rem 0;
     padding: 1rem;
     border-bottom: 1px solid #e0e0e0;
 }
@@ -75,6 +76,7 @@
 
 .faq-item:last-child {
     border-bottom: none;
+    margin-bottom: 0rem;
 }
 
 /* Sección de contacto */
