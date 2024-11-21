@@ -5,6 +5,8 @@ from .forms import RegisterForm, LoginForm
 from .models import Usuario
 from .models import *
 
+from django.contrib.auth.decorators import login_required
+
 # Vista de inicio
 def index(request):
     if 'user_id' in request.session:
@@ -123,4 +125,48 @@ def customDessert(request, categoria_id):
     else:
         return redirect('login')
 
+
+def orden(request):
+    if request.method == "POST":
+        # Capturar los datos del formulario
+        fecha = request.POST.get("fecha")
+        hora = request.POST.get("hora")
+        forma = request.POST.get("forma")
+        
+        # Guardar en la sesión
+        request.session["fecha"] = fecha
+        request.session["hora"] = hora
+        request.session["forma"] = forma
+
+        # Redirigir a la página de pago
+        return redirect("../pago")  # Usa el nombre correcto de la URL para la página de pago
     
+    usuario = request.user  # Obtiene el usuario autenticado
+    try:
+        datos_usuario = Usuario.objects.get(pk=usuario.pk)  # Obtén la información del usuario
+        puntos = datos_usuario.puntos_acumulados
+    except Usuario.DoesNotExist:
+        puntos = 0  # Si el usuario no existe, asigna 0 puntos
+
+    context = {
+        'puntos': puntos,
+    }
+    return render(request, 'orden/paginaorden.html', context)
+
+# Vista de la pagina pago
+def pago(request):
+    return render(request,'pago/pagopagina.html')
+
+# pago
+def mostrar_pago(request):
+    # Obtener los datos de la sesión
+    fecha = request.session.get("fecha", "No especificado")
+    hora = request.session.get("hora", "No especificado")
+    forma = request.session.get("forma", "No especificado")
+
+    contexto = {
+        "fecha": fecha,
+        "hora": hora,
+        "forma": forma,
+    }
+    return render(request, "pagopagina.html", contexto)

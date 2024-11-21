@@ -1,4 +1,4 @@
-//para el funcionanmiento de los precio
+//Función para el funcionanmiento de los precio
 document.addEventListener('DOMContentLoaded', () => {
     // Handle increment and decrement buttons
     const rows = document.querySelectorAll('.product-row');

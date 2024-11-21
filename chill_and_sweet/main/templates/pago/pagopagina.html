@@ -1,7 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
+{% extends "layout/layout-logged.html" %}
 
+{% load static %}
+
+{% block title %}Chill & Sweet{% endblock %}
+
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +14,11 @@
     <link rel="stylesheet" href="{% static 'css/pagopagina.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+{% endblock %}
 
+
+{% block content %}
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow p-4 flex justify-between items-center">
-        <div class="">
-            <a href="{% url 'index' %}">
-                <img src="{% static 'img/logo.svg' %}" alt="Logo Chill & Sweet" class="w-full h-20">
-            </a>
-        </div>
-        <nav class="flex space-x-10">
-            <a onclick="window.location.href='../../'" class="text-gray-700 hover:text-pink-500">Inicio</a>
-            <a href="#" class="text-gray-700 hover:text-pink-500">Menú</a>
-            <a href="#" class="text-gray-700 hover:text-pink-500">Crear</a>
-            <a href="#" class="text-gray-700 hover:text-pink-500">Contacto</a>
-        </nav>
-        <div class="flex items-center space-x-4">
-            <button onclick="window.location.href=''" class="">♡</button>
-            <button onclick="window.location.href='../orden'" class="">🛒</button>
-            <button onclick="window.location.href='../login'" class="">👤</button>
-        </div>
-    </header>
-
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto p-6">
         <form id="paymentForm" class="flex flex-col md:flex-row md:space-x-6">
@@ -125,21 +111,5 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content container mx-auto text-center">
-            <a href="{% url 'index' %}" class="flex justify-center">
-                <img src="{% static 'img/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
-            </a>
-            <div class="flex justify-center space-x-10">
-                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Inicio</a>
-                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Menú</a>
-                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Crear</a>
-                <a onclick="window.location.href='../../'" class="text-gray-400 hover:text-white font-bold">Contacto</a>
-            </div>
-            <p class="mt-4">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
-        </div>
-    </footer>
 </body>
-
-</html>
+{% endblock %}
