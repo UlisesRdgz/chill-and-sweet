@@ -122,5 +122,14 @@ def customDessert(request, categoria_id):
         return render(request,'custom/personalize.html',{'ingredientes_por_tipo': ingredientes_por_tipo})
     else:
         return redirect('login')
+    
+
+#vista de inicio
+def inicio(request):
+    return render(request, 'inicio.html')
+
+#vista de menú
+def menu(request):
+    return render(request, 'menu.html')
 
     

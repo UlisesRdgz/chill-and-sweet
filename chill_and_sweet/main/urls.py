@@ -11,4 +11,6 @@ urlpatterns = [
     path('create/', views.create, name = 'create'),
     path('customdesert/<int:categoria_id>/', views.customDessert, name = 'personalize'),
     path('help/', views.help_view, name='help'),
+    path('inicio/', views.inicio, name='inicio'),
+    path('menu/', views.menu, name='menu'),
 ]
