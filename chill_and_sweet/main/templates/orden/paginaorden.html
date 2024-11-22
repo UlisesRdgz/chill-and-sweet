@@ -4,12 +4,6 @@
 
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Orden - Chill & Sweet</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -143,7 +137,7 @@
                     </div>
                     <div class="mb-4 flex flex-col">
                         <p class="text-sm initial">Inicial: $0.00</p>
-                        <p class="text-sm">Puntos: <span class="points">12.50</span></p>
+                        <p class="text-sm">Puntos: <span class="points">{{ puntos }}</span></p>
                         <p class="text-lg font-semibold total">Total: $0.00</p>
                     </div>
 

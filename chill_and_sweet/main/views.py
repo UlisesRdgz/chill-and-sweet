@@ -128,45 +128,12 @@ def customDessert(request, categoria_id):
 
 def orden(request):
     if request.method == "POST":
-        # Capturar los datos del formulario
-        fecha = request.POST.get("fecha")
-        hora = request.POST.get("hora")
-        forma = request.POST.get("forma")
-        
-        # Guardar en la sesión
-        request.session["fecha"] = fecha
-        request.session["hora"] = hora
-        request.session["forma"] = forma
+        return redirect('pago') 
+    user = request.session.get('user_id')
+    puntos = Usuario.objects.get(pk=user).puntos_acumulados if user else 0
+    return render(request, 'orden/paginaorden.html', {'puntos': puntos})
 
-        # Redirigir a la página de pago
-        return redirect("../pago")  # Usa el nombre correcto de la URL para la página de pago
-    
-    usuario = request.user  # Obtiene el usuario autenticado
-    try:
-        datos_usuario = Usuario.objects.get(pk=usuario.pk)  # Obtén la información del usuario
-        puntos = datos_usuario.puntos_acumulados
-    except Usuario.DoesNotExist:
-        puntos = 0  # Si el usuario no existe, asigna 0 puntos
-
-    context = {
-        'puntos': puntos,
-    }
-    return render(request, 'orden/paginaorden.html', context)
 
 # Vista de la pagina pago
 def pago(request):
     return render(request,'pago/pagopagina.html')
-
-# pago
-def mostrar_pago(request):
-    # Obtener los datos de la sesión
-    fecha = request.session.get("fecha", "No especificado")
-    hora = request.session.get("hora", "No especificado")
-    forma = request.session.get("forma", "No especificado")
-
-    contexto = {
-        "fecha": fecha,
-        "hora": hora,
-        "forma": forma,
-    }
-    return render(request, "pagopagina.html", contexto)

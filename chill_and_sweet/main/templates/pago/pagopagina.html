@@ -5,20 +5,12 @@
 {% block title %}Chill & Sweet{% endblock %}
 
 {% block head %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos de Pago - Chill & Sweet</title>
-    <!-- Script para el modal -->
-    <script src="{% static 'js/pagopagina.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'css/pagopagina.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
 {% endblock %}
 
 
 {% block content %}
-<body class="bg-gray-50">
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto p-6">
         <form id="paymentForm" class="flex flex-col md:flex-row md:space-x-6">
@@ -110,6 +102,8 @@
             <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="closeModal()">Cerrar</button>
         </div>
     </div>
+{% endblock %}
 
-</body>
+{% block scripts %}
+<script src="{% static 'js/pagopagina.js' %}" defer></script>
 {% endblock %}
