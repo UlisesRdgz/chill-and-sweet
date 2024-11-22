@@ -1,0 +1,151 @@
+{% extends "layout/layout-logged.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <title>Mi Orden - Chill & Sweet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--Script para el boton de más y menos y para el ajuste del precio-->
+    <script src="{% static 'js/precios.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/paginaorden.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <!-- menu de orden -->
+    <main class="container mx-auto p-4">
+        <h1 class="text-center text-3xl mb-8">MI ORDEN</h1>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- tabla de orden -->
+            <div class="w-full lg:w-2/3 bg-white rounded shadow p-4">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="custom-table rounded border-b py-2">Producto</th>
+                            <th class="custom-table rounded border-b py-2">Precio</th>
+                            <th class="custom-table rounded border-b py-2">Cantidad</th>
+                            <th class="custom-table rounded border-b py-2">Subtotal</th>
+                            <th class="custom-table rounded border-b py-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo 1 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/smoothie_chocolate.jpg' %}" alt="Smoothie"
+                                    class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Smoothie</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Ejemplo 2 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/cafe_baileys.jpg' %}" alt="moka" class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Mocha Cappuccino</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Ejemplo 3 -->
+                        <tr class="border-b product-row">
+                            <td class="py-2 flex items-center space-x-4">
+                                <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Smoothie"
+                                    class="w-12 h-12 rounded">
+                                <div>
+                                    <p class="font-semibold">Smoothie</p>
+                                    <p class="text-gray-600 text-sm">250 cal</p>
+                                    <p class="text-gray-500 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Fusce quis.</p>
+                                </div>
+                            </td>
+                            <td class="py-2 unit-price" data-price="100">$100.00</td>
+                            <td class="py-2">
+                                <div class="flex items-center space-x-2">
+                                    <button class="decrement bg-gray-200 px-2 rounded hover:bg-gray-300">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="increment bg-gray-200 px-2 rounded hover:bg-gray-300">+</button>
+                                </div>
+                            </td>
+                            <td class="py-2 subtotal">$200.00</td>
+                            <td class="py-2">
+                                <button class="delete-product text-red-500 hover:text-red-700"> 🗑️ </button>
+                            </td>
+                        </tr>
+
+                        <!-- Aquí se agregan más ejemplos -->
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- Menu de los datos del pedido -->
+            <div class="custom-menu lg:w-1/3 rounded shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">Datos del pedido</h2>
+                <form method="post" action="{% url 'orden' %}">
+                    {% csrf_token %}
+                    <div class="mb-4 flex items-center">
+                        <label for="fecha" class="block text-sm font-medium mr-4">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" class="w-full border rounded px-3 py-2 mt-1">
+                    </div>
+                    <div class="mb-4 flex items-center">
+                        <label for="hora" class="block text-sm font-medium mr-6">Hora:</label>
+                        <input type="time" id="hora" name="hora" class="w-full border rounded px-3 py-2 mt-1">
+                    </div>
+                    <div class="mb-4 flex items-center">
+                        <label for="forma" class="block text-sm font-medium mr-4">Forma:</label>
+                        <select id="forma" name="forma" class="w-full border bg-white rounded px-3 py-2 mt-1">
+                            <option>Para llevar</option>
+                            <option>En tienda</option>
+                        </select>
+                    </div>
+                    <div class="mb-4 flex flex-col">
+                        <p class="text-sm initial">Inicial: $0.00</p>
+                        <p class="text-sm">Puntos: <span class="points">{{ puntos }}</span></p>
+                        <p class="text-lg font-semibold total">Total: $0.00</p>
+                    </div>
+
+                    <button type="submit" class="w-full py-2 rounded custom-button">Confirmar</button>
+                </form>
+            </div>
+    </main>
+</body>
+{% endblock %}
+
+</html>

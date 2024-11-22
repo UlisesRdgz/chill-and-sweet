@@ -5,6 +5,8 @@ from .forms import RegisterForm, LoginForm
 from .models import Usuario
 from .models import *
 
+from django.contrib.auth.decorators import login_required
+
 # Vista de inicio
 def index(request):
     if 'user_id' in request.session:
@@ -126,4 +128,15 @@ def customDessert(request, categoria_id):
     else:
         return redirect('login')
 
-    
+
+def orden(request):
+    if request.method == "POST":
+        return redirect('pago') 
+    user = request.session.get('user_id')
+    puntos = Usuario.objects.get(pk=user).puntos_acumulados if user else 0
+    return render(request, 'orden/paginaorden.html', {'puntos': puntos})
+
+
+# Vista de la pagina pago
+def pago(request):
+    return render(request,'pago/pagopagina.html')

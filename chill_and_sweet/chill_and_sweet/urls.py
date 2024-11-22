@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 # Definimos las rutas de URLs principales del proyecto
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls'))   
+    path('', include('main.urls')),
 ]
 
 # En modo DEBUG, permite servir archivos multimedia desde MEDIA_URL.

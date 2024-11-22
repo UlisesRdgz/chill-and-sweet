@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path 
 from . import views
 
 # Definimos las rutas de URLs específicas para la aplicación 'Chill and Sweet'
@@ -11,4 +11,6 @@ urlpatterns = [
     path('create/', views.create, name = 'create'),
     path('customdesert/<int:categoria_id>/', views.customDessert, name = 'personalize'),
     path('help/', views.help_view, name='help'),
+    path('orden/', views.orden, name='orden'),
+    path('pago/', views.pago, name='pago')
 ]
