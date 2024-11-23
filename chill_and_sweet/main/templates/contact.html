@@ -1,0 +1,15 @@
+{% extends "layout/layout-logged.html" %}
+
+{% load static %}
+
+{% block title %}Contact - Chill & Sweet{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/partials/contact-section.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    {% include 'partials/contact-section.html' %}
+</div>
+{% endblock %}

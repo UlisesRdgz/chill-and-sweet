@@ -39,7 +39,7 @@
             <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                 Favoritos
             </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+            <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                 Contacto
             </a>
         </div>
