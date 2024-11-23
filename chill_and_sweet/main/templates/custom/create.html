@@ -27,7 +27,7 @@
 
         {% for category in categorias %}
             <a class="food-option" href="{% url 'personalize' categoria_id=category.id %}">
-                <img class="food-option-img" src="{{category.imagen}}" alt="Imagen de café">
+                <img class="food-option-img" src="{{ category.imagen.url }}" alt="Imagen de {{ category.nombre }}">
                 
                 <p class="food-category">{{category.nombre}}</p>
             </a>

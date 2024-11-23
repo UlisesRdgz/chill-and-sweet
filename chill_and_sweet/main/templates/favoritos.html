@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill & Sweet - Favoritos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .active {
+            color: #f472b6;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <header class="navbar bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <!-- Hamburger Menu Icon -->
+      
+
+       <!-- Logo -->
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'svg/logo.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
+            </a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="nav-links hidden md:flex space-x-8">
+            <a href="{% url 'home' %}" class="hover:text-teal-700">Inicio</a>
+            <a href="{% url 'menu' %}" class="text-pink-500 font-semibold hover:text-pink-600">Menú</a>
+            <a href="{% url 'create' %}" class="hover:text-teal-700">Crear</a>
+            <a href="{% url 'favoritos' %}" class="hover:text-teal-700">Favoritos</a>
+            <a href="#" class="hover:text-teal-700">Contacto</a>
+        </nav>
+
+        <!-- Icons -->
+        <div class="nav-icons flex space-x-4 items-center">
+            <a href="{% url 'favoritos' %}" class="hover:text-teal-700">
+                <img src="{% static 'svg/cart.svg' %}" alt="Favoritos Icon">
+            </a>
+            <a href="#" class="hover:text-teal-700">
+                <img src="{% static 'svg/user.svg' %}" alt="Carrito Icon">
+            </a>
+            <a href="{% url 'logout' %}" class="hover:text-teal-700">
+                <img src="{% static 'svg/logout.svg' %}" alt="Usuario Icon">
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto my-10 px-4">
+        <h1 class="text-3xl font-semibold text-center mb-10">FAVORITOS</h1>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+  
+            <!-- Tarjeta 1 -->
+            <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
+              <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Frappe de Fresa" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0; font-size: 16px; color: #333;">Frappe de Fresa</h3>
+                <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
+                <span style="font-size: 12px; color: #888;">203 cal</span>
+                <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
+                  <div style="display: flex; gap: 10px;">
+                    <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
+                    <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Tarjeta 2 -->
+            <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
+              <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Pancakes Chocolatosos" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0; font-size: 16px; color: #333;">Pancakes Chocolatosos</h3>
+                <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
+                <span style="font-size: 12px; color: #888;">1050 cal</span>
+                <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
+                  <div style="display: flex; gap: 10px;">
+                    <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
+                    <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Tarjeta 3 -->
+            <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
+              <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0; font-size: 16px; color: #333;">Mocha Cappuccino</h3>
+                <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
+                <span style="font-size: 12px; color: #888;">345 cal</span>
+                <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
+                  <div style="display: flex; gap: 10px;">
+                    <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
+                    <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Tarjeta 4 -->
+            <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
+              <img src="{% static 'img/fresacrema.png' %}" alt="Frescrema con Galletas" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0; font-size: 16px; color: #333;">Frescrema con Galletas</h3>
+                <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
+                <span style="font-size: 12px; color: #888;">250 cal</span>
+                <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
+                  <div style="display: flex; gap: 10px;">
+                    <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
+                    <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
+                </div>
+                </div>
+            </div>
+            </div>  
+        </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer bg-teal-800 text-white py-8">
+        <div class="footer-content container mx-auto px-4 flex flex-col items-center text-center space-y-4">
+            <a href="{% url 'home' %}" class="mb-4 md:mb-0">
+                <img src="{% static 'svg/logo-blanco.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
+            </a>
+            <!-- Navigation Options -->
+            <nav class="footer-nav flex space-x-6">
+                <a href="{% url 'home' %}" class="hover:text-gray-400">Inicio</a>
+                <a href="{% url 'menu' %}" class="hover:text-gray-400">Menú</a>
+                <a href="{% url 'create' %}" class="hover:text-gray-400">Crear</a>
+                <a href="{% url 'favoritos' %}" class="hover:text-gray-400">Favoritos</a>
+                <a href="#" class="hover:text-gray-400">Contacto</a>
+            </nav>
+            <p class="text-sm">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+        </div>
+    </footer>

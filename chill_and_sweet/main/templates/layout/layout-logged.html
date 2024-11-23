@@ -30,13 +30,13 @@
             <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                 Inicio
             </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+            <a href="{% url 'menu' %}" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
                 Menú
             </a>
             <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
                 Crear
             </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
+            <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                 Favoritos
             </a>
             <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
@@ -49,7 +49,7 @@
             <a href="{% url 'orden' %}">
                 <img src="{% static 'svg/cart.svg' %}" alt="icono favoritos">
             </a>
-            <a href="">
+            <a href="{% url 'account' %}">
                 <img src="{% static 'svg/user.svg' %}" alt="icono carrito">
             </a>
             <a href="{% url 'logout' %}">
@@ -66,13 +66,13 @@
                 <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-home"></i></span> Inicio
                 </a>
-                <a href="#" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+                <a href="{% url 'menu' %}" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-utensils"></i></span> Menú
                 </a>
                 <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-edit"></i></span> Crear
                 </a>
-                <a href="#" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
+                <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-heart"></i></span> Favoritos
                 </a>
                 <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
@@ -111,9 +111,9 @@
             <!-- Opciones de navegación -->
             <nav class="footer-nav">
                 <a href="{% url 'home' %}">Inicio</a>
-                <a href="#">Menú</a>
+                <a href="{% url 'menu' %}">Menú</a>
                 <a href="{% url 'create' %}">Crear</a>
-                <a href="#">Favoritos</a>
+                <a href="{% url 'favoritos' %}">Favoritos</a>
                 <a href="#">Contacto</a>
             </nav>
 
