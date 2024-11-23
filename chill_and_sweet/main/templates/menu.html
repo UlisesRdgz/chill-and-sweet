@@ -4,85 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Chill & Sweet{% endblock %}</title>
+    <title>Chill & Sweet - Menú</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/layout/layout-logged.css' %}">
-    {% block head %}{% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .active {
+            color: #f472b6;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
-    <!-- Navbar -->
-    <header class="navbar">
-        <!-- Icono de menú hamburguesa -->
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
 
-        <!-- Logo -->
+    <!-- Navbar -->
+    <header class="navbar bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <!-- Hamburger Menu Icon -->
+      
+
+       <!-- Logo -->
         <div class="logo">
             <a href="{% url 'home' %}">
-                <img src="{% static 'svg/logo.svg' %}" alt="Logo Chill & Sweet">
+                <img src="{% static 'svg/logo.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
             </a>
         </div>
 
-        <!-- Navegación principal -->
-        <div class="nav-links">
-            <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                Inicio
-            </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
-                Menú
-            </a>
-            <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
-                Crear
-            </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-                Favoritos
-            </a>
-            <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-                Contacto
-            </a>
-        </div>
+        <!-- Main Navigation -->
+        <nav class="nav-links hidden md:flex space-x-8">
+            <a href="{% url 'home' %}" class="hover:text-teal-700">Inicio</a>
+            <a href="{% url 'menu' %}" class="text-pink-500 font-semibold hover:text-pink-600">Menú</a>
+            <a href="{% url 'create' %}" class="hover:text-teal-700">Crear</a>
+            <a href="#" class="hover:text-teal-700">Favoritos</a>
+            <a href="#" class="hover:text-teal-700">Contacto</a>
+        </nav>
 
-         <!-- Íconos -->
-         <div class="nav-icons">
-            <a href="">
-                <img src="{% static 'svg/cart.svg' %}" alt="icono favoritos">
+        <!-- Icons -->
+        <div class="nav-icons flex space-x-4 items-center">
+            <a href="#" class="hover:text-teal-700">
+                <img src="{% static 'svg/cart.svg' %}" alt="Favoritos Icon">
             </a>
-            <a href="">
-                <img src="{% static 'svg/user.svg' %}" alt="icono carrito">
+            <a href="#" class="hover:text-teal-700">
+                <img src="{% static 'svg/user.svg' %}" alt="Carrito Icon">
             </a>
-            <a href="{% url 'logout' %}">
-                <img src="{% static 'svg/logout.svg' %}" alt="icono usuario">
+            <a href="{% url 'logout' %}" class="hover:text-teal-700">
+                <img src="{% static 'svg/logout.svg' %}" alt="Usuario Icon">
             </a>
         </div>
     </header>
-
 
     <!-- Main Content -->
     <div class="container mx-auto my-10 px-4">
         <h1 class="text-3xl font-semibold text-center mb-10">MENÚ</h1>
         
-        <!-- Categories Tabs -->
-        <div class="flex justify-center mb-8">
-            <ul class="flex space-x-6 text-gray-600 font-medium">
-                <li class="hover:text-teal-700 cursor-pointer">Café</li>
-                <li class="hover:text-teal-700 cursor-pointer">Smoothies</li>
-                <li class="hover:text-teal-700 cursor-pointer">Crepas</li>
-                <li class="hover:text-teal-700 cursor-pointer">Pancakes</li>
-            </ul>
-        </div>
 
         <!-- Menu Sections -->
         <div class="space-y-12">
+
             <!-- Café Section -->
             <section>
                 <h2 class="text-2xl font-semibold mb-6">Café</h2>
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Product Card -->
                     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/300x200" alt="Mocha Cappuccino" class="w-full h-48 object-cover">
+                        <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-lg font-semibold">Mocha Cappuccino</h3>
                             <p class="text-gray-600 text-sm">Espresso, milk, chocolate, topped with whipped cream.</p>
@@ -105,7 +92,7 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Product Card -->
                     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/300x200" alt="Strawberry Smoothie" class="w-full h-48 object-cover">
+                        <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Strawberry Smoothie" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-lg font-semibold">Strawberry Smoothie</h3>
                             <p class="text-gray-600 text-sm">Fresh strawberries, yogurt, honey, and ice.</p>
@@ -128,7 +115,7 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Product Card -->
                     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/300x200" alt="Sweet Crepe" class="w-full h-48 object-cover">
+                        <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Sweet Crepe" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-lg font-semibold">Sweet Crepe</h3>
                             <p class="text-gray-600 text-sm">Crepe with fresh fruits, chocolate, and whipped cream.</p>
@@ -151,7 +138,7 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Product Card -->
                     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/300x200" alt="Chocolate Pancake" class="w-full h-48 object-cover">
+                        <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Chocolate Pancake" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-lg font-semibold">Chocolate Pancake</h3>
                             <p class="text-gray-600 text-sm">Stack of pancakes with chocolate syrup and berries.</p>
@@ -170,36 +157,30 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'svg/logo-blanco.svg' %}" alt="Logo Chill & Sweet">
+    <footer class="footer bg-teal-800 text-white py-8">
+        <div class="footer-content container mx-auto px-4 flex flex-col items-center text-center space-y-4">
+            <a href="{% url 'home' %}" class="mb-4 md:mb-0">
+                <img src="{% static 'svg/logo-blanco.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
             </a>
-
-            <!-- Opciones de navegación -->
-            <nav class="footer-nav">
-                <a href="{% url 'home' %}">Inicio</a>
-                <a href="#">Menú</a>
-                <a href="{% url 'create' %}">Crear</a>
-                <a href="#">Favoritos</a>
-                <a href="#">Contacto</a>
+            <!-- Navigation Options -->
+            <nav class="footer-nav flex space-x-6">
+                <a href="{% url 'home' %}" class="hover:text-gray-400">Inicio</a>
+                <a href="{% url 'menu' %}" class="hover:text-gray-400">Menú</a>
+                <a href="{% url 'create' %}" class="hover:text-gray-400">Crear</a>
+                <a href="#" class="hover:text-gray-400">Favoritos</a>
+                <a href="#" class="hover:text-gray-400">Contacto</a>
             </nav>
-
-            <p>&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
+            <p class="text-sm">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for toggling menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>

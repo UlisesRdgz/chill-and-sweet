@@ -132,4 +132,10 @@ def inicio(request):
 def menu(request):
     return render(request, 'menu.html')
 
+
+#vista de favoritos
+def favoritos(request):
+    return render(request, 'favoritos.html')
+
+
     
