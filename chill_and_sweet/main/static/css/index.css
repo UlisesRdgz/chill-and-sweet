@@ -293,127 +293,6 @@
     color: #333;
 }
 
-
-/* Sección de contacto */
-.contact-section {
-    width: 100%;
-    padding: 3rem 0;
-    text-align: center;
-    background-color: #ffffff;
-}
-
-/* Título en la sección de contacto */
-.contact-title {
-    font-size: 40px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500; 
-    margin-bottom: 2.5rem;
-    color: #000000;
-}
-
-/* Información de contacto, con elementos flexibles */
-.contact-info {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-    gap: 2rem;
-}
-
-/* Elementos individuales de contacto */
-.contact-item {
-    flex: 1 1 0;
-    min-width: 280px; 
-    text-align: center;
-    margin: 0;
-    padding: 1rem;
-}
-
-/* Iconos circulares en la sección de contacto */
-.icon-circle {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 2rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.icon-circle i {
-    font-size: 2.5rem;
-}
-
-/* Icono y color específico para ubicación */
-.location-icon {
-    background-color: #E1F4F4;
-}
-
-.location-icon i {
-    color: #216164;
-}
-
-/* Icono y color específico para teléfono */
-.phone-icon {
-    background-color: #FFC9E8;
-}
-
-.phone-icon i {
-    color: #EF6486;
-}
-
-/* Icono y color específico para horario */
-.schedule-icon {
-    background-color: #BFBFD8;
-}
-
-.schedule-icon i {
-    color: #5D2279;
-}
-
-/* Subtítulo en la sección de contacto */
-.contact-subtitle {
-    font-size: 34px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 0.5rem;
-}
-
-/* Descripción en la sección de contacto */
-.contact-description {
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #000000;
-    line-height: 1.5;
-}
-
-/* Contenedor del mapa de contacto */
-.contact-map {
-    position: relative;
-    width: 100%;
-    height: 400px; 
-    border-radius: 15px; 
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    margin-top: 3rem;
-}
-
-/* Estilización del iframe del mapa */
-.google-map-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    filter: grayscale(30%) contrast(1.1) brightness(0.9); 
-    transition: transform 0.3s ease, filter 0.3s ease; 
-}
-
-.google-map-iframe:hover {
-    transform: scale(1.02);
-    filter: grayscale(0%) contrast(1) brightness(1); 
-}
-
 /* Media queries para pantallas medianas */
 @media screen and (max-width: 1024px) {
     /* Ajuste del contenedor principal */
@@ -425,8 +304,7 @@
         max-height: 300px;
     }
 
-    .carousel-text h2,
-    .contact-title {
+    .carousel-text h2 {
         font-size: 2.4rem;
     }
 
@@ -443,24 +321,6 @@
         height: auto;
         margin-bottom: 1rem;
     }
-
-    .contact-item {
-        min-width: 180px; 
-    }
-
-    .icon-circle {
-        width: 120px;
-        height: 120px;
-    }
-
-    .contact-subtitle,
-    .icon-circle i {
-        font-size: 2rem;
-    }
-    
-    .contact-description {
-        font-size: 1.8rem;
-    }
 }
 
 /* Media queries para pantallas móviles */
@@ -474,32 +334,13 @@
         text-align: center;
     }
 
-    .carousel-text h2,
-    .contact-title  {
+    .carousel-text h2 {
         font-size: 2.2rem;
     }
 
     .carousel-image {
         margin-top: 40px;
         max-width: 100%;
-    }
-
-    .contact-item {
-        min-width: 140px; 
-    }
-
-    .icon-circle {
-        width: 100px;
-        height: 100px;
-    }
-
-    .contact-subtitle,
-    .icon-circle i {
-        font-size: 1.8rem;
-    }
-    
-    .contact-description {
-        font-size: 1.6rem;
     }
 }
 
@@ -521,8 +362,7 @@
         object-fit: contain;
     }
 
-    .carousel-text h2,
-    .contact-title  {
+    .carousel-text h2 {
         font-size: 2rem;
     }
 
@@ -595,29 +435,5 @@
         font-size: 1.1rem;
         font-weight: bold;
         margin-top: 10px;
-    }
-
-    .icon-circle {
-        width: 120px;
-        height: 120px;
-    }
-
-    .contact-subtitle,
-    .icon-circle i {
-        font-size: 1.6rem;
-    }
-    
-    .contact-description {
-        font-size: 1.4rem;
-    }
-
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px 50px;
-    }
-
-    .contact-item {
-        margin-bottom: 0.5rem;
     }
 }

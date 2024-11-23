@@ -140,3 +140,10 @@ def orden(request):
 # Vista de la pagina pago
 def pago(request):
     return render(request,'pago/pagopagina.html')
+
+# Vista de la pagina de contacto
+def contact(request):
+    return render(request, 'contact.html')
+
+def soon(request):
+    return render(request, '404.html')
