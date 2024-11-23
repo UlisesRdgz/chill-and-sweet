@@ -101,6 +101,14 @@ def home_view(request):
     else:
         return redirect('login')
 
+#vista de menú
+def menu(request):
+    return render(request, 'menu.html')
+
+
+#vista de favoritos
+def favoritos(request):
+    return render(request, 'favoritos.html')
 
 # Vista de menu de categorias de postres para crear un postre personalizado
 def create(request):
