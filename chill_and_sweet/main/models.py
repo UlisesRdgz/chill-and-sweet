@@ -14,7 +14,7 @@ class Usuario(models.Model):
 # Modelo que representa las categorías de postres
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
-    imagen = models.TextField(null=False, blank=False)
+    imagen = models.ImageField(upload_to='categorias/', null=True, blank=True)
 
     def __str__(self):
         return self.nombre
