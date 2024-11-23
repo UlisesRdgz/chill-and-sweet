@@ -17,4 +17,5 @@ urlpatterns = [
     path('account/', views.account, name='account'),
     path('menu/', views.menu, name='menu'),
     path('favoritos/', views.favoritos, name='favoritos'),
+    path('soon/', views.soon, name='soon'),
 ]

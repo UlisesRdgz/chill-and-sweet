@@ -252,4 +252,4 @@ def contact(request):
     return render(request, 'contact.html')
 
 def soon(request):
-    return render(request, '404.html')
+    return render(request, 'soon.html')
