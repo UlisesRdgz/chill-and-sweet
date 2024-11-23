@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.utils.timezone import now  # Para obtener la fecha y hora actuales
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import RegisterForm, LoginForm
 from .models import Usuario
 from .models import *
+from django.http import JsonResponse
 
 from django.contrib.auth.decorators import login_required
 
@@ -114,7 +116,28 @@ def create(request):
 def customDessert(request, categoria_id):
     user_id = request.session.get('user_id')
     if user_id:
-        # Filtrar los ingredientes de la categoría específica usando categoria_id
+        # Si es una solicitud POST, procesar el formulario
+        if request.method == 'POST':
+            total = request.POST.get('total', 0.00)  # Obtener el total del formulario
+            try:
+                usuario = Usuario.objects.get(id=user_id)  # Obtener el usuario actual
+                
+                # Crear un nuevo pedido
+                pedido = Pedido.objects.create(
+                    usuario=usuario,
+                    fecha=now().date(),  # Fecha actual
+                    hora=now().time(),  # Hora actual
+                    total=total,
+                    puntos_utilizados=0,  # Valor predeterminado
+                    estado_pago='pendiente'  # Estado inicial
+                )
+                
+                # Redirigir a una página de confirmación o carrito
+                return redirect('order_summary', pedido_id=pedido.id)
+            except Usuario.DoesNotExist:
+                return redirect('login')  # Si el usuario no existe, redirigir a login
+
+        # Si es una solicitud GET, mostrar la personalización
         ingredientes = Ingrediente.objects.filter(categoriaingrediente__categoria__id=categoria_id)
 
         # Agrupar ingredientes por tipo (ej. Tipo de café, Tamaño)
@@ -124,9 +147,84 @@ def customDessert(request, categoria_id):
                 ingredientes_por_tipo[ingrediente.tipo] = []
             ingredientes_por_tipo[ingrediente.tipo].append(ingrediente)
 
-        return render(request,'custom/personalize.html',{'ingredientes_por_tipo': ingredientes_por_tipo})
+        return render(request, 'custom/personalize.html', {'ingredientes_por_tipo': ingredientes_por_tipo})
+
+    else:
+        return redirect('login')  # Si no hay sesión, redirigir al login
+
+
+# Vista de cuenta del usuario 
+def account(request):
+
+    user_id = request.session.get('user_id')
+    info_user = None  # Define un valor predeterminado
+    equivalenete = 0.00
+
+    if user_id:
+        try:
+            info_user = Usuario.objects.get(id=user_id)
+            equivalenete = info_user.puntos_acumulados / 100
+        except Usuario.DoesNotExist:
+            info_user = None  # Manejamos el caso donde el usuario no exista
     else:
         return redirect('login')
+        
+    # Guardamos los cambios de la información del usuario        
+    if request.method == "POST":
+        form_type = request.POST.get("form_type") #Obtenemos el innput que se llama así
+        if(form_type == "info_edit_form"):
+            nombre_usuario = request.POST.get("name")
+            apellidos_usuario = request.POST.get("lastname")
+            correo_usuario = request.POST.get("email")
+
+            info_user.nombre = nombre_usuario
+            info_user.apellido = apellidos_usuario
+            info_user.correo = correo_usuario
+
+            info_user.save()
+
+            return redirect('account')
+
+        elif(form_type == "pass_edit_form"):
+            actual_password = request.POST.get("actualpass", "")
+            new_password = request.POST.get("newpass", "")
+            confirm_password = request.POST.get("confpass", "")
+
+            # Inicializamos las variables de error
+            error_act_pass = 0
+            error_new_pass = 0
+
+            # Verificar que la contraseña actual sea correcta
+            if not check_password(actual_password, info_user.contrasena):
+                messages.error(request, 'La contraseña actual es incorrecta.')
+                error_act_pass = 1
+
+            # Verificar que las contraseñas nuevas coincidan
+            if new_password != confirm_password:
+                messages.error(request, 'Las contraseñas no coinciden.')
+                error_new_pass = 1
+
+            # Si hay errores, no continuar
+            if error_act_pass or error_new_pass:
+                request.session['error_act_pass'] = error_act_pass
+                request.session['error_new_pass'] = error_new_pass
+                return redirect('account')  # Redirigir al mismo formulario para corregir errores
+
+            # Si no hay errores, actualizar la contraseña
+            info_user.contrasena = make_password(new_password)
+            info_user.save()
+
+            # Limpiar las variables de error en la sesión
+            request.session['error_act_pass'] = 0
+            request.session['error_new_pass'] = 0
+
+            messages.success(request, '¡Tu contraseña ha sido cambiada exitosamente!')
+            return redirect('account')           
+
+    return render(request, 'account/account.html', {"info_user": info_user,
+                                                    "equivalente": equivalenete,
+                                                    "error_act_pass": request.session.get('error_act_pass'),
+                                                    "error_new_pass": request.session.get('error_new_pass')})
 
 
 def orden(request):

@@ -178,7 +178,6 @@ body {
  Estilos del menú de personalización del postre
 */
 
-
 .category_name {
     background-color:#d1f2eb;
     padding: 5px 20px;
@@ -191,14 +190,17 @@ body {
 .options_ingredients {
     display: flex;
     flex-direction: column;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .ingredient {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .ingredient_info {
@@ -273,7 +275,7 @@ body {
     font-family: "Roboto", sans-serif;
     border: none;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0;
     border-radius: 15px;
     cursor: pointer;
     font-size: 20px;
@@ -285,7 +287,20 @@ body {
     Responsive
 */
 
+
 @media (max-width: 768px) {
+
+    .form_custom {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 25px;
+    }
+
+    #resumen {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 25px;
+    }
 
     .menu-container {
         display: flex;
@@ -293,6 +308,20 @@ body {
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        margin-left: 200px;
+        margin-right: 200px;
+        text-align: center;
+    }
+
+
+    .title-container {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .icons-container {
@@ -322,4 +351,26 @@ body {
         margin-left: 0px;
         margin-right: 0px;
     }
+  }
+
+  @media (max-width: 1024px) {
+    .menu-container {
+        display: flex;
+        flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas */
+        justify-content: space-around; /* Espaciado uniforme entre los elementos */
+        gap: 20px; /* Espaciado entre los elementos */
+        margin-top: 100px;
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+
+    .options_ingredients {
+        display: flex;
+        flex-direction: column;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
   }

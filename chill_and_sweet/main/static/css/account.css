@@ -1,0 +1,263 @@
+/*
+Reset  global
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Estilos del titulo de la pagina */
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+
+/*
+
+Estilos de la informacion del usuario
+
+*/
+
+.page-container {
+    max-width: 1432px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.title {
+    text-align: center;
+}
+
+.info-account-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    max-width: 1192px;
+    margin: 116px auto;
+}
+
+.img-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 200px;
+}
+
+
+.img-profile {
+    width: 190px;
+    height: 197px;
+}
+
+
+.change-profile-img-text {
+    font-family: "Roboto", sans-serif;
+    color: #697077;
+    font-size: 15px;
+    margin-top: 28px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.field label {
+    margin-bottom: 1rem;
+    color: #21272A;
+    font-family: "Roboto", sans-serif;
+}
+
+.input-containet {
+    width: 300px;
+    padding: 5px;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    background-color: #F3F3F3;
+    border: none;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-containet img {
+    width: 20px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.field input {
+    width: 250px;
+    background-color: #F3F3F3;
+    border: none;
+    outline: none;
+    color: #697077;
+}
+
+#btn_save_changes {
+    display: none;
+}
+
+/*
+    Estilos de puntos del usuario
+*/
+
+.points-container {
+    background-color: #FFDEF1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1192px;
+    margin: 116px 0;
+    text-align: center;
+    border-radius: 20px;
+    padding: 50px 0;
+}
+
+.points-container p {
+    margin: 0;
+}
+
+.title-points-section {
+    font-size: 26px;
+    font-weight: 300;
+    font-family: "Roboto", sans-serif;
+}
+
+.aviable-points {
+    font-size: 26px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+}
+
+.equivalences-cointainer {
+    margin-top: 20px;
+}
+
+/*
+    Estilos del formulario de cambio de contraseña
+*/
+
+.password-change-container {
+    max-width: 1192px;
+    margin: 116px auto;
+}
+
+.title-section-special {
+    background-color: rgba(79, 186, 191, 0.25);
+    max-width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    border-radius: 10px;
+}
+
+.form-new-pass {
+    margin-top: 30px;
+}
+
+.pass-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.pass-field label {
+    margin-bottom: 10px;
+    color: #21272A;
+}
+
+.pass-field input {
+    background-color: #F3F3F3;
+    border: none;
+    outline: none;
+    padding: 10px;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    border-radius: 5px;
+}
+
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-save-changes {
+    background-color: #EF6486;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: "Robot", sans-serif;
+}
+
+
+/*
+
+Responsive telefono
+
+
+*/
+
+@media (max-width: 768px){
+
+    .page-container {
+        max-width: 1432px;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .info-account-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        margin: 116px auto;
+    }
+
+    .img-user-container {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .points-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .info-account-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        margin: 116px 0;
+    }
+
+    .page-container {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+
+    .img-user-container {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}

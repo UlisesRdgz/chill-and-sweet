@@ -22,7 +22,8 @@
         <p class="instruction">Elige en base a tus gustos cada detalle de tu postre</p>
     </div>
 
-    <form method="POST" class="form_custom">
+    <form method="POST" id="pedidoForm" class="form_custom">
+        {% csrf_token %}
         {% for tipo, ingredientes in ingredientes_por_tipo.items %}
         <h2 class="category_name"> 
             {{ tipo }}
@@ -54,44 +55,50 @@
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
+        {% endfor %}    
+
+        <!-- Campo oculto para el total -->
+        <input type="hidden" name="total" id="totalInput" value="0.00">
+
+        <!-- Resumen de selección y precio total -->
+        <div id="resumen">
+            <h2 class="category_name">Resumen de tu pedido:</h2>
+
+            <div class="resume-container">
+                <div class="ingredients-select-container">
+
+                    <p class="tittle-description">Ingredientes:</p>
+
+                    <ul id="ingredientes-seleccionados">
+                        <!-- Aquí se mostrarán los ingredientes seleccionados -->
+                    </ul>
+                </div>
+
+                <div class="calories-select-container">
+
+                    <p class="tittle-description">Calorias totales:</p>
+
+                    <p class="total-calories">0 cal</p>
+
+
+                </div>
+
+                <div class="total-container">
+
+                    <p class="total-resume">Total:</p>
+                    <p class="total-resume">$ <span id="total-precio">0.00</span></p>
+
+                </div>
+            </div>
+
+            <div class="btn-caontainer">
+                <button class="btn_add_cart" type="submit">Agregar al carrito</button>
+            </div>
+        </div>
+
     </form>
 
-    <!-- Resumen de selección y precio total -->
-    <div id="resumen">
-        <h2 class="category_name">Resumen de tu pedido:</h2>
-
-        <div class="resume-container">
-            <div class="ingredients-select-container">
-
-                <p class="tittle-description">Ingredientes:</p>
-
-                <ul id="ingredientes-seleccionados">
-                    <!-- Aquí se mostrarán los ingredientes seleccionados -->
-                </ul>
-            </div>
-
-            <div class="calories-select-container">
-
-                <p class="tittle-description">Calorias totales:</p>
-
-                <p class="total-calories">0 cal</p>
-
-
-            </div>
-
-            <div class="total-container">
-
-                <p class="total-resume">Total:</p>
-                <p class="total-resume">$ <span id="total-precio">0.00</span></p>
-
-            </div>
-        </div>
-
-        <div class="btn-caontainer">
-            <button class="btn_add_cart">Agregar al carrito</button>
-        </div>
-    </div>
+    
 </main>
 
     <!--
