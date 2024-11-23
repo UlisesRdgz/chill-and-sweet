@@ -1,186 +1,120 @@
+{% extends "layout/layout-logged.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chill & Sweet - Menú</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        .active {
-            color: #f472b6;
-        }
-    </style>
-</head>
 
-<body class="bg-gray-50">
+{% block title %}Personalizar - Chill & Sweet{% endblock %}
 
-    <!-- Navbar -->
-    <header class="navbar bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <!-- Hamburger Menu Icon -->
-      
+{% block head %}
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
 
-       <!-- Logo -->
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'svg/logo.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
-            </a>
-        </div>
+{% block content %}
+<!-- Main Content -->
+<div class="container mx-auto my-10 px-4">
+    <h1 class="text-3xl font-semibold text-center mb-10">MENÚ</h1>
+    
 
-        <!-- Main Navigation -->
-        <nav class="nav-links hidden md:flex space-x-8">
-            <a href="{% url 'home' %}" class="hover:text-teal-700">Inicio</a>
-            <a href="{% url 'menu' %}" class="text-pink-500 font-semibold hover:text-pink-600">Menú</a>
-            <a href="{% url 'create' %}" class="hover:text-teal-700">Crear</a>
-            <a href="#" class="hover:text-teal-700">Favoritos</a>
-            <a href="#" class="hover:text-teal-700">Contacto</a>
-        </nav>
+    <!-- Menu Sections -->
+    <div class="space-y-12">
 
-        <!-- Icons -->
-        <div class="nav-icons flex space-x-4 items-center">
-            <a href="#" class="hover:text-teal-700">
-                <img src="{% static 'svg/cart.svg' %}" alt="Favoritos Icon">
-            </a>
-            <a href="#" class="hover:text-teal-700">
-                <img src="{% static 'svg/user.svg' %}" alt="Carrito Icon">
-            </a>
-            <a href="{% url 'logout' %}" class="hover:text-teal-700">
-                <img src="{% static 'svg/logout.svg' %}" alt="Usuario Icon">
-            </a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container mx-auto my-10 px-4">
-        <h1 class="text-3xl font-semibold text-center mb-10">MENÚ</h1>
-        
-
-        <!-- Menu Sections -->
-        <div class="space-y-12">
-
-            <!-- Café Section -->
-            <section>
-                <h2 class="text-2xl font-semibold mb-6">Café</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Product Card -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">Mocha Cappuccino</h3>
-                            <p class="text-gray-600 text-sm">Espresso, milk, chocolate, topped with whipped cream.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <span class="text-lg font-bold">$10</span>
-                                <button class="text-gray-600 hover:text-teal-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
-                            </div>
+        <!-- Café Section -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">Café</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Product Card -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Mocha Cappuccino</h3>
+                        <p class="text-gray-600 text-sm">Espresso, milk, chocolate, topped with whipped cream.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-lg font-bold">$10</span>
+                            <button class="text-gray-600 hover:text-teal-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Smoothies Section -->
-            <section>
-                <h2 class="text-2xl font-semibold mb-6">Smoothies</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Product Card -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Strawberry Smoothie" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">Strawberry Smoothie</h3>
-                            <p class="text-gray-600 text-sm">Fresh strawberries, yogurt, honey, and ice.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <span class="text-lg font-bold">$10</span>
-                                <button class="text-gray-600 hover:text-teal-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
-                            </div>
+        <!-- Smoothies Section -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">Smoothies</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Product Card -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Strawberry Smoothie" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Strawberry Smoothie</h3>
+                        <p class="text-gray-600 text-sm">Fresh strawberries, yogurt, honey, and ice.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-lg font-bold">$10</span>
+                            <button class="text-gray-600 hover:text-teal-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Crepas Section -->
-            <section>
-                <h2 class="text-2xl font-semibold mb-6">Crepas</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Product Card -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Sweet Crepe" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">Sweet Crepe</h3>
-                            <p class="text-gray-600 text-sm">Crepe with fresh fruits, chocolate, and whipped cream.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <span class="text-lg font-bold">$10</span>
-                                <button class="text-gray-600 hover:text-teal-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
-                            </div>
+        <!-- Crepas Section -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">Crepas</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Product Card -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Sweet Crepe" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Sweet Crepe</h3>
+                        <p class="text-gray-600 text-sm">Crepe with fresh fruits, chocolate, and whipped cream.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-lg font-bold">$10</span>
+                            <button class="text-gray-600 hover:text-teal-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Pancakes Section -->
-            <section>
-                <h2 class="text-2xl font-semibold mb-6">Pancakes</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Product Card -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Chocolate Pancake" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">Chocolate Pancake</h3>
-                            <p class="text-gray-600 text-sm">Stack of pancakes with chocolate syrup and berries.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <span class="text-lg font-bold">$10</span>
-                                <button class="text-gray-600 hover:text-teal-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
-                            </div>
+        <!-- Pancakes Section -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">Pancakes</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Product Card -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Chocolate Pancake" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Chocolate Pancake</h3>
+                        <p class="text-gray-600 text-sm">Stack of pancakes with chocolate syrup and berries.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-lg font-bold">$10</span>
+                            <button class="text-gray-600 hover:text-teal-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer bg-teal-800 text-white py-8">
-        <div class="footer-content container mx-auto px-4 flex flex-col items-center text-center space-y-4">
-            <a href="{% url 'home' %}" class="mb-4 md:mb-0">
-                <img src="{% static 'svg/logo-blanco.svg' %}" alt="Logo Chill & Sweet" class="w-22 h-20">
-            </a>
-            <!-- Navigation Options -->
-            <nav class="footer-nav flex space-x-6">
-                <a href="{% url 'home' %}" class="hover:text-gray-400">Inicio</a>
-                <a href="{% url 'menu' %}" class="hover:text-gray-400">Menú</a>
-                <a href="{% url 'create' %}" class="hover:text-gray-400">Crear</a>
-                <a href="#" class="hover:text-gray-400">Favoritos</a>
-                <a href="#" class="hover:text-gray-400">Contacto</a>
-            </nav>
-            <p class="text-sm">&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for toggling menu -->
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('hidden');
-        }
-    </script>
-</body>
-</html>
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('hidden');
+    }
+</script>
+{% endblock %}

@@ -1,6 +1,14 @@
-/* Evita el desplazamiento horizontal en la página */
+/* Asegúrate de que el body y el html ocupen toda la altura de la ventana */
 html, body {
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* El contenedor principal se expandirá para llenar el espacio disponible */
+.main-content {
+    flex: 1; 
 }
 
 /* Fuente global para todo el documento */
@@ -218,6 +226,7 @@ a {
     justify-content: center;
     align-items: center;
     color: white;
+    flex-shrink: 0;
 }
 
 /* Contenido dentro del footer */
@@ -266,16 +275,16 @@ a {
 @media (max-width: 768px) {
     .navbar {
         display: flex;
-        justify-content: space-between; /* Espacio entre elementos */
+        justify-content: space-between; 
         align-items: center;
-        padding: 1rem 1.5rem; /* Ajusta el espaciado */
+        padding: 1rem 1.5rem; 
         position: relative;
     }
 
     .logo {
         flex: 1; /* Ocupa el espacio necesario para el logo */
         display: flex;
-        justify-content: center; /* Centra el logo */
+        justify-content: center; 
         align-items: center;
         margin-left: 4.9rem;
         margin-top: .5rem;
