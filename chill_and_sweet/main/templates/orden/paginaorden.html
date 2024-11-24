@@ -118,15 +118,15 @@
             <!-- Menu de los datos del pedido -->
             <div class="custom-menu lg:w-1/3 rounded shadow p-4">
                 <h2 class="text-xl font-semibold mb-4">Datos del pedido</h2>
-                <form method="post" action="{% url 'orden' %}">
+                <form method="POST" action="{% url 'orden' %}">
                     {% csrf_token %}
-                    <div class="mb-4 flex items-center">
+                    <div class="mb-4 flex items-center form-group">
                         <label for="fecha" class="block text-sm font-medium mr-4">Fecha:</label>
-                        <input type="date" id="fecha" name="fecha" class="w-full border rounded px-3 py-2 mt-1">
+                        <input type="date" id="fecha" name="fecha" required class="w-full border rounded px-3 py-2 mt-1">
                     </div>
-                    <div class="mb-4 flex items-center">
+                    <div class="mb-4 flex items-center form-group">
                         <label for="hora" class="block text-sm font-medium mr-6">Hora:</label>
-                        <input type="time" id="hora" name="hora" class="w-full border rounded px-3 py-2 mt-1">
+                        <input type="time" id="hora" name="hora" required class="w-full border rounded px-3 py-2 mt-1">
                     </div>
                     <div class="mb-4 flex items-center">
                         <label for="forma" class="block text-sm font-medium mr-4">Forma:</label>

@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotals = document.querySelectorAll('.subtotal');
         const initialElem = document.querySelector('.initial');
         const totalElem = document.querySelector('.total');
+        const totalField = document.querySelector('#totalField');
         const pointsElem = document.querySelector('.points'); // Elemento que muestra el valor fijo de puntos
         let totalSum = 0;
 
@@ -54,6 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Actualiza el valor en el campo oculto
+        totalField.value = totalSum.toFixed(2);
+
+        // Opcional: Muestra el total en la interfaz
+        totalElem.textContent = `Total: $${totalSum.toFixed(2)}`;
+        
         // Mostrar el valor inicial
         initialElem.textContent = `Inicial: $${totalSum.toFixed(2)}`;
 

@@ -7,73 +7,10 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<script src="https://cdn.tailwindcss.com"></script>
 {% endblock %}
 
 {% block content %}
-  <style>
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .slider-container {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slider {
-      display: flex;
-      gap: 50px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-    }
-
-    .category {
-      flex: 0 0 auto;
-      width: 120px;
-      text-align: center;
-    }
-
-    .category-img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin: 0 auto;
-      border-radius: 8px;
-    }
-
-    .category-title {
-      margin-top: 10px;
-      font-size: 0.875rem;
-      color: #666;
-    }
-
-    .slider-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #f0f0f0;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-  </style>
-
 <div class="page-container">
   <div class="carousel">
       <!-- Carrusel de imágenes y texto promocional -->
@@ -100,59 +37,58 @@
       </div>
   </div>
 
-
-  <h2 class="title">Categorías</h2>
-  <div class="container">
-    <div class="slider-container">
-      <!-- Slider -->
-      <div id="slider" class="slider">
-        <!-- Categoría: Café -->
-        <div class="category">
-          <a href="{% url 'soon' %}">
-            <img src="{% static 'img/cafe.png' %}" alt="Café" class="category-img">
-            <p class="category-title">Café</p>
-          </a>
-        </div>
-        <!-- Categoría: Smoothies -->
-        <div class="category">
-          <a href="{% url 'soon' %}">
-            <img src="{% static 'img/smoothie2.png' %}" alt="Smoothies" class="category-img">
-            <p class="category-title">Smoothies</p>
-          </a>
-        </div>
-        <!-- Categoría: Crepas -->
-        <div class="category">
-          <a href="{% url 'soon' %}">
-            <img src="{% static 'img/crepe.png' %}" alt="Crepas" class="category-img">
-            <p class="category-title">Crepas</p>
-          </a>
-        </div>
-        <!-- Categoría: Pancakes -->
-        <div class="category">
-          <a href="{% url 'soon' %}">
-            <img src="{% static 'img/pancake.png' %}" alt="Pancakes" class="category-img">
-            <p class="category-title">Pancakes</p>
-          </a>
-        </div>
-        <!-- Categoría: Frescrema -->
-        <div class="category">
-          <a href="{% url 'soon' %}">
-            <img src="{% static 'img/fresas.png' %}" alt="Frescrema" class="category-img">
-            <p class="category-title">Frescrema</p>
-          </a>
-        </div>
+<!-- Categorías Slider -->
+<div class="w-full max-w-5xl mx-auto mt-12 px-6">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Categorías</h2>
+  <div class="relative">
+    <!-- Slider -->
+    <div id="slider" class="flex overflow-x-auto gap-6 scroll-smooth">
+      <!-- Categoría: Café -->
+      <div class="flex-shrink-0 w-32 text-center">
+        <a href="{% url 'soon' %}">
+          <img src="{% static 'img/cafe.png' %}" alt="Café" class="w-20 h-20 mx-auto object-contain">
+          <p class="mt-2 text-sm text-gray-600">Café</p>
+        </a>
+      </div>
+      <!-- Categoría: Smoothies -->
+      <div class="flex-shrink-0 w-32 text-center">
+        <a href="{% url 'soon' %}">
+          <img src="{% static 'img/smoothie2.png' %}" alt="Smoothies" class="w-20 h-20 mx-auto object-contain">
+          <p class="mt-2 text-sm text-gray-600">Smoothies</p>
+        </a>
+      </div>
+      <!-- Categoría: Crepas -->
+      <div class="flex-shrink-0 w-32 text-center">
+        <a href="{% url 'soon' %}">
+          <img src="{% static 'img/crepe.png' %}" alt="Crepas" class="w-20 h-20 mx-auto object-contain">
+          <p class="mt-2 text-sm text-gray-600">Crepas</p>
+        </a>
+      </div>
+      <!-- Categoría: Pancakes -->
+      <div class="flex-shrink-0 w-32 text-center">
+        <a href="{% url 'soon' %}">
+          <img src="{% static 'img/pancake.png' %}" alt="Pancakes" class="w-20 h-20 mx-auto object-contain">
+          <p class="mt-2 text-sm text-gray-600">Pancakes</p>
+        </a>
+      </div>
+      <!-- Categoría: Frescrema -->
+      <div class="flex-shrink-0 w-32 text-center">
+        <a href="{% url 'soon' %}">
+          <img src="{% static 'img/fresas.png' %}" alt="Frescrema" class="w-20 h-20 mx-auto object-contain">
+          <p class="mt-2 text-sm text-gray-600">Frescrema</p>
+        </a>
       </div>
     </div>
   </div>
+</div>
 
 <!-- Points Section -->
 
-<div style="background-color: #ffe6f2; border-radius: 10px; text-align: center; padding: 20px; color: #333;">
+<div style="background-color: #ffe6f2; text-align: center; padding: 20px; color: #333;">
   <h1 style="margin: 0; font-size: 24px;">Tienes <strong>1250 puntos</strong>.</h1>
   <p style="margin: 10px 0 20px;">¡Canjéalos para descuentos en tus próximos pedidos!</p>
   <button
-    style="padding: 10px 20px; background-color: #ff9bb3; color: black; border: none; border-radius: 5px; cursor: pointer;">Ver
-    mis puntos</button>
+    style="padding: 10px 20px; background-color: #ff9bb3; color: white; border: none; border-radius: 5px; cursor: pointer;">Ver mis puntos</button>
 </div>
 
 <!-- Seccion de recomendaciones-->
@@ -252,6 +188,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'js/notification.js' %}" defer></script>
-<script src="{% static 'js/carousel.js' %}" defer></script>
+<script src="{% static 'js/notification.js' %}"></script>
+<script src="{% static 'js/carousel.js' %}"></script>
 {% endblock %}

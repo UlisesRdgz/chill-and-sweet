@@ -23,3 +23,17 @@ if (getUrlParameter('success') === 'true') {
     const newUrl = window.location.href.split('?')[0];
     window.history.replaceState({}, document.title, newUrl);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.getElementById('slider');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+  
+    next.addEventListener('click', () => {
+      slider.scrollLeft += slider.offsetWidth;
+    });
+  
+    prev.addEventListener('click', () => {
+      slider.scrollLeft -= slider.offsetWidth;
+    });
+  });
