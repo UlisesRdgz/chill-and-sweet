@@ -1,0 +1,335 @@
+/* Configuración global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; 
+    width: 100%;
+}
+
+/* Contenido principal */
+.main-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Título principal */
+.main-content h1 {
+    font-size: 2rem;
+    color: #2b3b4e;
+    margin-bottom: 1rem;
+}
+
+/* Sección del menú */
+.menu-section {
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+/* Título del menú */
+.menu-title {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; 
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+/* Subtítulo del menú */
+.menu-subtitle {
+    font-size: 34px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+/* Navegación de categorías */
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.menu-category {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    width: 150px;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-category:hover {
+    color: #EF6486;
+    transform: scale(1.1);
+}
+
+/* Contenedor de ítems del menú */
+.menu-items-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 80px;
+}
+
+/* Ítems del menú */
+.menu-items {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+.menu-items::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-item {
+    flex: 0 0 calc((100% / 3) - 2.2rem);
+    width: auto;
+    height: auto;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de los ítems */
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Título de los ítems */
+.menu-item-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Descripción de los ítems */
+.menu-item-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    height: 70px;
+    text-align: left;
+    display: block;
+    color: #555;
+}
+
+/* Calorías de los ítems */
+.menu-item-calories {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: left;
+    display: block;
+    color: #6f6f6f;
+}
+
+/* Footer de los ítems */
+.menu-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Precio de los ítems */
+.menu-item-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+}
+
+/* Botones de los ítems */
+.menu-item-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.menu-item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    color: #333;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.menu-item-btn:hover {
+    transform: scale(1.1);
+    background-color: #E0E0E0;
+}
+
+.menu-item-btn:active {
+    transform: scale(0.9);
+}
+
+.menu-item-btn img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    margin: 0;
+}
+
+/* Botones de desplazamiento */
+.scroll-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    color: #333;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 1;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.1);
+    background-color: #E0E0E0;
+}
+
+.scroll-btn:active {
+    transform: scale(0.9);
+}
+
+.scroll-btn.left {
+    left: 10px;
+}
+
+.scroll-btn.right {
+    right: 10px;
+}
+
+/* Responsivo para pantallas medianas */
+@media (max-width: 1024px) {
+    .menu-items {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .menu-item {
+        flex: 0 0 calc((100% / 2) - 2rem);
+        width: auto;
+    }
+
+    .menu-item-calories,
+    .menu-item-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menu-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .menu-category {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #000;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-category:hover {
+        color: #EF6486;
+        transform: scale(1.1);
+    }
+
+    .menu-items-wrapper {
+        overflow: visible;
+        padding: 0;
+        display: block;
+    }
+
+    .menu-items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        overflow: visible;
+        width: 100%;
+    }
+
+    .menu-item {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .menu-item-description {
+        height: auto;
+        overflow: visible;
+        white-space: normal;
+        text-overflow: unset;
+    }
+
+    .menu-item-title {
+        height: auto;
+        white-space: normal;
+    }
+
+    .scroll-btn {
+        display: none;
+    }
+
+    .menu-item-buttons {
+        margin-left: 1rem;
+    }
+}

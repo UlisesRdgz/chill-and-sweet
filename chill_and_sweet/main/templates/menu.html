@@ -2,119 +2,83 @@
 
 {% load static %}
 
-{% block title %}Personalizar - Chill & Sweet{% endblock %}
+{% block title %}Menu - Chill & Sweet{% endblock %}
 
 {% block head %}
-<script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
 {% endblock %}
 
 {% block content %}
-<!-- Main Content -->
-<div class="container mx-auto my-10 px-4">
-    <h1 class="text-3xl font-semibold text-center mb-10">MENÚ</h1>
-    
+<div class="page-container">
+    <div class="menu-section">
+        <h2 class="menu-title">Menú</h2>
+        
+        <!-- Navegación de Categorías -->
+        <div class="menu-categories">
+            {% for categoria in categorias %}
+                <a href="#{{ categoria.nombre|slugify }}" class="menu-category">{{ categoria.nombre }}</a>
+            {% endfor %}
+        </div>
+        
+        <!-- Secciones de Categorías con sus Postres -->
+        <div class="menu-content">
+            {% for categoria in categorias %}
+                <div id="{{ categoria.nombre|slugify }}" class="menu-category-section">
+                    <h3 class="menu-subtitle">{{ categoria.nombre }}</h3>
+                    <div class="menu-items-wrapper">
+                        <!-- Botón de desplazamiento a la izquierda -->
+                        <button class="scroll-btn left" onclick="scrollMenu('{{ categoria.nombre|slugify }}', -1)">
+                            <img src="{% static 'svg/left.svg' %}" alt="Boton izquierda">
+                        </button>                        
 
-    <!-- Menu Sections -->
-    <div class="space-y-12">
-
-        <!-- Café Section -->
-        <section>
-            <h2 class="text-2xl font-semibold mb-6">Café</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Product Card -->
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold">Mocha Cappuccino</h3>
-                        <p class="text-gray-600 text-sm">Espresso, milk, chocolate, topped with whipped cream.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-lg font-bold">$10</span>
-                            <button class="text-gray-600 hover:text-teal-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                        <!-- Contenedor de ítems con ID único -->
+                        <div class="menu-items">
+                            {% for postre in categoria.postre_set.all %}
+                            <div class="menu-item">
+                                <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="menu-item-image">
+                                <h4 class="menu-item-title">{{ postre.nombre }}</h4>
+                                <p class="menu-item-calories">{{ postre.calorias }} cal</p>
+                                <p class="menu-item-description">{{ postre.descripcion }}</p>
+                                <div class="menu-item-footer">
+                                    <p class="menu-item-price">${{ postre.precio }}</p>
+                                    <div class="menu-item-buttons">
+                                        <!-- Botón agregar al carrito -->
+                                        <button class="menu-item-btn">
+                                            <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
+                                        </button>
+                                        <!-- Botón favoritos -->
+                                        <button class="menu-item-btn">
+                                            <img src="{% static 'svg/heart.svg' %}" alt="Agregar a favoritos">
+                                        </button>
+                                    </div>
+                                </div>                                                        
+                            </div>                            
+                            {% endfor %}
                         </div>
-                    </div>
+                    
+                        <!-- Botón de desplazamiento a la derecha -->
+                        <button class="scroll-btn right" onclick="scrollMenu('{{ categoria.nombre|slugify }}', 1)">
+                            <img src="{% static 'svg/right.svg' %}" alt="Boton derecha">
+                        </button>
+                    </div>                               
                 </div>
-            </div>
-        </section>
-
-        <!-- Smoothies Section -->
-        <section>
-            <h2 class="text-2xl font-semibold mb-6">Smoothies</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Product Card -->
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Strawberry Smoothie" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold">Strawberry Smoothie</h3>
-                        <p class="text-gray-600 text-sm">Fresh strawberries, yogurt, honey, and ice.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-lg font-bold">$10</span>
-                            <button class="text-gray-600 hover:text-teal-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Crepas Section -->
-        <section>
-            <h2 class="text-2xl font-semibold mb-6">Crepas</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Product Card -->
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{% static 'img/crepa_chocolate_banana_fresa.jpg' %}" alt="Sweet Crepe" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold">Sweet Crepe</h3>
-                        <p class="text-gray-600 text-sm">Crepe with fresh fruits, chocolate, and whipped cream.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-lg font-bold">$10</span>
-                            <button class="text-gray-600 hover:text-teal-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pancakes Section -->
-        <section>
-            <h2 class="text-2xl font-semibold mb-6">Pancakes</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Product Card -->
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Chocolate Pancake" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold">Chocolate Pancake</h3>
-                        <p class="text-gray-600 text-sm">Stack of pancakes with chocolate syrup and berries.</p>
-                        <div class="flex justify-between items-center mt-4">
-                            <span class="text-lg font-bold">$10</span>
-                            <button class="text-gray-600 hover:text-teal-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            {% endfor %}
+        </div>
     </div>
 </div>
+{% endblock %}
 
+{% block scripts %}
 <script>
-    function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('hidden');
-    }
+    function scrollMenu(sectionId, direction) {
+        const container = document.querySelector(`#${sectionId} .menu-items`);
+        if (container) {
+            const scrollAmount = 800; 
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth', 
+            });
+        }
+    }    
 </script>
 {% endblock %}

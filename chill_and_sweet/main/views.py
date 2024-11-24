@@ -101,12 +101,16 @@ def home_view(request):
     else:
         return redirect('login')
 
-#vista de menú
+# Vista del menú
 def menu(request):
-    return render(request, 'menu.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        categorias = Categoria.objects.prefetch_related('postre_set').all()
+        return render(request, 'menu.html', {'categorias': categorias})
+    else:
+        return redirect('login')
 
-
-#vista de favoritos
+# Vista de favoritos
 def favoritos(request):
     return render(request, 'favoritos.html')
 
