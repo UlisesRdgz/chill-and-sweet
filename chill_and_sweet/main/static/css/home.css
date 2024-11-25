@@ -76,3 +76,10 @@
 .cerrar-alerta:hover {
     color: #ff0000; 
 }
+
+ /* Media query para pantallas pequeñas */
+ @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* Una columna */
+    }
+  }

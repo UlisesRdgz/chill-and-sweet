@@ -5,84 +5,64 @@
 {% block title %}Inicio - Chill & Sweet{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
-<!-- Main Content -->
-<div class="container mx-auto my-10 px-4">
-  <h1 class="text-3xl font-semibold text-center mb-10">FAVORITOS</h1>
+<style>
+  .favorite-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    background-color: white; /* Blanco inicial */
+    color: #ff9bb3;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s;
+}
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+.favorite-button:hover {
+    transform: scale(1.1);
+}
 
-      <!-- Tarjeta 1 -->
-      <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
-        <img src="{% static 'img/frappe_rosa.jpg' %}" alt="Frappe de Fresa" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
-        <div style="flex: 1;">
-          <h3 style="margin: 0; font-size: 16px; color: #333;">Frappe de Fresa</h3>
-          <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
-          <span style="font-size: 12px; color: #888;">203 cal</span>
-          <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
-            <div style="display: flex; gap: 10px;">
-              <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
-              <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
-            </div>
-          </div>
-        </div>
+/* Clase para botón en estado favorito */
+.favorite-button.favorited {
+    background-color: #ff9bb3; /* Rosa cuando es favorito */
+    color: white;
+}
+</style>
+
+<!-- Sección recomenadaciones -->
+<div class="best-sellers-section">
+  <h1 class="contact-title ">Nuestra recomendación</h1>
+  <div class="postres-grid">
+    {% for favorito in favoritos %}
+    <!-- Card de cada postre -->
+    <div class="postre-item">
+      <div class="postre-image-container">
+        <img src="{{ favorito.postre.imagen.url }}" alt="{{ favorito.nombre }}" class="postre-image">
       </div>
-    
-      <!-- Tarjeta 2 -->
-      <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
-        <img src="{% static 'img/pancakes_chocolate.jpg' %}" alt="Pancakes Chocolatosos" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
-        <div style="flex: 1;">
-          <h3 style="margin: 0; font-size: 16px; color: #333;">Pancakes Chocolatosos</h3>
-          <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
-          <span style="font-size: 12px; color: #888;">1050 cal</span>
-          <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
-            <div style="display: flex; gap: 10px;">
-              <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
-              <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
-            </div>
-          </div>
+      <div class="postre-details">
+        <div class="postre-header">
+          <h3 class="postre-name">{{ favorito.postre.nombre }}</h3>
+          <span class="postre-calories">{{ favorito.postre.calorias }} cal</span>
         </div>
+        <p class="postre-description">{{ favorito.postre.descripcion|truncatewords:18 }}</p>
+        <span class="postre-price">$ {{ favorito.postre.precio }}</span>
       </div>
-    
-      <!-- Tarjeta 3 -->
-      <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
-        <img src="{% static 'img/capuchino.jpg' %}" alt="Mocha Cappuccino" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
-        <div style="flex: 1;">
-          <h3 style="margin: 0; font-size: 16px; color: #333;">Mocha Cappuccino</h3>
-          <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
-          <span style="font-size: 12px; color: #888;">345 cal</span>
-          <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
-            <div style="display: flex; gap: 10px;">
-              <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
-              <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
-            </div>
-          </div>
-        </div>
+      <div style="position: relative;">
+        <button class="favorite-button" onclick="addToFavorites({{ postre.id }}, event)">
+          ♡
+        </button>
       </div>
-    
-      <!-- Tarjeta 4 -->
-      <div style="display: flex; background-color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; align-items: center; padding: 10px;">
-        <img src="{% static 'img/fresacrema.png' %}" alt="Frescrema con Galletas" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
-        <div style="flex: 1;">
-          <h3 style="margin: 0; font-size: 16px; color: #333;">Frescrema con Galletas</h3>
-          <p style="margin: 5px 0; font-size: 14px; color: #666;">Nunc et mauris a tellus pellentesque elementum nec et nulla.</p>
-          <span style="font-size: 12px; color: #888;">250 cal</span>
-          <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 16px; font-weight: bold; color: #333;">$60.00</span>
-            <div style="display: flex; gap: 10px;">
-              <button style="border: none; background-color: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
-              <button style="border: none; background-color: #ff9bb3; color: white; padding: 5px 10px; border-radius: 50%; cursor: pointer;">♡</button>
-          </div>
-        </div>
-      </div>
-    </div>  
+    {% endfor %}
   </div>
 </div>
-  {% endblock %}
+{% endblock %}
+
+<script src="{% static 'js/notification.js' %}" defer></script>
+<script src="{% static 'js/carousel.js' %}" defer></script>
