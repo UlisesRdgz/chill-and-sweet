@@ -229,19 +229,6 @@
         timeInput.min = minTime;
         timeInput.max = maxTime;
 
-        // Preselecciona la hora mínima válida
-        timeInput.value = minTime;
-
-        // Validar que las horas seleccionadas estén dentro del rango permitido
-        timeInput.addEventListener("input", function () {
-            const selectedTime = timeInput.value;
-            if (selectedTime < minTime || selectedTime > maxTime) {
-                timeInput.setCustomValidity("El horario debe estar entre las 9:00 AM y las 9:00 PM.");
-            } else {
-                timeInput.setCustomValidity("");
-            }
-        });
-
         // Validar que la fecha seleccionada no sea fuera de lunes a viernes
         dateInput.addEventListener("input", function () {
             const selectedDate = new Date(dateInput.value);

@@ -75,7 +75,7 @@
                 <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-heart"></i></span> Favoritos
                 </a>
-                <a href="#" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-envelope"></i></span> Contacto
                 </a>
                 <!-- Íconos solo para móviles -->

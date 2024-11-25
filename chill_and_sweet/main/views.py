@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from datetime import datetime, timedelta, time
+from django.utils.text import slugify
 import json
 
 from django.views.decorators.csrf import csrf_exempt
@@ -123,7 +124,9 @@ def home_view(request):
 def menu(request):
     user_id = request.session.get('user_id')
     if user_id:
-        categorias = Categoria.objects.prefetch_related('postre_set').all()
+        categorias = Categoria.objects.prefetch_related(
+            models.Prefetch('postre_set', queryset=Postre.objects.filter(es_creado=False))
+        ).all()
         return render(request, 'menu.html', {'categorias': categorias})
     else:
         return redirect('login')
@@ -225,11 +228,6 @@ def confirm_order(request):
                 messages.error(request, "La fecha y hora deben estar entre ahora y dentro de dos horas.")
                 return redirect("order")
 
-            # Verificar que el horario esté dentro de las 9 AM y 9 PM
-            if not (time(9, 0) <= fecha_hora_pedido.time() <= time(21, 0)):
-                messages.error(request, "El horario debe estar entre las 9:00 AM y las 9:00 PM.")
-                return redirect("order")
-
             # Guardar la orden o proceder con el flujo deseado
             # Ejemplo: Pedido.objects.create(...)
             messages.success(request, "Pedido confirmado exitosamente.")
@@ -305,35 +303,24 @@ def create(request):
         return redirect('login')
 
 # Vista de menu para personaizar un postre 
-def customDessert(request, categoria_id):
+def custom_dessert(request, categoria_id):
     user_id = request.session.get('user_id')
-    if user_id:
-        # Si es una solicitud POST, procesar el formulario
-        if request.method == 'POST':
-            total = request.POST.get('total', 0.00)  # Obtener el total del formulario
-            try:
-                usuario = Usuario.objects.get(id=user_id)  # Obtener el usuario actual
-                
-                # Redirigir a una página de confirmación o carrito
-                return redirect('home')
-            except Usuario.DoesNotExist:
-                return redirect('login')  # Si el usuario no existe, redirigir a login
+    if not user_id:
+        return redirect('login')
 
-        # Si es una solicitud GET, mostrar la personalización
-        ingredientes = Ingrediente.objects.filter(categoriaingrediente__categoria__id=categoria_id)
+    ingredientes = Ingrediente.objects.filter(categoriaingrediente__categoria__id=categoria_id)
 
-        # Agrupar ingredientes por tipo (ej. Tipo de café, Tamaño)
-        ingredientes_por_tipo = {}
-        for ingrediente in ingredientes:
-            if ingrediente.tipo not in ingredientes_por_tipo:
-                ingredientes_por_tipo[ingrediente.tipo] = []
-            ingredientes_por_tipo[ingrediente.tipo].append(ingrediente)
+    # Agrupar ingredientes por tipo
+    ingredientes_por_tipo = {}
+    for ingrediente in ingredientes:
+        if ingrediente.tipo not in ingredientes_por_tipo:
+            ingredientes_por_tipo[ingrediente.tipo] = []
+        ingredientes_por_tipo[ingrediente.tipo].append(ingrediente)
 
-        return render(request, 'custom/personalize.html', {'ingredientes_por_tipo': ingredientes_por_tipo})
-
-    else:
-        return redirect('login')  # Si no hay sesión, redirigir al login
-
+    return render(request, 'custom/personalize.html', {
+        'ingredientes_por_tipo': ingredientes_por_tipo,
+        'categoria_id': categoria_id,  # Agregar categoría al contexto
+    })
 
 # Vista de cuenta del usuario 
 def account(request):

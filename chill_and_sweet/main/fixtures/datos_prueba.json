@@ -90,7 +90,7 @@
         "descripcion": "Espresso mezclado con leche al vapor y un toque de avellana.",
         "precio": "75.00",
         "categoria": 1,
-        "es_recomendado": false,
+
         "calorias": 200,
         "imagen": "postres/cafe-baileys.jpg"
     }
@@ -103,7 +103,7 @@
         "descripcion": "Capuccino espumoso con un toque dulce de caramelo, crema batida.",
         "precio": "85.00",
         "categoria": 1,
-        "es_recomendado": false,
+
         "calorias": 280,
         "imagen": "postres/cafe-baileys.jpg"
     }
@@ -116,7 +116,7 @@
         "descripcion": "Café concentrado para los amantes del sabor fuerte e intenso.",
         "precio": "50.00",
         "categoria": 1,
-        "es_recomendado": false,
+
         "calorias": 5,
         "imagen": "postres/cafe-baileys.jpg"
     }
@@ -142,7 +142,7 @@
         "descripcion": "Mango, piña y coco para un escape tropical en cada sorbo.",
         "precio": "70.00",
         "categoria": 2,
-        "es_recomendado": false,
+
         "calorias": 190,
         "imagen": "postres/smoothie-rosa.jpg"
     }
@@ -155,7 +155,6 @@
       "descripcion": "Espinacas, manzana verde, plátano y leche de almendra.",
       "precio": "75.00",
       "categoria": 2,
-      "es_recomendado": false,
       "calorias": 150,
       "imagen": "postres/smoothie-rosa.jpg"
   }
@@ -168,7 +167,6 @@
       "descripcion": "Plátano y cacao con miel y un toque de vainilla.",
       "precio": "65.00",
       "categoria": 2,
-      "es_recomendado": false,
       "calorias": 230,
       "imagen": "postres/smoothie-rosa.jpg"
     }
@@ -194,7 +192,6 @@
       "descripcion": "Crepa rellena de Nutella, decorada con plátano y fresas.",
       "precio": "90.00",
       "categoria": 3,
-      "es_recomendado": false,
       "calorias": 450,
       "imagen": "postres/crepa-uva-kiwi.jpg"
     }
@@ -207,7 +204,6 @@
       "descripcion": "Pollo desmenuzado, queso derretido y espinacas en una crepa salada.",
       "precio": "100.00",
       "categoria": 3,
-      "es_recomendado": false,
       "calorias": 350,
       "imagen": "postres/crepa-uva-kiwi.jpg"
     }
@@ -220,7 +216,6 @@
       "descripcion": "Rellena de manzanas caramelizadas y canela con crema dulce.",
       "precio": "85.00",
       "categoria": 3,
-      "es_recomendado": false,
       "calorias": 380,
       "imagen": "postres/crepa-uva-kiwi.jpg"
     }
@@ -246,7 +241,6 @@
       "descripcion": "Pancakes suaves con arándanos frescos en la masa.",
       "precio": "85.00",
       "categoria": 4,
-      "es_recomendado": false,
       "calorias": 400,
       "imagen": "postres/pancakes-chocolate.jpg"
     }
@@ -259,7 +253,6 @@
       "descripcion": "Pancakes de harina integral y proteína, opción saludable y energética.",
       "precio": "90.00",
       "categoria": 4,
-      "es_recomendado": false,
       "calorias": 350,
       "imagen": "postres/pancakes-chocolate.jpg"
     }
@@ -272,7 +265,6 @@
       "descripcion": "Pancakes de coco con almendras tostadas y miel.",
       "precio": "95.00",
       "categoria": 4,
-      "es_recomendado": false,
       "calorias": 420,
       "imagen": "postres/pancakes-chocolate.jpg"
     }
@@ -285,7 +277,6 @@
       "descripcion": "Deliciosa mezcla de fresas, mango y kiwi con crema dulce y un toque de miel.",
       "precio": "75.00",
       "categoria": 5,
-      "es_recomendado": false,
       "calorias": 180,
       "imagen": "postres/frescrema-clasica.jpg"
     }
@@ -298,7 +289,6 @@
       "descripcion": "Fresas frescas cubiertas con crema dulce y decoradas con azúcar glas.",
       "precio": "70.00",
       "categoria": 5,
-      "es_recomendado": false,
       "calorias": 150,
       "imagen": "postres/frescrema-clasica.jpg"
     }
@@ -311,7 +301,6 @@
       "descripcion": "Fresas con crema dulce, decoradas con nuez triturada y un toque de miel.",
       "precio": "80.00",
       "categoria": 5,
-      "es_recomendado": false,
       "calorias": 200,
       "imagen": "postres/frescrema-clasica.jpg"
     }
@@ -324,7 +313,6 @@
       "descripcion": "Fresas bañadas con crema dulce y cubiertas con salsa de chocolate.",
       "precio": "85.00",
       "categoria": 5,
-      "es_recomendado": false,
       "calorias": 250,
       "imagen": "postres/frescrema-clasica.jpg"
     }
@@ -337,7 +325,6 @@
       "descripcion": "Suave pastel de red velvet cubierto con crema de queso.",
       "precio": "90.00",
       "categoria": 6,
-      "es_recomendado": false,
       "calorias": 350,
       "imagen": "postres/pastel-frutas.jpg"
     }
@@ -350,7 +337,6 @@
       "descripcion": "Esponjoso pastel bañado en tres leches, decorado con crema batida.",
       "precio": "95.00",
       "categoria": 6,
-      "es_recomendado": false,
       "calorias": 400,
       "imagen": "postres/pastel-frutas.jpg"
     }
@@ -363,7 +349,6 @@
       "descripcion": "Rico pastel de chocolate con relleno y cubierta de chocolate.",
       "precio": "100.00",
       "categoria": 6,
-      "es_recomendado": false,
       "calorias": 450,
       "imagen": "postres/pastel-frutas.jpg"
     }
@@ -376,7 +361,6 @@
       "descripcion": "Pastel de zanahoria con nueces y pasas, cubierto con crema de queso.",
       "precio": "85.00",
       "categoria": 6,
-      "es_recomendado": false,
       "calorias": 320,
       "imagen": "postres/pastel-frutas.jpg"
     }

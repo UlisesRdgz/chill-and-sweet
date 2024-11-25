@@ -5,7 +5,7 @@
 {% block title %}Personalizar - Chill & Sweet{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/custom/create.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom/personalize.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,92 +14,84 @@
     Manú de personalización de postres
 
 -->
-<main class="main-content">
-    <div class="title-container">
-        <h1 class="title">
-            Diseña
-        </h1>
-        <p class="instruction">Elige en base a tus gustos cada detalle de tu postre</p>
-    </div>
+<div class="main-content">
+    <div class="page-container">
+        <div class="personalize-section">
+            <h2 class="personalize-title">Diseña</h2>
+            <p class="instruction">Elige en base a tus gustos cada detalle de tu postre</p>
+        </div>
 
-    <form method="POST" id="pedidoForm" class="form_custom">
-        {% csrf_token %}
-        {% for tipo, ingredientes in ingredientes_por_tipo.items %}
-        <h2 class="category_name"> 
-            {{ tipo }}
-        </h2>
+        <form method="POST" action="{% url 'home' %}" id="pedidoForm">
+            {% csrf_token %}
+            {% for tipo, ingredientes in ingredientes_por_tipo.items %}
+            <h2 class="category_name"> 
+                {{ tipo }}
+            </h2>
 
-        <div class="options_ingredients">
-            {% for ingrediente in ingredientes %}
-            <div class="ingredient">
-                <div class="ingredient_info">
-                    <input 
-                        name="opcion_{{ tipo }}" 
-                        id="{{ tipo|slugify }}{{ forloop.counter }}" 
-                        type="radio" 
-                        class="input_option" 
-                        data-nombre="{{ ingrediente.nombre }}" 
-                        data-precio="{{ ingrediente.precio_adicional }}"
-                        data-calorias="{{ ingrediente.calorias }}">
+            <div class="options_ingredients">
+                {% for ingrediente in ingredientes %}
+                <label for="{{ tipo|slugify }}{{ forloop.counter }}" class="ingredient">
+                    <div class="ingredient_info">
+                        <input 
+                            name="opcion_{{ tipo }}" 
+                            id="{{ tipo|slugify }}{{ forloop.counter }}" 
+                            type="radio" 
+                            class="input_option" 
+                            data-nombre="{{ ingrediente.nombre }}" 
+                            data-precio="{{ ingrediente.precio_adicional }}"
+                            data-calorias="{{ ingrediente.calorias }}">
+            
+                        <div class="info_ingredient_container">
+                            <span class="label_option">
+                                {{ ingrediente.nombre }}
+                            </span>
+                            <p class="calories">
+                                {{ ingrediente.calorias }} cal
+                            </p>
+                        </div>
+                    </div>
+                    <p class="price">${{ ingrediente.precio_adicional }}</p>
+                </label>
+                {% endfor %}
+            </div>            
+            {% endfor %}    
 
-                    <div class="info_ingredient_container">
-                        <label for="{{ tipo|slugify }}{{ forloop.counter }}" class="label_option">
-                            {{ ingrediente.nombre }}
-                        </label>
-                        <p class="calories">
-                            {{ ingrediente.calorias }} cal
+            <!-- Campo oculto para el total -->
+            <input type="hidden" name="total" id="totalInput" value="0.00">
+
+            <!-- Resumen de selección y precio total -->
+            <div id="resumen">
+                <h2 class="category_name">Resumen de tu pedido:</h2>
+
+                <div class="resume-container">
+                    <div class="ingredients-select-container">
+                        <p class="tittle-description">Ingredientes:</p>
+                        <p id="ingredientes-seleccionados" class="selected-ingredients">
+                            <!-- Aquí se mostrarán los ingredientes seleccionados -->
                         </p>
+                    </div>                    
+
+                    <div class="calories-select-container">
+                        <p class="tittle-description">Calorias totales:</p>
+                        <p class="total-calories">0 cal</p>
+                    </div>
+
+                    <div class="total-container">
+                        <p class="tittle-description">Total:</p>
+                        <p class="total-resume">$ <span id="total-precio">0.00</span></p>
                     </div>
                 </div>
-                <p class="price">${{ ingrediente.precio_adicional }}</p>
-            </div>
-            {% endfor %}
-        </div>
-        {% endfor %}    
 
-        <!-- Campo oculto para el total -->
-        <input type="hidden" name="total" id="totalInput" value="0.00">
-
-        <!-- Resumen de selección y precio total -->
-        <div id="resumen">
-            <h2 class="category_name">Resumen de tu pedido:</h2>
-
-            <div class="resume-container">
-                <div class="ingredients-select-container">
-
-                    <p class="tittle-description">Ingredientes:</p>
-
-                    <ul id="ingredientes-seleccionados">
-                        <!-- Aquí se mostrarán los ingredientes seleccionados -->
-                    </ul>
-                </div>
-
-                <div class="calories-select-container">
-
-                    <p class="tittle-description">Calorias totales:</p>
-
-                    <p class="total-calories">0 cal</p>
-
-
-                </div>
-
-                <div class="total-container">
-
-                    <p class="total-resume">Total:</p>
-                    <p class="total-resume">$ <span id="total-precio">0.00</span></p>
-
+                <div class="btn-caontainer">
+                    <input type="hidden" name="categoria_id" value="{{ categoria_id }}">
+                    <input type="hidden" name="calorias" id="caloriasInput" value="0">
+                    <input type="hidden" name="total" id="totalInput" value="0.00">
+                    <button class="btn_add_cart" type="submit">Agregar al carrito</button>
                 </div>
             </div>
-
-            <div class="btn-caontainer">
-                <button class="btn_add_cart" type="submit">Agregar al carrito</button>
-            </div>
-        </div>
-
-    </form>
-
-    
-</main>
+        </form>
+    </div>
+</div>
 
     <!--
     Alerta de éxito
@@ -120,4 +112,18 @@
 
 {% block scripts %}
 <script src="{% static 'js/calculate-summary.js' %}"></script>
+<script>
+    document.querySelectorAll('.input_option').forEach(input => {
+        input.addEventListener('change', function () {
+            // Obtén todos los ingredientes seleccionados
+            const selectedIngredients = Array.from(
+                document.querySelectorAll('.input_option:checked')
+            ).map(input => input.dataset.nombre);
+    
+            // Actualiza el contenido del contenedor con los ingredientes separados por comas
+            const ingredientesSeleccionados = document.getElementById('ingredientes-seleccionados');
+            ingredientesSeleccionados.textContent = selectedIngredients.join(', ');
+        });
+    });    
+</script>
 {% endblock %}

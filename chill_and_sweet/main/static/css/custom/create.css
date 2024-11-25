@@ -47,7 +47,7 @@
 /* Contenedor de categorías */
 .menu-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     justify-content: center;
     padding: 0 20px;
@@ -89,7 +89,7 @@
 /* Responsividad para pantallas más pequeñas */
 @media (max-width: 1024px) {
     .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -102,6 +102,6 @@
 
 @media (max-width: 480px) {
     .menu-container {
-        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+        grid-template-columns: 1fr;
     }
 }
