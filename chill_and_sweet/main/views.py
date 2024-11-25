@@ -4,7 +4,7 @@ from django.utils.timezone import now  # Para obtener la fecha y hora actuales
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import RegisterForm, LoginForm
-from .models import Usuario
+from .models import Favorito, Postre, Usuario
 from .models import *
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -12,6 +12,8 @@ from django.http import JsonResponse
 from datetime import datetime, timedelta, time
 import json
 
+from django.views.decorators.csrf import csrf_exempt
+import json
 from django.contrib.auth.decorators import login_required
 
 # Vista de inicio
@@ -99,10 +101,21 @@ def logout_view(request):
 # Vista de inicio después de loguearse (Home)
 def home_view(request):
     user_id = request.session.get('user_id')
+    best_sellers = Postre.objects.filter(es_recomendado=True)[:4] 
     if user_id:
         # Obtener el usuario de la base de datos
         user = Usuario.objects.get(id=user_id)
-        return render(request, 'home.html', {'user': user})
+        categorias = Categoria.objects.all()
+        # Obtener los IDs de los favoritos del usuario
+        favoritos = Favorito.objects.filter(usuario=user).values_list('postre_id', flat=True)
+
+        return render(request, 'home.html', {
+            'best_sellers': best_sellers,
+            'user': user,
+            'categorias': categorias,
+            'favoritos': favoritos,
+        })
+        #return render(request, 'home.html', {'best_sellers': best_sellers,'user': user,"categorias":categorias})
     else:
         return redirect('login')
 
@@ -259,8 +272,27 @@ def order(request):
     })
 
 # Vista de favoritos
-def favoritos(request):
-    return render(request, 'favoritos.html')
+def favoritos(request): 
+    user_id = request.session.get('user_id')
+    if user_id:
+        try:
+            # Obtener el usuario autenticado
+            user = Usuario.objects.get(id=user_id)
+
+            # Obtener los postres favoritos del usuario
+            favoritos = Favorito.objects.filter(usuario=user).select_related('postre')  # Optimización con select_related
+            
+            return render(request, 'favoritos.html', {
+                'favoritos': favoritos,  # Lista de favoritos
+                'user': user  # Usuario actual
+            })
+        except Usuario.DoesNotExist:
+            # Si el usuario no existe en la base de datos, redirigir al login
+            return redirect('login')
+    else:
+        # Si no hay usuario en sesión, redirigir al login
+        return redirect('login')
+    
 
 # Vista de menu de categorias de postres para crear un postre personalizado
 def create(request):
@@ -386,3 +418,39 @@ def contact(request):
 
 def soon(request):
     return render(request, 'soon.html')
+
+@csrf_exempt
+def toggle_favorito(request):
+    if request.method == 'POST':
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return JsonResponse({'success': False, 'message': 'Usuario no autenticado.'}, status=401)
+
+        try:
+            data = json.loads(request.body)
+            postre_id = data.get('postre_id')
+
+            if not postre_id:
+                return JsonResponse({'success': False, 'message': 'ID de postre no proporcionado.'}, status=400)
+
+            usuario = Usuario.objects.get(id=user_id)
+            postre = Postre.objects.get(id=postre_id)
+
+            # Verificar si el postre ya está en favoritos
+            favorito, created = Favorito.objects.get_or_create(usuario=usuario, postre=postre)
+
+            if not created:
+                # Si ya existe, eliminarlo de favoritos
+                favorito.delete()
+                return JsonResponse({'success': True, 'favorited': False})
+
+            return JsonResponse({'success': True, 'favorited': True})
+
+        except Usuario.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Usuario no encontrado.'}, status=404)
+        except Postre.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Postre no encontrado.'}, status=404)
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=500)
+
+    return JsonResponse({'success': False, 'message': 'Método no permitido.'}, status=405)
