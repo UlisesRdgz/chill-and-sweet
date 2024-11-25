@@ -9,60 +9,67 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-container">
-    <div class="menu-section">
-        <h2 class="menu-title">Menú</h2>
-        
-        <!-- Navegación de Categorías -->
-        <div class="menu-categories">
-            {% for categoria in categorias %}
-                <a href="#{{ categoria.nombre|slugify }}" class="menu-category">{{ categoria.nombre }}</a>
-            {% endfor %}
-        </div>
-        
-        <!-- Secciones de Categorías con sus Postres -->
-        <div class="menu-content">
-            {% for categoria in categorias %}
-                <div id="{{ categoria.nombre|slugify }}" class="menu-category-section">
-                    <h3 class="menu-subtitle">{{ categoria.nombre }}</h3>
-                    <div class="menu-items-wrapper">
-                        <!-- Botón de desplazamiento a la izquierda -->
-                        <button class="scroll-btn left" onclick="scrollMenu('{{ categoria.nombre|slugify }}', -1)">
-                            <img src="{% static 'svg/left.svg' %}" alt="Boton izquierda">
-                        </button>                        
+<div class="main-content">
+    <div class="page-container">
+        <div class="menu-section">
+            <h2 class="menu-title">Menú</h2>
+            
+            <!-- Navegación de Categorías -->
+            <div class="menu-categories">
+                {% for categoria in categorias %}
+                    <a href="#{{ categoria.nombre|slugify }}" class="menu-category">{{ categoria.nombre }}</a>
+                {% endfor %}
+            </div>
+            
+            <!-- Secciones de Categorías con sus Postres -->
+            <div class="menu-content">
+                {% for categoria in categorias %}
+                    <div id="{{ categoria.nombre|slugify }}" class="menu-category-section">
+                        <h3 class="menu-subtitle">{{ categoria.nombre }}</h3>
+                        <div class="menu-items-wrapper">
+                            <!-- Botón de desplazamiento a la izquierda -->
+                            <button class="scroll-btn left" onclick="scrollMenu('{{ categoria.nombre|slugify }}', -1)">
+                                <img src="{% static 'svg/left.svg' %}" alt="Boton izquierda">
+                            </button>                        
 
-                        <!-- Contenedor de ítems con ID único -->
-                        <div class="menu-items">
-                            {% for postre in categoria.postre_set.all %}
-                            <div class="menu-item">
-                                <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="menu-item-image">
-                                <h4 class="menu-item-title">{{ postre.nombre }}</h4>
-                                <p class="menu-item-calories">{{ postre.calorias }} cal</p>
-                                <p class="menu-item-description">{{ postre.descripcion }}</p>
-                                <div class="menu-item-footer">
-                                    <p class="menu-item-price">${{ postre.precio }}</p>
-                                    <div class="menu-item-buttons">
-                                        <!-- Botón agregar al carrito -->
-                                        <button class="menu-item-btn">
-                                            <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
-                                        </button>
-                                        <!-- Botón favoritos -->
-                                        <button class="menu-item-btn">
-                                            <img src="{% static 'svg/heart.svg' %}" alt="Agregar a favoritos">
-                                        </button>
-                                    </div>
-                                </div>                                                        
-                            </div>                            
-                            {% endfor %}
-                        </div>
-                    
-                        <!-- Botón de desplazamiento a la derecha -->
-                        <button class="scroll-btn right" onclick="scrollMenu('{{ categoria.nombre|slugify }}', 1)">
-                            <img src="{% static 'svg/right.svg' %}" alt="Boton derecha">
-                        </button>
-                    </div>                               
-                </div>
-            {% endfor %}
+                            <!-- Contenedor de ítems con ID único -->
+                            <div class="menu-items">
+                                {% for postre in categoria.postre_set.all %}
+                                <div class="menu-item">
+                                    <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="menu-item-image">
+                                    <h4 class="menu-item-title">{{ postre.nombre }}</h4>
+                                    <p class="menu-item-calories">{{ postre.calorias }} cal</p>
+                                    <p class="menu-item-description">{{ postre.descripcion }}</p>
+                                    <div class="menu-item-footer">
+                                        <p class="menu-item-price">${{ postre.precio }}</p>
+                                        <div class="menu-item-buttons">
+                                            <!-- Botón agregar al carrito -->
+                                            <form method="POST" action="{% url 'add_to_cart' %}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="postre_id" value="{{ postre.id }}">
+                                                <button class="menu-item-btn" type="submit">
+                                                    <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
+                                                </button>
+                                            </form>
+                                            
+                                            <!-- Botón favoritos -->
+                                            <button class="menu-item-btn">
+                                                <img src="{% static 'svg/heart.svg' %}" alt="Agregar a favoritos">
+                                            </button>
+                                        </div>
+                                    </div>                                                        
+                                </div>                            
+                                {% endfor %}
+                            </div>
+                        
+                            <!-- Botón de desplazamiento a la derecha -->
+                            <button class="scroll-btn right" onclick="scrollMenu('{{ categoria.nombre|slugify }}', 1)">
+                                <img src="{% static 'svg/right.svg' %}" alt="Boton derecha">
+                            </button>
+                        </div>                               
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

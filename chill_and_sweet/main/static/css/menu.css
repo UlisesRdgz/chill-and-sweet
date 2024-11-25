@@ -33,7 +33,6 @@
     width: 100%;
     padding: 3rem 0;
     text-align: center;
-    background-color: #ffffff;
 }
 
 /* Título del menú */
@@ -331,5 +330,13 @@
 
     .menu-item-buttons {
         margin-left: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        gap: 1.5rem 0rem;
+        margin: 0;
+        padding: 0;
     }
 }

@@ -58,35 +58,17 @@ class CategoriaIngrediente(models.Model):
     class Meta:
         unique_together = ('categoria', 'ingrediente')
 
-# Modelo que representa los pedidos realizados por los usuarios
-class Pedido(models.Model):
-    ESTADO_PAGO_CHOICES = [
-        ('pendiente', 'Pendiente'),
-        ('completado', 'Completado'),
-        ('fallido', 'Fallido'),
-    ]
+# Modelo que representa los postres del carrito de los usuarios
+class Carrito(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    fecha = models.DateField()
-    hora = models.TimeField()
-    total = models.DecimalField(max_digits=10, decimal_places=2)
-    puntos_utilizados = models.IntegerField(default=0)
-    estado_pago = models.CharField(max_length=15, choices=ESTADO_PAGO_CHOICES, default='pendiente')
+    postre = models.ForeignKey(Postre, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f"Pedido {self.id} de {self.usuario}"
+        return f"{self.usuario} - {self.postre} x {self.cantidad}"
 
 # Modelo que representa los postres favoritos de los usuarios
 class Favorito(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     postre = models.ForeignKey(Postre, on_delete=models.CASCADE)
     fecha_agregado = models.DateField(auto_now_add=True)
-
-# Modelo intermedio para la relación entre pedidos y postres
-class PedidoPostre(models.Model):
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    postre = models.ForeignKey(Postre, on_delete=models.CASCADE)
-    cantidad = models.IntegerField(default=1)
-
-    class Meta:
-        unique_together = ('pedido', 'postre')
-

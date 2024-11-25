@@ -740,27 +740,6 @@
     }
   },
   {
-    "model": "main.pedido",
-    "pk": 1,
-    "fields": {
-      "usuario": 1,
-      "fecha": "2024-11-08",
-      "hora": "15:00:00",
-      "total": "280.00",
-      "puntos_utilizados": 50,
-      "estado_pago": "completado"
-    }
-  },
-  {
-    "model": "main.pedidopostre",
-    "pk": 1,
-    "fields": {
-      "pedido": 1,
-      "postre": 1,
-      "cantidad": 1
-    }
-  },
-  {
     "model": "main.favorito",
     "pk": 1,
     "fields": {

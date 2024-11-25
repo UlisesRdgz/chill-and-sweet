@@ -46,7 +46,7 @@
 
          <!-- Íconos -->
          <div class="nav-icons">
-            <a href="{% url 'orden' %}">
+            <a href="{% url 'order' %}">
                 <img src="{% static 'svg/cart.svg' %}" alt="icono favoritos">
             </a>
             <a href="{% url 'account' %}">
@@ -80,7 +80,7 @@
                 </a>
                 <!-- Íconos solo para móviles -->
                 <div class="mobile-only-icons">
-                    <a href="#">
+                    <a href="{% url 'order' %}">
                         <span class="icon-container"><i class="fas fa-shopping-cart"></i></span> Carrito
                     </a>
                     <a href="#">

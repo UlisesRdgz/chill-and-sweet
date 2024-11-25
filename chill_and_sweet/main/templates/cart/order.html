@@ -1,0 +1,255 @@
+{% extends "layout/layout-logged.html" %}
+{% load static %}
+
+{% block title %}Orden - Chill & Sweet{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cart/order.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="order-section">
+        <h2 class="order-title">Mi orden</h2>
+        <div class="order-container">
+            <!-- Tabla de Productos -->
+            <div class="product-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th class="center-product">Precio</th>
+                            <th class="center-product">Cantidad</th>
+                            <th class="center-product">Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in carrito_items %}
+                        <tr data-postre-id="{{ item.postre.id }}">
+                            <td>
+                                <div class="product-info">
+                                    <img src="{{ item.postre.imagen.url }}" alt="{{ item.postre.nombre }}">
+                                    <div>
+                                        <h4 class="title-product">{{ item.postre.nombre }}</h4>
+                                        <p class="calories">{{ item.postre.calorias }} cal</p>
+                                        <p class="description">{{ item.postre.descripcion }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="precio">${{ item.postre.precio|floatformat:2 }}</td>
+                            <td>
+                                <div class="quantity-controls">
+                                    <button class="decrement-btn">
+                                        <img src="{% static 'img/less.png' %}" alt="menos">
+                                    </button>
+                                    <input class="number" type="text" value="{{ item.cantidad }}" readonly>
+                                    <button class="increment-btn">
+                                        <img src="{% static 'img/plus.png' %}" alt="más">
+                                    </button>
+                                </div>
+                            </td>                            
+                            <td class="subtotal">${{ item.subtotal|floatformat:2 }}</td>
+                            <td>
+                                <button class="delete-btn" data-postre-id="{{ item.postre.id }}" title="Eliminar">
+                                    <img src="{% static 'img/trash.png' %}" alt="icono basura">
+                                </button>                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>                    
+                </table>
+            </div>
+        
+            <!-- Detalles del Pedido -->
+            <div class="order-summary">
+                <h3>Datos del pedido</h3>
+                <div class="order-details">
+                    <form id="order-form" method="POST" action="{% url 'confirm_order' %}">
+                        {% csrf_token %}
+                        <p>
+                            <label for="order-date">Fecha:</label>
+                            <div class="input-container">
+                                <input type="date" id="order-date" name="fecha_pedido" required>
+                            </div>
+                        </p>
+                        <p>
+                            <label for="order-time">Hora:</label>
+                            <div class="input-container">
+                                <select id="order-time" name="hora_pedido" required>
+                                    <option value="04:00 P.M.">09:00 A.M.</option>
+                                    <option value="04:00 P.M.">10:00 A.M.</option>
+                                    <option value="04:00 P.M.">11:00 A.M.</option>
+                                    <option value="04:00 P.M.">12:00 P.M.</option>
+                                    <option value="04:00 P.M.">01:00 P.M.</option>
+                                    <option value="04:00 P.M.">02:00 P.M.</option>
+                                    <option value="04:00 P.M.">03:00 P.M.</option>
+                                    <option value="04:00 P.M.">04:00 P.M.</option>
+                                    <option value="04:00 P.M.">05:00 P.M.</option>
+                                    <option value="04:00 P.M.">06:00 P.M.</option>
+                                    <option value="04:00 P.M.">07:00 P.M.</option>
+                                    <option value="04:00 P.M.">08:00 P.M.</option>
+                                    <option value="04:00 P.M.">09:00 P.M.</option>
+                                </select>
+                            </div>
+                        </p>
+                        <p>
+                            <label for="order-forma">Forma:</label>
+                            <div class="input-container">
+                                <select id="order-forma" name="forma" required>
+                                    <option value="Para llevar">Para llevar</option>
+                                    <option value="Comer en el lugar">Comer en el lugar</option>
+                                </select>
+                            </div>
+                        </p>
+                        <p>
+                            Inicial: <span>${{ total|floatformat:2 }}</span>
+                        </p>
+                        <p>
+                            Puntos: <span>${{ puntos_descuento|floatformat:2 }}</span>
+                        </p>
+                        <p>
+                            <strong>Total:</strong> <span><strong>${{ total_con_descuento|floatformat:2 }}</strong></span>
+                        </p>
+                        <button type="submit" class="confirm-btn">Confirmar</button>
+                    </form>
+                </div>
+            </div>             
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Función para actualizar la cantidad de un producto
+        const updateQuantity = (button, operation) => {
+            const row = button.closest("tr");
+            const postreId = row.dataset.postreId;
+            const input = row.querySelector("input[type='text']");
+            let currentQuantity = parseInt(input.value, 10);
+    
+            // Ajustar la cantidad según la operación
+            if (operation === "increment") {
+                currentQuantity += 1;
+            } else if (operation === "decrement" && currentQuantity > 1) {
+                currentQuantity -= 1;
+            }
+    
+            // Enviar la solicitud al servidor
+            fetch("{% url 'update_cart' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: JSON.stringify({
+                    postre_id: postreId,
+                    cantidad: currentQuantity,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload(); 
+                    } else {
+                        alert(data.message || "Error al actualizar la cantidad.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        };
+    
+        // Función para eliminar un producto del carrito
+        const deleteItem = (button) => {
+            const postreId = button.dataset.postreId;
+    
+            // Confirmar antes de eliminar
+            if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+                fetch("{% url 'delete_from_cart' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}",
+                    },
+                    body: JSON.stringify({ postre_id: postreId }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            location.reload(); 
+                        } else {
+                            alert(data.message || "Error al eliminar el producto.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+            }
+        };
+    
+        // Asignar eventos a los botones de incrementar y decrementar
+        document.querySelectorAll(".increment-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                updateQuantity(this, "increment");
+            });
+        });
+    
+        document.querySelectorAll(".decrement-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                updateQuantity(this, "decrement");
+            });
+        });
+    
+        // Asignar eventos a los botones de eliminar
+        document.querySelectorAll(".delete-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                deleteItem(this);
+            });
+        });
+
+        const dateInput = document.getElementById("order-date");
+        const timeInput = document.getElementById("order-time");
+
+        const now = new Date();
+        const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+
+        // Configuración de fecha mínima y máxima (hoy y dos horas después)
+        const minDate = now.toISOString().split("T")[0];
+        dateInput.min = minDate;
+        dateInput.value = minDate; // Preselecciona la fecha actual
+
+        // Configuración de horas permitidas (9 AM a 9 PM)
+        const minTime = now.getHours() < 9 ? "09:00" : `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+        const maxTime = "21:00";
+        timeInput.min = minTime;
+        timeInput.max = maxTime;
+
+        // Preselecciona la hora mínima válida
+        timeInput.value = minTime;
+
+        // Validar que las horas seleccionadas estén dentro del rango permitido
+        timeInput.addEventListener("input", function () {
+            const selectedTime = timeInput.value;
+            if (selectedTime < minTime || selectedTime > maxTime) {
+                timeInput.setCustomValidity("El horario debe estar entre las 9:00 AM y las 9:00 PM.");
+            } else {
+                timeInput.setCustomValidity("");
+            }
+        });
+
+        // Validar que la fecha seleccionada no sea fuera de lunes a viernes
+        dateInput.addEventListener("input", function () {
+            const selectedDate = new Date(dateInput.value);
+            const day = selectedDate.getDay();
+            if (day === 0 || day === 6) {
+                dateInput.setCustomValidity("Solo puedes seleccionar días entre lunes y viernes.");
+            } else {
+                dateInput.setCustomValidity("");
+            }
+        });
+    });     
+</script>
+{% endblock %}

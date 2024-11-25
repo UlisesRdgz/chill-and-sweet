@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from decimal import Decimal
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
 from django.utils.timezone import now  # Para obtener la fecha y hora actuales
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
@@ -6,6 +7,10 @@ from .forms import RegisterForm, LoginForm
 from .models import Usuario
 from .models import *
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from datetime import datetime, timedelta, time
+import json
 
 from django.contrib.auth.decorators import login_required
 
@@ -109,6 +114,149 @@ def menu(request):
         return render(request, 'menu.html', {'categorias': categorias})
     else:
         return redirect('login')
+    
+def add_to_cart(request):
+    if request.method == 'POST':
+        postre_id = request.POST.get('postre_id')
+        cantidad = int(request.POST.get('cantidad', 1))
+
+        postre = get_object_or_404(Postre, id=postre_id)
+        usuario = Usuario.objects.get(id=request.session['user_id'])
+
+        # Verificar si ya existe en el carrito
+        carrito_item, created = Carrito.objects.get_or_create(usuario=usuario, postre=postre)
+        if not created:
+            carrito_item.cantidad += cantidad
+        carrito_item.save()
+
+        # Agregar mensaje de éxito
+        messages.success(request, f'{postre.nombre} se agregó al carrito.')
+
+        # Redirigir al menú
+        return redirect('menu')
+
+    # En caso de que no sea un método POST
+    return redirect('menu')
+
+@csrf_exempt
+def update_cart(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        postre_id = data.get("postre_id")
+        nueva_cantidad = data.get("cantidad")
+
+        if not postre_id or not nueva_cantidad:
+            return JsonResponse({"success": False, "message": "Datos inválidos."})
+
+        try:
+            usuario = Usuario.objects.get(id=request.session["user_id"])
+            carrito_item = Carrito.objects.get(usuario=usuario, postre_id=postre_id)
+            carrito_item.cantidad = nueva_cantidad
+            carrito_item.save()
+
+            # Recalcular total
+            carrito_items = Carrito.objects.filter(usuario=usuario)
+            total = sum(item.postre.precio * item.cantidad for item in carrito_items)
+
+            return JsonResponse({
+                "success": True,
+                "subtotal": carrito_item.postre.precio * carrito_item.cantidad,
+                "total": total,
+            })
+        except Carrito.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Elemento no encontrado."})
+        except Usuario.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Usuario no autenticado."})
+
+    return JsonResponse({"success": False, "message": "Método no permitido."})
+
+@csrf_exempt
+def delete_from_cart(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        postre_id = data.get("postre_id")
+
+        if not postre_id:
+            return JsonResponse({"success": False, "message": "ID del producto no proporcionado."})
+
+        try:
+            usuario = Usuario.objects.get(id=request.session["user_id"])
+            carrito_item = Carrito.objects.get(usuario=usuario, postre_id=postre_id)
+            carrito_item.delete()
+
+            # Recalcular el total general
+            carrito_items = Carrito.objects.filter(usuario=usuario)
+            total = sum(item.postre.precio * item.cantidad for item in carrito_items)
+
+            return JsonResponse({"success": True, "total": total})
+        except Carrito.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Producto no encontrado en el carrito."})
+        except Usuario.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Usuario no autenticado."})
+
+    return JsonResponse({"success": False, "message": "Método no permitido."})
+
+def confirm_order(request):
+    if request.method == "POST":
+        fecha_pedido = request.POST.get("fecha_pedido")
+        hora_pedido = request.POST.get("hora_pedido")
+        forma = request.POST.get("forma")
+
+        try:
+            fecha_hora_pedido = datetime.strptime(f"{fecha_pedido} {hora_pedido}", "%Y-%m-%d %H:%M")
+            ahora = datetime.now()
+            limite_dos_horas = ahora + timedelta(hours=2)
+
+            # Verificar que la fecha y hora están dentro del rango permitido
+            if fecha_hora_pedido < ahora or fecha_hora_pedido > limite_dos_horas:
+                messages.error(request, "La fecha y hora deben estar entre ahora y dentro de dos horas.")
+                return redirect("order")
+
+            # Verificar que el horario esté dentro de las 9 AM y 9 PM
+            if not (time(9, 0) <= fecha_hora_pedido.time() <= time(21, 0)):
+                messages.error(request, "El horario debe estar entre las 9:00 AM y las 9:00 PM.")
+                return redirect("order")
+
+            # Guardar la orden o proceder con el flujo deseado
+            # Ejemplo: Pedido.objects.create(...)
+            messages.success(request, "Pedido confirmado exitosamente.")
+            return redirect("home")
+        except ValueError:
+            messages.error(request, "Fecha u hora inválida.")
+            return redirect("order")
+
+    return redirect("order")
+
+def order(request):
+    user_id = request.session.get('user_id')  # Obtén el ID del usuario desde la sesión
+    if not user_id:
+        return redirect('login')  # Redirige al login si no hay usuario en la sesión
+
+    try:
+        usuario = Usuario.objects.get(id=user_id)
+    except Usuario.DoesNotExist:
+        return redirect('login')  # Redirige al login si el usuario no existe
+
+    # Obtén los elementos del carrito para este usuario
+    carrito_items = Carrito.objects.filter(usuario=usuario).select_related('postre')
+
+    # Calcula el total y el subtotal por elemento
+    total = Decimal(0)
+    for item in carrito_items:
+        item.subtotal = item.postre.precio * item.cantidad
+        total += item.subtotal
+
+    # Calcula los puntos equivalentes como Decimal
+    puntos_descuento = Decimal(usuario.puntos_acumulados) / Decimal(100)
+    total_con_descuento = total - puntos_descuento if total > puntos_descuento else Decimal(0)
+
+    return render(request, 'cart/order.html', {
+        'carrito_items': carrito_items,
+        'total': total,
+        'puntos_descuento': puntos_descuento,
+        'total_con_descuento': total_con_descuento,
+        'usuario': usuario,
+    })
 
 # Vista de favoritos
 def favoritos(request):
@@ -134,18 +282,8 @@ def customDessert(request, categoria_id):
             try:
                 usuario = Usuario.objects.get(id=user_id)  # Obtener el usuario actual
                 
-                # Crear un nuevo pedido
-                pedido = Pedido.objects.create(
-                    usuario=usuario,
-                    fecha=now().date(),  # Fecha actual
-                    hora=now().time(),  # Hora actual
-                    total=total,
-                    puntos_utilizados=0,  # Valor predeterminado
-                    estado_pago='pendiente'  # Estado inicial
-                )
-                
                 # Redirigir a una página de confirmación o carrito
-                return redirect('order_summary', pedido_id=pedido.id)
+                return redirect('home')
             except Usuario.DoesNotExist:
                 return redirect('login')  # Si el usuario no existe, redirigir a login
 
@@ -237,15 +375,6 @@ def account(request):
                                                     "equivalente": equivalenete,
                                                     "error_act_pass": request.session.get('error_act_pass'),
                                                     "error_new_pass": request.session.get('error_new_pass')})
-
-
-def orden(request):
-    if request.method == "POST":
-        return redirect('pago') 
-    user = request.session.get('user_id')
-    puntos = Usuario.objects.get(pk=user).puntos_acumulados if user else 0
-    return render(request, 'orden/paginaorden.html', {'puntos': puntos})
-
 
 # Vista de la pagina pago
 def pago(request):
