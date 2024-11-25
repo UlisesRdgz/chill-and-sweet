@@ -30,6 +30,16 @@
     margin-bottom: 20px;
 }
 
+.carousel-image img {
+    width: 100%; /* Establece un ancho fijo */
+    height: 350px; /* Establece una altura fija */
+    border-radius: 15px; /* Bordes redondeados */
+    object-fit: cover; /* Ajusta cómo se recortan las imágenes para rellenar el contenedor */
+    display: block;
+    margin: 0 auto; /* Centra la imagen dentro de su contenedor */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+}
+
 .alerta {
     position: fixed;
     top: 20px;

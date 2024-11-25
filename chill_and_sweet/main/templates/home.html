@@ -5,8 +5,8 @@
 {% block title %}Inicio - Chill & Sweet{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -107,16 +107,16 @@
       <!-- Carrusel de imágenes y texto promocional -->
       <div class="carousel-content">
           <div class="carousel-text">
-              <h2>Cada sabor, tan único como tú</h2>
-              <p>Crea postres únicos y obtén beneficios exclusivos al iniciar sesión.</p>
+              <h2>¡Descubre nuestros irresistibles postres!</h2>
+              <p>Sabores únicos, texturas deliciosas y presentaciones que te sorprenderán. Elige tu favorito y disfruta cada bocado.</p>
               <a href="{% url 'login' %}" class="order-button">Ordenar ahora</a>
           </div>
           <!-- Imágenes del carrusel -->
           <div class="carousel-image">
-              <img src="{% static 'img/pastel-chocolate-sinfondo.png' %}" alt="Postre único" class="slide" />
-              <img src="{% static 'img/fconcrema.png' %}" alt="Postre delicioso" class="slide" />
-              <img src="{% static 'img/pastel-queso.png' %}" alt="Postre especial" class="slide" />
-              <img src="{% static 'img/smoothie.png' %}" alt="Postre deli" class="slide" />
+              <img src="{% static 'img/cafe-cappuccino.jpg' %}" alt="Postre único" class="slide" />
+              <img src="{% static 'img/crepa-cajeta.jpg' %}" alt="Postre delicioso" class="slide" />
+              <img src="{% static 'img/crepa-frutosrojos.jpg' %}" alt="Postre especial" class="slide" />
+              <img src="{% static 'img/pancake-vainilla.jpg' %}" alt="Postre deli" class="slide" />
                <!-- Navegación por puntos del carrusel -->
               <div class="carousel-dots">
                   <span class="dot" onclick="currentSlide(1)"></span>
