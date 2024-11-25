@@ -18,4 +18,5 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('favoritos/', views.favoritos, name='favoritos'),
     path('soon/', views.soon, name='soon'),
+     path('toggle-favorito/', views.toggle_favorito, name='toggle_favorito'),
 ]

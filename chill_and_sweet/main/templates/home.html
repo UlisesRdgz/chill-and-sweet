@@ -7,7 +7,6 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-<link rel="stylesheet" href="{% static 'css/partials/contact-section.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -180,7 +179,7 @@
             </div>
             <div style="position: relative;">
               <button 
-                  class="favorite-button" 
+                  class="favorite-button {% if user and postre in user.favorito_set.all %}favorited{% endif %}" 
                   onclick="addToFavorites({{ postre.id }}, event)">
                   ♡
               </button>
@@ -195,4 +194,33 @@
 {% block scripts %}
 <script src="{% static 'js/notification.js' %}" defer></script>
 <script src="{% static 'js/carousel.js' %}" defer></script>
+<script>
+  function addToFavorites(postreId, event) {
+      event.stopPropagation(); // Evita que se active el clic en toda la tarjeta
+  
+      const csrfToken = "{{ csrf_token }}"; // Incluye el token CSRF
+      const button = event.target; // El botón que activó el evento
+  
+      // Realiza una solicitud AJAX
+      fetch("{% url 'toggle_favorito' %}", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+          },
+          body: JSON.stringify({ postre_id: postreId }),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+          if (data.success) {
+              // Alternar el estado visual del botón
+              button.classList.toggle("favorited");
+          } else {
+              alert("Error: " + data.message);
+          }
+      })
+      .catch((error) => console.error("Error al agregar a favoritos:", error));
+  }
+  </script>
+  
 {% endblock %}
