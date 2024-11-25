@@ -9,29 +9,22 @@
 {% endblock %}
 
 {% block content %}
-<!--
-    Cntenido principal, titulo y menú de categorias
--->
-<main class="page-container">
-    <div class="title-container">
-        <h1 class="title">
-            Crea tu postre
-        </h1>
-        <p class="instruction">Elige la categoría del postre que deseas personalizar</p>
+<div class="main-content">
+    <div class="page-container">
+        <div class="create-section">
+            <h2 class="create-title">Crea tu postre</h2>
+            <p class="instruction">Elige la categoría del postre que deseas personalizar</p>
+        </div>
+    
+        <div class="menu-container">
+            {% for category in categorias %}
+                <a class="food-option" href="{% url 'personalize' categoria_id=category.id %}">
+                    <img class="food-option-img" src="{{ category.imagen.url }}" alt="Imagen de {{ category.nombre }}">
+                    
+                    <p class="food-category">{{category.nombre}}</p>
+                </a>
+            {% endfor %}
+        </div>
     </div>
-
-    <!--
-        menu de categorias de comida
-    -->
-    <div class="menu-container">
-
-        {% for category in categorias %}
-            <a class="food-option" href="{% url 'personalize' categoria_id=category.id %}">
-                <img class="food-option-img" src="{{ category.imagen.url }}" alt="Imagen de {{ category.nombre }}">
-                
-                <p class="food-category">{{category.nombre}}</p>
-            </a>
-        {% endfor %}
-    </div>
-</main>
+</div>
 {% endblock %}

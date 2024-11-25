@@ -8,113 +8,115 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-container">
-    <div class="order-section">
-        <h2 class="order-title">Mi orden</h2>
-        <div class="order-container">
-            <!-- Tabla de Productos -->
-            <div class="product-list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th class="center-product">Precio</th>
-                            <th class="center-product">Cantidad</th>
-                            <th class="center-product">Subtotal</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in carrito_items %}
-                        <tr data-postre-id="{{ item.postre.id }}">
-                            <td>
-                                <div class="product-info">
-                                    <img src="{{ item.postre.imagen.url }}" alt="{{ item.postre.nombre }}">
-                                    <div>
-                                        <h4 class="title-product">{{ item.postre.nombre }}</h4>
-                                        <p class="calories">{{ item.postre.calorias }} cal</p>
-                                        <p class="description">{{ item.postre.descripcion }}</p>
+<div class="main-content">
+    <div class="page-container">
+        <div class="order-section">
+            <h2 class="order-title">Mi orden</h2>
+            <div class="order-container">
+                <!-- Tabla de Productos -->
+                <div class="product-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th class="center-product">Precio</th>
+                                <th class="center-product">Cantidad</th>
+                                <th class="center-product">Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in carrito_items %}
+                            <tr data-postre-id="{{ item.postre.id }}">
+                                <td>
+                                    <div class="product-info">
+                                        <img src="{{ item.postre.imagen.url }}" alt="{{ item.postre.nombre }}">
+                                        <div>
+                                            <h4 class="title-product">{{ item.postre.nombre }}</h4>
+                                            <p class="calories">{{ item.postre.calorias }} cal</p>
+                                            <p class="description">{{ item.postre.descripcion }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class="precio">${{ item.postre.precio|floatformat:2 }}</td>
-                            <td>
-                                <div class="quantity-controls">
-                                    <button class="decrement-btn">
-                                        <img src="{% static 'img/less.png' %}" alt="menos">
-                                    </button>
-                                    <input class="number" type="text" value="{{ item.cantidad }}" readonly>
-                                    <button class="increment-btn">
-                                        <img src="{% static 'img/plus.png' %}" alt="más">
-                                    </button>
-                                </div>
-                            </td>                            
-                            <td class="subtotal">${{ item.subtotal|floatformat:2 }}</td>
-                            <td>
-                                <button class="delete-btn" data-postre-id="{{ item.postre.id }}" title="Eliminar">
-                                    <img src="{% static 'img/trash.png' %}" alt="icono basura">
-                                </button>                                
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>                    
-                </table>
-            </div>
-        
-            <!-- Detalles del Pedido -->
-            <div class="order-summary">
-                <h3>Datos del pedido</h3>
-                <div class="order-details">
-                    <form id="order-form" method="POST" action="{% url 'confirm_order' %}">
-                        {% csrf_token %}
-                        <p>
-                            <label for="order-date">Fecha:</label>
-                            <div class="input-container">
-                                <input type="date" id="order-date" name="fecha_pedido" required>
-                            </div>
-                        </p>
-                        <p>
-                            <label for="order-time">Hora:</label>
-                            <div class="input-container">
-                                <select id="order-time" name="hora_pedido" required>
-                                    <option value="04:00 P.M.">09:00 A.M.</option>
-                                    <option value="04:00 P.M.">10:00 A.M.</option>
-                                    <option value="04:00 P.M.">11:00 A.M.</option>
-                                    <option value="04:00 P.M.">12:00 P.M.</option>
-                                    <option value="04:00 P.M.">01:00 P.M.</option>
-                                    <option value="04:00 P.M.">02:00 P.M.</option>
-                                    <option value="04:00 P.M.">03:00 P.M.</option>
-                                    <option value="04:00 P.M.">04:00 P.M.</option>
-                                    <option value="04:00 P.M.">05:00 P.M.</option>
-                                    <option value="04:00 P.M.">06:00 P.M.</option>
-                                    <option value="04:00 P.M.">07:00 P.M.</option>
-                                    <option value="04:00 P.M.">08:00 P.M.</option>
-                                    <option value="04:00 P.M.">09:00 P.M.</option>
-                                </select>
-                            </div>
-                        </p>
-                        <p>
-                            <label for="order-forma">Forma:</label>
-                            <div class="input-container">
-                                <select id="order-forma" name="forma" required>
-                                    <option value="Para llevar">Para llevar</option>
-                                    <option value="Comer en el lugar">Comer en el lugar</option>
-                                </select>
-                            </div>
-                        </p>
-                        <p>
-                            Inicial: <span>${{ total|floatformat:2 }}</span>
-                        </p>
-                        <p>
-                            Puntos: <span>${{ puntos_descuento|floatformat:2 }}</span>
-                        </p>
-                        <p>
-                            <strong>Total:</strong> <span><strong>${{ total_con_descuento|floatformat:2 }}</strong></span>
-                        </p>
-                        <button type="submit" class="confirm-btn">Confirmar</button>
-                    </form>
+                                </td>
+                                <td class="precio">${{ item.postre.precio|floatformat:2 }}</td>
+                                <td>
+                                    <div class="quantity-controls">
+                                        <button class="decrement-btn">
+                                            <img src="{% static 'img/less.png' %}" alt="menos">
+                                        </button>
+                                        <input class="number" type="text" value="{{ item.cantidad }}" readonly>
+                                        <button class="increment-btn">
+                                            <img src="{% static 'img/plus.png' %}" alt="más">
+                                        </button>
+                                    </div>
+                                </td>                            
+                                <td class="subtotal">${{ item.subtotal|floatformat:2 }}</td>
+                                <td>
+                                    <button class="delete-btn" data-postre-id="{{ item.postre.id }}" title="Eliminar">
+                                        <img src="{% static 'img/trash.png' %}" alt="icono basura">
+                                    </button>                                
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>                    
+                    </table>
                 </div>
-            </div>             
+            
+                <!-- Detalles del Pedido -->
+                <div class="order-summary">
+                    <h3>Datos del pedido</h3>
+                    <div class="order-details">
+                        <form id="order-form" method="POST" action="{% url 'confirm_order' %}">
+                            {% csrf_token %}
+                            <p>
+                                <label for="order-date">Fecha:</label>
+                                <div class="input-container">
+                                    <input type="date" id="order-date" name="fecha_pedido" required>
+                                </div>
+                            </p>
+                            <p>
+                                <label for="order-time">Hora:</label>
+                                <div class="input-container">
+                                    <select id="order-time" name="hora_pedido" required>
+                                        <option value="04:00 P.M.">09:00 A.M.</option>
+                                        <option value="04:00 P.M.">10:00 A.M.</option>
+                                        <option value="04:00 P.M.">11:00 A.M.</option>
+                                        <option value="04:00 P.M.">12:00 P.M.</option>
+                                        <option value="04:00 P.M.">01:00 P.M.</option>
+                                        <option value="04:00 P.M.">02:00 P.M.</option>
+                                        <option value="04:00 P.M.">03:00 P.M.</option>
+                                        <option value="04:00 P.M.">04:00 P.M.</option>
+                                        <option value="04:00 P.M.">05:00 P.M.</option>
+                                        <option value="04:00 P.M.">06:00 P.M.</option>
+                                        <option value="04:00 P.M.">07:00 P.M.</option>
+                                        <option value="04:00 P.M.">08:00 P.M.</option>
+                                        <option value="04:00 P.M.">09:00 P.M.</option>
+                                    </select>
+                                </div>
+                            </p>
+                            <p>
+                                <label for="order-forma">Forma:</label>
+                                <div class="input-container">
+                                    <select id="order-forma" name="forma" required>
+                                        <option value="Para llevar">Para llevar</option>
+                                        <option value="Comer en el lugar">Comer en el lugar</option>
+                                    </select>
+                                </div>
+                            </p>
+                            <p>
+                                Inicial: <span>${{ total|floatformat:2 }}</span>
+                            </p>
+                            <p>
+                                Puntos: <span>${{ puntos_descuento|floatformat:2 }}</span>
+                            </p>
+                            <p>
+                                <strong>Total:</strong> <span><strong>${{ total_con_descuento|floatformat:2 }}</strong></span>
+                            </p>
+                            <button type="submit" class="confirm-btn">Confirmar</button>
+                        </form>
+                    </div>
+                </div>             
+            </div>
         </div>
     </div>
 </div>
