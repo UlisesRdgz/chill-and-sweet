@@ -8,6 +8,12 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Ocultar el icono de calendario en input[type="date"] */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 /* Contenedor principal de contenido */
 .main-content {
     padding: 2rem;
