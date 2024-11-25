@@ -154,14 +154,13 @@
   <a href="{% url 'account' %}" class="help-button">Ver mis puntos</a>
 </div> 
 
-
   <!-- Sección recomendaciones -->
   <div class="best-sellers-section">
     <h1 class="contact-title ">Nuestra recomendación</h1>
     <div class="postres-grid">
         {% for postre in best_sellers %}
         <!-- Card de cada postre -->
-        <div class="postre-item" onclick="window.location.href='{% url 'login' %}'">
+        <div class="postre-item">
             <div class="postre-image-container">
                 <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="postre-image">
             </div>
@@ -171,14 +170,24 @@
                     <span class="postre-calories">{{ postre.calorias }} cal</span>
                 </div>
                 <p class="postre-description">{{ postre.descripcion|truncatewords:18 }}</p>
-                <span class="postre-price">$ {{ postre.precio }}</span>
-            </div>
-            <div style="position: relative;">
-              <button 
-                  class="favorite-button {% if user and postre in user.favorito_set.all %}favorited{% endif %}" 
-                  onclick="addToFavorites({{ postre.id }}, event)">
-                  ♡
-              </button>
+                <div class="menu-item-footer">
+                  <p class="menu-item-price">${{ postre.precio }}</p>
+                  <div class="menu-item-buttons">
+                      <!-- Botón agregar al carrito -->
+                      <form method="POST" action="{% url 'add_to_cart' %}">
+                          {% csrf_token %}
+                          <input type="hidden" name="postre_id" value="{{ postre.id }}">
+                          <button class="menu-item-btn" type="submit">
+                              <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
+                          </button>
+                      </form>
+                      
+                      <!-- Botón favoritos -->
+                      <button class="menu-item-btn">
+                          <img src="{% static 'svg/heart.svg' %}" alt="Agregar a favoritos">
+                      </button>
+                  </div>
+              </div>          
             </div>
         </div>
         {% endfor %}

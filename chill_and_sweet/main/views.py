@@ -149,10 +149,10 @@ def add_to_cart(request):
         messages.success(request, f'{postre.nombre} se agregó al carrito.')
 
         # Redirigir al menú
-        return redirect('menu')
+        return redirect('home')
 
     # En caso de que no sea un método POST
-    return redirect('menu')
+    return redirect('home')
 
 @csrf_exempt
 def update_cart(request):
