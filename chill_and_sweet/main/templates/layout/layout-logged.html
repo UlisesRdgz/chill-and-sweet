@@ -36,7 +36,7 @@
             <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
                 Crear
             </a>
-            <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'favoritos' %}active{% endif %}">
+            <a href="{% url 'favorite' %}" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
                 Favoritos
             </a>
             <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
@@ -72,7 +72,7 @@
                 <a href="{% url 'create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-edit"></i></span> Crear
                 </a>
-                <a href="{% url 'favoritos' %}" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
+                <a href="{% url 'favorite' %}" class="{% if request.resolver_match.url_name == 'favorite' %}active{% endif %}">
                     <span class="icon-container"><i class="fas fa-heart"></i></span> Favoritos
                 </a>
                 <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
@@ -113,8 +113,8 @@
                 <a href="{% url 'home' %}">Inicio</a>
                 <a href="{% url 'menu' %}">Menú</a>
                 <a href="{% url 'create' %}">Crear</a>
-                <a href="{% url 'favoritos' %}">Favoritos</a>
-                <a href="#">Contacto</a>
+                <a href="{% url 'favorite' %}">Favoritos</a>
+                <a href="{% url 'contact' %}">Contacto</a>
             </nav>
 
             <p>&copy; 2024 Chill & Sweet. Realizado por DUZD.</p>

@@ -1,0 +1,62 @@
+{% extends "layout/layout-logged.html" %}
+
+{% load static %}
+
+{% block title %}Favoritos - Chill & Sweet{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/favorite.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-container">
+        <div class="favorite-section">
+            <h2 class="favorite-title">Favoritos</h2>
+        </div>
+        <div class="postres-grid">
+            {% for postre in postres_favoritos %}
+            <!-- Card de cada postre -->
+            <div class="postre-item">
+                <div class="postre-image-container">
+                    <img src="{{ postre.imagen.url }}" alt="{{ postre.nombre }}" class="postre-image">
+                </div>
+                <div class="postre-details">
+                    <div class="postre-header">
+                        <h3 class="postre-name">{{ postre.nombre }}</h3>
+                        <span class="postre-calories">{{ postre.calorias }} cal</span>
+                    </div>
+                    <p class="postre-description">{{ postre.descripcion|truncatewords:18 }}</p>
+                    <div class="menu-item-footer">
+                    <p class="menu-item-price">${{ postre.precio }}</p>
+                    <div class="menu-item-buttons">
+                        <!-- Botón agregar al carrito -->
+                        <form method="POST" action="{% url 'add_to_cart' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="postre_id" value="{{ postre.id }}">
+                            <button class="menu-item-btn" type="submit">
+                                <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
+                            </button>
+                        </form>
+                        
+                        <!-- Botón favoritos -->
+                        <button class="menu-item-btn favorito-btn {% if postre.id in favoritos %}favorited{% endif %}" data-id="{{ postre.id }}">
+                            <svg class="favorito-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                        </button>              
+                    </div>
+                </div>          
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/favorites.js' %}" defer></script>
+{% endblock %}
+

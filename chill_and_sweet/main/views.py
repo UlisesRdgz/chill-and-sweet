@@ -124,10 +124,13 @@ def home_view(request):
 def menu(request):
     user_id = request.session.get('user_id')
     if user_id:
-        categorias = Categoria.objects.prefetch_related(
-            models.Prefetch('postre_set', queryset=Postre.objects.filter(es_creado=False))
-        ).all()
-        return render(request, 'menu.html', {'categorias': categorias})
+        categorias = Categoria.objects.prefetch_related('postre_set').all()
+        user = Usuario.objects.get(id=user_id)
+        favoritos_ids = Favorito.objects.filter(usuario=user).values_list('postre_id', flat=True)
+        return render(request, 'menu.html', {
+            'categorias': categorias,
+            'favoritos': favoritos_ids
+        })
     else:
         return redirect('login')
     
@@ -269,8 +272,7 @@ def order(request):
         'usuario': usuario,
     })
 
-# Vista de favoritos
-def favoritos(request): 
+def favorite(request):
     user_id = request.session.get('user_id')
     if user_id:
         try:
@@ -278,19 +280,21 @@ def favoritos(request):
             user = Usuario.objects.get(id=user_id)
 
             # Obtener los postres favoritos del usuario
-            favoritos = Favorito.objects.filter(usuario=user).select_related('postre')  # Optimización con select_related
+            favoritos = Favorito.objects.filter(usuario=user).select_related('postre')  
+
+            # Crear lista de postres favoritos
+            postres_favoritos = [favorito.postre for favorito in favoritos]
+            favoritos_ids = [favorito.postre.id for favorito in favoritos] 
             
-            return render(request, 'favoritos.html', {
-                'favoritos': favoritos,  # Lista de favoritos
-                'user': user  # Usuario actual
+            return render(request, 'favorite.html', {
+                'postres_favoritos': postres_favoritos, 
+                'favoritos': favoritos_ids,
+                'user': user  
             })
         except Usuario.DoesNotExist:
-            # Si el usuario no existe en la base de datos, redirigir al login
-            return redirect('login')
+            return redirect('login')  
     else:
-        # Si no hay usuario en sesión, redirigir al login
-        return redirect('login')
-    
+        return redirect('login') 
 
 # Vista de menu de categorias de postres para crear un postre personalizado
 def create(request):

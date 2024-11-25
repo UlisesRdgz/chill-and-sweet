@@ -213,6 +213,20 @@
     margin: 0;
 }
 
+.favorito-icon {
+    width: 24px;
+    height: 24px;
+    fill: none; 
+    stroke: #000000;
+    stroke-width: 0.5px; 
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.favorito-btn.favorited .favorito-icon {
+    fill: #EF6486; 
+    stroke: none; 
+}
+
 /* Botones de desplazamiento */
 .scroll-btn {
     display: flex;
