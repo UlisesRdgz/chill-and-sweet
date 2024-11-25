@@ -72,33 +72,6 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .favorite-button {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      border: none;
-      background-color: white; /* Blanco inicial */
-      color: #ff9bb3;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, background-color 0.3s;
-  }
-
-  .favorite-button:hover {
-      transform: scale(1.1);
-  }
-
-  /* Clase para botón en estado favorito */
-  .favorite-button.favorited {
-      background-color: #ff9bb3; /* Rosa cuando es favorito */
-      color: white;
-  }
-
-  .activa {
-    background-color: rgba(63, 209, 0, 0.678);
-  }
 
   </style>
 
@@ -173,19 +146,21 @@
                 <div class="menu-item-footer">
                   <p class="menu-item-price">${{ postre.precio }}</p>
                   <div class="menu-item-buttons">
-                      <!-- Botón agregar al carrito -->
-                      <form method="POST" action="{% url 'add_to_cart' %}">
-                          {% csrf_token %}
-                          <input type="hidden" name="postre_id" value="{{ postre.id }}">
-                          <button class="menu-item-btn" type="submit">
-                              <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
-                          </button>
-                      </form>
-                      
-                      <!-- Botón favoritos -->
-                      <button class="menu-item-btn">
-                          <img src="{% static 'svg/heart.svg' %}" alt="Agregar a favoritos">
-                      </button>
+                    <!-- Botón agregar al carrito -->
+                    <form method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="postre_id" value="{{ postre.id }}">
+                        <button class="menu-item-btn" type="submit">
+                            <img src="{% static 'svg/plus.svg' %}" alt="Agregar al carrito">
+                        </button>
+                    </form>
+                    
+                    <!-- Botón favoritos -->
+                    <button class="menu-item-btn favorito-btn {% if postre.id in favoritos %}favorited{% endif %}" data-id="{{ postre.id }}">
+                      <svg class="favorito-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>                    
                   </div>
               </div>          
             </div>
@@ -199,33 +174,5 @@
 {% block scripts %}
 <script src="{% static 'js/notification.js' %}" defer></script>
 <script src="{% static 'js/carousel.js' %}" defer></script>
-<script>
-  function addToFavorites(postreId, event) {
-      event.stopPropagation(); // Evita que se active el clic en toda la tarjeta
-  
-      const csrfToken = "{{ csrf_token }}"; // Incluye el token CSRF
-      const button = event.target; // El botón que activó el evento
-  
-      // Realiza una solicitud AJAX
-      fetch("{% url 'toggle_favorito' %}", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "X-CSRFToken": csrfToken,
-          },
-          body: JSON.stringify({ postre_id: postreId }),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-          if (data.success) {
-              // Alternar el estado visual del botón
-              button.classList.toggle("favorited");
-          } else {
-              alert("Error: " + data.message);
-          }
-      })
-      .catch((error) => console.error("Error al agregar a favoritos:", error));
-  }
-  </script>
-  
+<script src="{% static 'js/favorites.js' %}" defer></script>
 {% endblock %}
