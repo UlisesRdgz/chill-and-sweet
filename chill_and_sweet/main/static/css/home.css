@@ -31,13 +31,50 @@
 }
 
 .carousel-image img {
-    width: 100%; /* Establece un ancho fijo */
-    height: 350px; /* Establece una altura fija */
-    border-radius: 15px; /* Bordes redondeados */
-    object-fit: cover; /* Ajusta cómo se recortan las imágenes para rellenar el contenedor */
+    width: 100%;
+    height: 350px;
+    border-radius: 15px;
+    object-fit: cover; 
     display: block;
-    margin: 0 auto; /* Centra la imagen dentro de su contenedor */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    margin: 0 auto; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-section {
+    padding: 3rem;
+    line-height: 2rem;
+    margin: 4rem 0;
+    text-align: center;
+    border-radius: 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+/* Sección de ayuda */
+.help-section {
+    background-color: #ffcce985; 
+}
+
+.help-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: .8rem;
+}
+
+.help-section p {
+    font-size: 1.1rem;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* Botón para realizar pedidos dentro del carrusel */
+.help-button {
+    padding: 1rem 2.5rem;
+    background-color: #FBB0CF;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .alerta {
@@ -90,6 +127,6 @@
  /* Media query para pantallas pequeñas */
  @media (max-width: 768px) {
     .grid-container {
-      grid-template-columns: 1fr; /* Una columna */
+      grid-template-columns: 1fr; 
     }
   }
