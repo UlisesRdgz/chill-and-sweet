@@ -30,6 +30,10 @@
     margin-bottom: 20px;
 }
 
+.carousel {
+    margin-bottom: 50px;
+}
+
 .carousel-image img {
     width: 100%;
     height: 350px;
@@ -103,6 +107,121 @@
 .favorito-btn.favorited .favorito-icon {
     fill: #EF6486; 
     stroke: none; 
+}
+
+/* Contenedor de ítems del menú */
+.category-items-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 80px;
+}
+
+/* Ítems del menú */
+.category-items {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+.category-items::-webkit-scrollbar {
+    display: none;
+}
+
+/* Contenedor principal del slider */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Título del slider */
+.slider-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    font-weight: 500;
+}
+
+/* Contenedor de categorías con scroll horizontal */
+.slider {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 20px; 
+    overflow-x: auto; 
+    scroll-behavior: smooth; 
+    padding: 10px 0px;
+}
+
+/* Ocultar la barra de scroll en navegadores que la muestran */
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tarjetas de categorías */
+.category-card {
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+}
+
+/* Efecto hover para las imágenes de las categorías */
+.category-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    margin-bottom: 1rem;
+}
+
+.category-img:hover {
+    transform: scale(1.1); /* Escala al 110% */
+}
+
+/* Botones de desplazamiento */
+.scroll-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    color: #333;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 1;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.1);
+    background-color: #E0E0E0;
+}
+
+.scroll-btn:active {
+    transform: scale(0.9);
+}
+
+.scroll-btn.left {
+    left: 10px;
+}
+
+.scroll-btn.right {
+    right: 10px;
 }
 
 /* Footer de los ítems */
