@@ -17,7 +17,6 @@ Reset  global
     margin-bottom: 60px;
 }
 
-
 /*
 
 Estilos de la informacion del usuario
@@ -37,9 +36,10 @@ Estilos de la informacion del usuario
 .info-account-container {
     display: flex;
     align-items: center;
-    justify-content: end;
-    max-width: 1192px;
-    margin: 116px auto;
+    justify-content: center;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 5rem;
 }
 
 .img-user-container {
@@ -78,29 +78,36 @@ Estilos de la informacion del usuario
 
 .input-containet {
     width: 300px;
-    padding: 5px;
-    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
+    padding: 5px 15px;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.21);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.21);
     background-color: #F3F3F3;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px; /* Bordes curvos del contenedor */
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .input-containet img {
-    width: 20px;
-    height: 24px;
+    width: 20px; /* Ajusta el tamaño para que sea igual al alto del input */
+    height: 25px; /* Ajusta el tamaño para que sea igual al alto del input */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra contenido dentro del ícono */
     cursor: pointer;
+    margin-top:5px;
 }
 
 .field input {
     width: 250px;
+    height: 30px; /* Aumenta la altura */
     background-color: #F3F3F3;
     border: none;
     outline: none;
     color: #697077;
+    font-size: 16px; /* Aumenta el tamaño de la letra */
 }
 
 #btn_save_changes {
@@ -148,18 +155,19 @@ Estilos de la informacion del usuario
 */
 
 .password-change-container {
-    max-width: 1192px;
-    margin: 116px auto;
+    max-width: 100%;
+    margin: 40px auto;
 }
 
 .title-section-special {
     background-color: rgba(79, 186, 191, 0.25);
     max-width: 100%;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     font-size: 20px;
     font-family: "Roboto", sans-serif;
     border-radius: 10px;
+    font-weight: 500;
 }
 
 .form-new-pass {
@@ -169,43 +177,50 @@ Estilos de la informacion del usuario
 .pass-field {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .pass-field label {
+    font-size: 16px;
+    text-align: left;
     margin-bottom: 10px;
     color: #21272A;
+    margin-bottom: 1rem;
 }
 
 .pass-field input {
     background-color: #F3F3F3;
     border: none;
     outline: none;
-    padding: 10px;
+    padding: 10px 15px;
+    height: 45px;
     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
     -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.21);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-
-.btn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+.pass-field input::placeholder {
+    color: #B0B0B0; /* Cambia el color del placeholder */
+    font-size: 16px; /* Ajusta el tamaño de la fuente del placeholder */
+    font-family: "Roboto", sans-serif;
 }
 
-.btn-save-changes {
+/* Botón para guardar cambios */
+.order-button {
+    padding: 1rem 2.5rem;
     background-color: #EF6486;
-    color: #FFFFFF;
+    color: white;
     border: none;
-    padding: 12px 25px;
     border-radius: 10px;
     cursor: pointer;
-    font-weight: 600;
-    font-family: "Robot", sans-serif;
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
+.order-button:hover {
+    background-color: #c7596c;
+}
 
 /*
 
