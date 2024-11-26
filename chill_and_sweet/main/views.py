@@ -107,7 +107,6 @@ def home_view(request):
         # Obtener el usuario de la base de datos
         user = Usuario.objects.get(id=user_id)
         categorias = Categoria.objects.all()
-
         # Obtener los IDs de los favoritos del usuario
         favoritos = Favorito.objects.filter(usuario=user).values_list('postre_id', flat=True)
 
@@ -115,7 +114,7 @@ def home_view(request):
             'best_sellers': best_sellers,
             'user': user,
             'categorias': categorias,
-            'favoritos': favoritos
+            'favoritos': favoritos,
         })
         #return render(request, 'home.html', {'best_sellers': best_sellers,'user': user,"categorias":categorias})
     else:
@@ -401,8 +400,8 @@ def account(request):
                                                     "error_new_pass": request.session.get('error_new_pass')})
 
 # Vista de la pagina pago
-def pago(request):
-    return render(request,'pago/pagopagina.html')
+def pay(request):
+    return render(request,'cart/pay.html')
 
 # Vista de la pagina de contacto
 def contact(request):
