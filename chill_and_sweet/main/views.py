@@ -135,6 +135,10 @@ def menu(request):
         return redirect('login')
     
 def add_to_cart(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+        
     if request.method == 'POST':
         postre_id = request.POST.get('postre_id')
         cantidad = int(request.POST.get('cantidad', 1))
@@ -152,13 +156,17 @@ def add_to_cart(request):
         messages.success(request, f'{postre.nombre} se agregó al carrito.')
 
         # Redirigir al menú
-        return redirect('home')
+        return redirect('menu')
 
     # En caso de que no sea un método POST
     return redirect('home')
 
 @csrf_exempt
 def update_cart(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     if request.method == "POST":
         data = json.loads(request.body)
         postre_id = data.get("postre_id")
@@ -191,6 +199,10 @@ def update_cart(request):
 
 @csrf_exempt
 def delete_from_cart(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     if request.method == "POST":
         data = json.loads(request.body)
         postre_id = data.get("postre_id")
@@ -216,6 +228,10 @@ def delete_from_cart(request):
     return JsonResponse({"success": False, "message": "Método no permitido."})
 
 def confirm_order(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     if request.method == "POST":
         fecha_pedido = request.POST.get("fecha_pedido")
         hora_pedido = request.POST.get("hora_pedido")
@@ -401,10 +417,18 @@ def account(request):
 
 # Vista de la pagina pago
 def pay(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     return render(request,'cart/pay.html')
 
 # Vista de la pagina de contacto
 def contact(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     return render(request, 'contact.html')
 
 def soon(request):
@@ -412,6 +436,10 @@ def soon(request):
 
 @csrf_exempt
 def toggle_favorito(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+    
     if request.method == 'POST':
         user_id = request.session.get('user_id')
         if not user_id:

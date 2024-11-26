@@ -4,18 +4,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Asegura un mínimo de 100vh */
+    height: auto; /* Permite que crezca dinámicamente */
     color: #333;
+    padding: 20px; /* Opcional: Para evitar que el contenido toque los bordes */
 }
 
 .container {
     text-align: center;
     max-width: 600px;
+    width: 100%;
+    height: auto;
 }
 
 .image img {
     max-width: 150px;
+    height: auto; /* Asegura el ajuste al ancho */
     margin-bottom: 20px;
+}
+
+.content h1,
+.content h2,
+.content p {
+    margin: 0 0 20px; /* Mantén márgenes para separación */
+}
+
+.content p {
+    line-height: 1.4; /* Mejora la legibilidad */
 }
 
 .content h1 {
@@ -33,7 +48,7 @@ body {
 .content p {
     font-size: 1rem;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 2.5rem;
 }
 
 .button {

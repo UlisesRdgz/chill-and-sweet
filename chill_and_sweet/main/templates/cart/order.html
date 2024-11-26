@@ -112,7 +112,7 @@
                             <p>
                                 <strong>Total:</strong> <span><strong>${{ total_con_descuento|floatformat:2 }}</strong></span>
                             </p>
-                            <a href="{% url 'pay' %}" class="confirm-btn">Confirmar</a>
+                            <button class="confirm-btn" type="button" onclick="window.location.href='{% url 'pay' %}'">Confirmar</button>
                         </form>
                     </div>
                 </div>             
