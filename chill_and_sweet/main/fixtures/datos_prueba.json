@@ -73,26 +73,26 @@
       "model": "main.postre",
       "pk": 1,
       "fields": {
-          "nombre": "Mocha cremoso",
+          "nombre": "Latte Classic",
           "descripcion": "Café y chocolate en un cappuccino suave con crema batida y cacao.",
           "precio": "80.00",
           "categoria": 1,
           "es_recomendado": true,
           "calorias": 250,
-          "imagen": "postres/cafe-baileys.jpg"
+          "imagen": "postres/cafe-latte.jpg"
       }
   },
   {
     "model": "main.postre",
     "pk": 2,
     "fields": {
-        "nombre": "Latte de avellana",
-        "descripcion": "Espresso mezclado con leche al vapor y un toque de avellana.",
+        "nombre": "Caramel Chill",
+        "descripcion": "Café con leche, jarabe de vainilla, y topping de caramelo.",
         "precio": "75.00",
         "categoria": 1,
 
         "calorias": 200,
-        "imagen": "postres/cafe-baileys.jpg"
+        "imagen": "postres/cafe-caramel.jpg"
     }
   },
   {
@@ -105,14 +105,14 @@
         "categoria": 1,
 
         "calorias": 280,
-        "imagen": "postres/cafe-baileys.jpg"
+        "imagen": "postres/cafe-cappuccino.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 4,
     "fields": {
-        "nombre": "Espresso doble",
+        "nombre": "Delicia Baileys",
         "descripcion": "Café concentrado para los amantes del sabor fuerte e intenso.",
         "precio": "50.00",
         "categoria": 1,
@@ -144,39 +144,39 @@
         "categoria": 2,
 
         "calorias": 190,
-        "imagen": "postres/smoothie-rosa.jpg"
+        "imagen": "postres/smoothie-mango.jpg"
     }
 },
 {
   "model": "main.postre",
   "pk": 7,
   "fields": {
-      "nombre": "Smoothie verde",
-      "descripcion": "Espinacas, manzana verde, plátano y leche de almendra.",
-      "precio": "75.00",
+      "nombre": "Choco Bliss",
+      "descripcion": "Batido cremoso de helado de chocolate, leche, y un toque de cacao.",
+      "precio": "95.00",
       "categoria": 2,
-      "calorias": 150,
-      "imagen": "postres/smoothie-rosa.jpg"
+      "calorias": 267,
+      "imagen": "postres/smoothie-chocolate.jpg"
   }
 },
   {
     "model": "main.postre",
     "pk": 8,
     "fields": {
-      "nombre": "Smoothie choco",
-      "descripcion": "Plátano y cacao con miel y un toque de vainilla.",
-      "precio": "65.00",
+      "nombre": "Caramel Dream",
+      "descripcion": "Suave batido de helado de vainilla, leche, y caramelo líquido.",
+      "precio": "85.00",
       "categoria": 2,
-      "calorias": 230,
-      "imagen": "postres/smoothie-rosa.jpg"
+      "calorias": 350,
+      "imagen": "postres/smoothie-caramelo.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 9,
     "fields": {
-      "nombre": "Crepa tropical",
-      "descripcion": "Rellena de crema, kiwi y uvas, con miel y azúcar glas.",
+      "nombre": "Tropical Choco",
+      "descripcion": "Rellena de crema, kiwi y uvas, salsa de chocolate, acompañada de un toque de menta fresca.",
       "precio": "85.00",
       "categoria": 3,
       "es_recomendado": true,
@@ -189,35 +189,35 @@
     "pk": 10,
     "fields": {
       "nombre": "Crepa dulce",
-      "descripcion": "Crepa rellena de Nutella, decorada con plátano y fresas.",
+      "descripcion": "Crepa rellena de plátano y fresas con Nutella, cubierta con salsa de chocolate.",
       "precio": "90.00",
       "categoria": 3,
       "calorias": 450,
-      "imagen": "postres/crepa-uva-kiwi.jpg"
+      "imagen": "postres/crepa-chocolate-banana-fresa.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 11,
     "fields": {
-      "nombre": "Crepa salada",
-      "descripcion": "Pollo desmenuzado, queso derretido y espinacas en una crepa salada.",
+      "nombre": "Mil amores",
+      "descripcion": "Crepa rellena de frutos rojos con un toque dulce, adornada con chocolate derretido.",
       "precio": "100.00",
       "categoria": 3,
       "calorias": 350,
-      "imagen": "postres/crepa-uva-kiwi.jpg"
+      "imagen": "postres/crepa-frutosrojos.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 12,
     "fields": {
-      "nombre": "Crepa de manzana",
-      "descripcion": "Rellena de manzanas caramelizadas y canela con crema dulce.",
+      "nombre": "Dulce cajeta",
+      "descripcion": "Deliciosa crepa bañada en salsa de cajeta y decorada con nueces dulces",
       "precio": "85.00",
       "categoria": 3,
       "calorias": 380,
-      "imagen": "postres/crepa-uva-kiwi.jpg"
+      "imagen": "postres/crepa-cajeta.jpg"
     }
   },
   {
@@ -225,7 +225,7 @@
     "pk": 13,
     "fields": {
       "nombre": "Choco pancakes",
-      "descripcion": "Pancakes con chocolate fundido y trozos de fresas.",
+      "descripcion": "Pancakes con chocolate amargo fundido, acompañados de frambuesas y jarabe dulce.",
       "precio": "90.00",
       "categoria": 4,
       "es_recomendado": true,
@@ -237,44 +237,44 @@
     "model": "main.postre",
     "pk": 14,
     "fields": {
-      "nombre": "Pancake de ará",
-      "descripcion": "Pancakes suaves con arándanos frescos en la masa.",
-      "precio": "85.00",
+      "nombre": "Pancake Clásico",
+      "descripcion": "Suaves y esponjosos pancakes tradicionales, perfectos con jarabe de maple y fresas.",
+      "precio": "95.00",
       "categoria": 4,
       "calorias": 400,
-      "imagen": "postres/pancakes-chocolate.jpg"
+      "imagen": "postres/pancake-clasicos.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 15,
     "fields": {
-      "nombre": "Pancake de prote",
+      "nombre": "Pila Integral",
       "descripcion": "Pancakes de harina integral y proteína, opción saludable y energética.",
-      "precio": "90.00",
+      "precio": "100.00",
       "categoria": 4,
-      "calorias": 350,
-      "imagen": "postres/pancakes-chocolate.jpg"
+      "calorias": 200,
+      "imagen": "postres/pancake-integral.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 16,
     "fields": {
-      "nombre": "Pancake de coco",
-      "descripcion": "Pancakes de coco con almendras tostadas y miel.",
-      "precio": "95.00",
+      "nombre": "Dulce Vanille",
+      "descripcion": "Pancakes con un toque de vainilla, acompañados de frambuesas y jarabe dulce.",
+      "precio": "105.00",
       "categoria": 4,
       "calorias": 420,
-      "imagen": "postres/pancakes-chocolate.jpg"
+      "imagen": "postres/pancake-vainilla.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 17,
     "fields": {
-      "nombre": "Frescrema tropical",
-      "descripcion": "Deliciosa mezcla de fresas, mango y kiwi con crema dulce y un toque de miel.",
+      "nombre": "Frescrema Clásica",
+      "descripcion": "Fresas frescas molidas con crema dulce y decoradas con azúcar glas.",
       "precio": "75.00",
       "categoria": 5,
       "calorias": 180,
@@ -285,12 +285,12 @@
     "model": "main.postre",
     "pk": 18,
     "fields": {
-      "nombre": "Frescrema clásica",
-      "descripcion": "Fresas frescas cubiertas con crema dulce y decoradas con azúcar glas.",
+      "nombre": "Frescrema Brownie",
+      "descripcion": "Capas de brownie con fresas, plátano y crema dulce",
       "precio": "70.00",
       "categoria": 5,
       "calorias": 150,
-      "imagen": "postres/frescrema-clasica.jpg"
+      "imagen": "postres/frescrema-brownie.jpg"
     }
   },
   {
@@ -314,7 +314,7 @@
       "precio": "85.00",
       "categoria": 5,
       "calorias": 250,
-      "imagen": "postres/frescrema-clasica.jpg"
+      "imagen": "postres/frescrema-brownie.jpg"
     }
   },
   {
@@ -322,46 +322,46 @@
     "pk": 21,
     "fields": {
       "nombre": "Pastel red velvet",
-      "descripcion": "Suave pastel de red velvet cubierto con crema de queso.",
-      "precio": "90.00",
+      "descripcion": "Suave pastel de red velvet cubierto con queso crema. Ideal para celebraciones especiales.",
+      "precio": "550.00",
       "categoria": 6,
-      "calorias": 350,
-      "imagen": "postres/pastel-frutas.jpg"
+      "calorias": 2300,
+      "imagen": "postres/pastel-red-velvet.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 22,
     "fields": {
-      "nombre": "Pastel tres leches",
-      "descripcion": "Esponjoso pastel bañado en tres leches, decorado con crema batida.",
-      "precio": "95.00",
+      "nombre": "Dulce Mazorca",
+      "descripcion": "Esponjoso Pastel suave y dulce hecho con elote, ideal para postres caseros.",
+      "precio": "500.00",
       "categoria": 6,
-      "calorias": 400,
-      "imagen": "postres/pastel-frutas.jpg"
+      "calorias": 2000,
+      "imagen": "postres/pastel-elote.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 23,
     "fields": {
-      "nombre": "Pastel chocolate",
-      "descripcion": "Rico pastel de chocolate con relleno y cubierta de chocolate.",
-      "precio": "100.00",
+      "nombre": "Pastel Zanahoria",
+      "descripcion": "Rico pastel de zanahoria rallada con nueces y glaseado de queso crema",
+      "precio": "450.00",
       "categoria": 6,
-      "calorias": 450,
-      "imagen": "postres/pastel-frutas.jpg"
+      "calorias": 2500,
+      "imagen": "postres/pastel-zanahoria.jpg"
     }
   },
   {
     "model": "main.postre",
     "pk": 24,
     "fields": {
-      "nombre": "Pastel zanahoria",
-      "descripcion": "Pastel de zanahoria con nueces y pasas, cubierto con crema de queso.",
-      "precio": "85.00",
+      "nombre": "Fruta Encantada",
+      "descripcion": "Pastel de tres leches, decorado con fondant blanco, y salsa de chocolate .",
+      "precio": "600.00",
       "categoria": 6,
-      "calorias": 320,
+      "calorias": 2950,
       "imagen": "postres/pastel-frutas.jpg"
     }
   },
@@ -556,6 +556,56 @@
     }
   },
   {
+    "model": "main.ingrediente",
+    "pk": 20,
+    "fields": {
+        "nombre": "Chispas de chocolate",
+        "tipo": "Topping",
+        "precio_adicional": "5.00",
+        "calorias": "100"
+    }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 21,
+      "fields": {
+          "nombre": "Nueces",
+          "tipo": "Topping",
+          "precio_adicional": "6.00",
+          "calorias": "150"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 22,
+      "fields": {
+          "nombre": "Frutas frescas",
+          "tipo": "Topping",
+          "precio_adicional": "7.00",
+          "calorias": "50"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 23,
+      "fields": {
+          "nombre": "Salsa de caramelo",
+          "tipo": "Topping",
+          "precio_adicional": "4.00",
+          "calorias": "120"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 24,
+      "fields": {
+          "nombre": "Galletas trituradas",
+          "tipo": "Topping",
+          "precio_adicional": "5.00",
+          "calorias": "130"
+      }
+  },
+  {
     "model": "main.categoriaingrediente",
     "pk": 1,
     "fields": {
@@ -616,6 +666,38 @@
     "pk": 8,
     "fields": {
       "categoria_id": 1,
+      "ingrediente_id": 8
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 25,
+    "fields": {
+      "categoria_id": 2,
+      "ingrediente_id": 5
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 26,
+    "fields": {
+      "categoria_id": 2,
+      "ingrediente_id": 6
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 27,
+    "fields": {
+      "categoria_id": 2,
+      "ingrediente_id": 7
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 28,
+    "fields": {
+      "categoria_id": 2,
       "ingrediente_id": 8
     }
   },
@@ -724,12 +806,1292 @@
     }
   },
   {
+    "model": "main.categoriaingrediente",
+    "pk": 20,
+    "fields": {
+        "categoria_id": 1,
+        "ingrediente_id": 20
+    }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 21,
+      "fields": {
+          "categoria_id": 1,
+          "ingrediente_id": 21
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 22,
+      "fields": {
+          "categoria_id": 1,
+          "ingrediente_id": 22
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 23,
+      "fields": {
+          "categoria_id": 1,
+          "ingrediente_id": 23
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 24,
+      "fields": {
+          "categoria_id": 1,
+          "ingrediente_id": 24
+      }
+  },
+  {
     "model": "main.favorito",
     "pk": 1,
     "fields": {
       "usuario": 2,
       "postre": 2,
       "fecha_agregado": "2024-11-07"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 25,
+    "fields": {
+        "nombre": "Agua",
+        "tipo": "Base líquida",
+        "precio_adicional": "0.00",
+        "calorias": "0"
+    }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 26,
+      "fields": {
+          "nombre": "Leche",
+          "tipo": "Base líquida",
+          "precio_adicional": "5.00",
+          "calorias": "100"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 27,
+      "fields": {
+          "nombre": "Banana",
+          "tipo": "Frutas",
+          "precio_adicional": "3.00",
+          "calorias": "90"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 28,
+      "fields": {
+          "nombre": "Fresa",
+          "tipo": "Frutas",
+          "precio_adicional": "4.00",
+          "calorias": "50"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 29,
+      "fields": {
+          "nombre": "Proteína en polvo",
+          "tipo": "Complementos",
+          "precio_adicional": "10.00",
+          "calorias": "150"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 30,
+      "fields": {
+          "nombre": "Avena",
+          "tipo": "Complementos",
+          "precio_adicional": "5.00",
+          "calorias": "100"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 31,
+      "fields": {
+          "nombre": "Azúcar",
+          "tipo": "Endulzante",
+          "precio_adicional": "2.00",
+          "calorias": "30"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 32,
+      "fields": {
+          "nombre": "Miel",
+          "tipo": "Endulzante",
+          "precio_adicional": "3.00",
+          "calorias": "60"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 33,
+      "fields": {
+          "nombre": "Poco hielo",
+          "tipo": "Hielo (cantidad)",
+          "precio_adicional": "0.00",
+          "calorias": "0"
+      }
+  },
+  {
+      "model": "main.ingrediente",
+      "pk": 34,
+      "fields": {
+          "nombre": "Mucho hielo",
+          "tipo": "Hielo (cantidad)",
+          "precio_adicional": "0.00",
+          "calorias": "0"
+      }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 29,
+    "fields": {
+        "categoria_id": 2,
+        "ingrediente_id": 25
+    }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 30,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 26
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 31,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 27
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 32,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 28
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 33,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 29
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 34,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 30
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 35,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 31
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 36,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 32
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 37,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 33
+      }
+  },
+  {
+      "model": "main.categoriaingrediente",
+      "pk": 38,
+      "fields": {
+          "categoria_id": 2,
+          "ingrediente_id": 34
+      }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 35,
+    "fields": {
+        "nombre": "Masa clásica",
+        "tipo": "Masa",
+        "precio_adicional": "15.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 36,
+    "fields": {
+        "nombre": "Masa de vainilla",
+        "tipo": "Masa",
+        "precio_adicional": "12.00",
+        "calorias": "250"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 37,
+    "fields": {
+        "nombre": "Masa filo",
+        "tipo": "Masa",
+        "precio_adicional": "14.00",
+        "calorias": "280"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 38,
+    "fields": {
+        "nombre": "Masa suave",
+        "tipo": "Masa",
+        "precio_adicional": "10.00",
+        "calorias": "200"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 39,
+    "fields": {
+        "nombre": "Masa de galleta",
+        "tipo": "Masa",
+        "precio_adicional": "8.00",
+        "calorias": "180"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 40,
+    "fields": {
+        "nombre": "Crema pastelera",
+        "tipo": "Relleno",
+        "precio_adicional": "10.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 41,
+    "fields": {
+        "nombre": "Mermelada de fresa",
+        "tipo": "Relleno",
+        "precio_adicional": "12.00",
+        "calorias": "120"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 42,
+    "fields": {
+        "nombre": "Chocolate",
+        "tipo": "Relleno",
+        "precio_adicional": "15.00",
+        "calorias": "200"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 43,
+    "fields": {
+        "nombre": "Dulce de leche",
+        "tipo": "Relleno",
+        "precio_adicional": "14.00",
+        "calorias": "180"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 44,
+    "fields": {
+        "nombre": "Queso crema",
+        "tipo": "Relleno",
+        "precio_adicional": "13.00",
+        "calorias": "160"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 45,
+    "fields": {
+        "nombre": "Chispas de chocolate",
+        "tipo": "Toppings",
+        "precio_adicional": "5.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 46,
+    "fields": {
+        "nombre": "Nueces",
+        "tipo": "Toppings",
+        "precio_adicional": "6.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 47,
+    "fields": {
+        "nombre": "Frutas frescas",
+        "tipo": "Toppings",
+        "precio_adicional": "7.00",
+        "calorias": "50"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 48,
+    "fields": {
+        "nombre": "Salsa de caramelo",
+        "tipo": "Toppings",
+        "precio_adicional": "4.00",
+        "calorias": "120"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 49,
+    "fields": {
+        "nombre": "Galletas trituradas",
+        "tipo": "Toppings",
+        "precio_adicional": "5.00",
+        "calorias": "130"
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 50,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 35
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 51,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 36
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 52,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 37
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 53,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 38
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 54,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 39
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 55,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 40
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 56,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 41
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 57,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 42
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 58,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 43
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 59,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 44
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 60,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 45
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 61,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 46
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 62,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 47
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 63,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 48
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 64,
+    "fields": {
+        "categoria_id": 3,
+        "ingrediente_id": 49
+    }
+  }, {
+    "model": "main.ingrediente",
+    "pk": 65,
+    "fields": {
+        "nombre": "Petit (60ml)",
+        "tipo": "Tamaño",
+        "precio_adicional": "5.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 66,
+    "fields": {
+        "nombre": "Regular (250ml)",
+        "tipo": "Tamaño",
+        "precio_adicional": "10.00",
+        "calorias": "200"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 67,
+    "fields": {
+        "nombre": "Largo (470ml)",
+        "tipo": "Tamaño",
+        "precio_adicional": "15.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 68,
+    "fields": {
+        "nombre": "Supremo (591ml)",
+        "tipo": "Tamaño",
+        "precio_adicional": "20.00",
+        "calorias": "400"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 69,
+    "fields": {
+        "nombre": "Poca crema",
+        "tipo": "Crema (cantidad)",
+        "precio_adicional": "5.00",
+        "calorias": "50"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 70,
+    "fields": {
+        "nombre": "Crema regular",
+        "tipo": "Crema (cantidad)",
+        "precio_adicional": "10.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 71,
+    "fields": {
+        "nombre": "Mucha crema",
+        "tipo": "Crema (cantidad)",
+        "precio_adicional": "15.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 72,
+    "fields": {
+        "nombre": "Extra crema",
+        "tipo": "Crema (cantidad)",
+        "precio_adicional": "20.00",
+        "calorias": "200"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 73,
+    "fields": {
+        "nombre": "Fresas frescas",
+        "tipo": "Fresas",
+        "precio_adicional": "5.00",
+        "calorias": "30"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 74,
+    "fields": {
+        "nombre": "Fresas congeladas",
+        "tipo": "Fresas",
+        "precio_adicional": "6.00",
+        "calorias": "35"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 75,
+    "fields": {
+        "nombre": "Fresas marinadas",
+        "tipo": "Fresas",
+        "precio_adicional": "7.00",
+        "calorias": "40"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 76,
+    "fields": {
+        "nombre": "Puré de fresas",
+        "tipo": "Fresas",
+        "precio_adicional": "8.00",
+        "calorias": "45"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 77,
+    "fields": {
+        "nombre": "Azúcar adicional",
+        "tipo": "Endulzante Adicional",
+        "precio_adicional": "2.00",
+        "calorias": "20"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 78,
+    "fields": {
+        "nombre": "Miel adicional",
+        "tipo": "Endulzante Adicional",
+        "precio_adicional": "3.00",
+        "calorias": "30"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 79,
+    "fields": {
+        "nombre": "Stevia adicional",
+        "tipo": "Endulzante Adicional",
+        "precio_adicional": "4.00",
+        "calorias": "10"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 80,
+    "fields": {
+        "nombre": "Jarabe de agave adicional",
+        "tipo": "Endulzante Adicional",
+        "precio_adicional": "5.00",
+        "calorias": "25"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 81,
+    "fields": {
+        "nombre": "Chispas de chocolate",
+        "tipo": "Toppings",
+        "precio_adicional": "5.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 82,
+    "fields": {
+        "nombre": "Nueces",
+        "tipo": "Toppings",
+        "precio_adicional": "6.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 83,
+    "fields": {
+        "nombre": "Frutas frescas",
+        "tipo": "Toppings",
+        "precio_adicional": "7.00",
+        "calorias": "50"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 84,
+    "fields": {
+        "nombre": "Salsa de caramelo",
+        "tipo": "Toppings",
+        "precio_adicional": "4.00",
+        "calorias": "120"
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 85,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 65
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 86,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 66
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 87,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 67
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 88,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 68
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 89,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 69
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 90,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 70
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 91,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 71
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 92,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 72
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 93,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 73
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 94,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 74
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 95,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 75
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 96,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 76
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 97,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 77
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 98,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 78
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 99,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 79
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 100,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 80
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 101,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 81
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 102,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 82
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 103,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 83
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 104,
+    "fields": {
+        "categoria_id": 5,
+        "ingrediente_id": 84
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 105,
+    "fields": {
+        "nombre": "Masa de vainilla",
+        "tipo": "Masa",
+        "precio_adicional": "15.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 106,
+    "fields": {
+        "nombre": "Masa chocolate",
+        "tipo": "Masa",
+        "precio_adicional": "12.00",
+        "calorias": "250"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 107,
+    "fields": {
+        "nombre": "Masa integral",
+        "tipo": "Masa",
+        "precio_adicional": "14.00",
+        "calorias": "280"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 108,
+    "fields": {
+        "nombre": "Una capa",
+        "tipo": "Tamaño (capas)",
+        "precio_adicional": "11.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 109,
+    "fields": {
+        "nombre": "Dos capas",
+        "tipo": "Tamaño (capas)",
+        "precio_adicional": "13.00",
+        "calorias": "200"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 110,
+    "fields": {
+        "nombre": "Tres capas",
+        "tipo": "Tamaño (capas)",
+        "precio_adicional": "15.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 111,
+    "fields": {
+        "nombre": "Fresas frescas",
+        "tipo": "Frutas",
+        "precio_adicional": "12.00",
+        "calorias": "50"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 112,
+    "fields": {
+        "nombre": "Plátano",
+        "tipo": "Frutas",
+        "precio_adicional": "11.00",
+        "calorias": "90"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 113,
+    "fields": {
+        "nombre": "Mango",
+        "tipo": "Frutas",
+        "precio_adicional": "13.00",
+        "calorias": "70"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 114,
+    "fields": {
+        "nombre": "Chispas de chocolate",
+        "tipo": "Toppings",
+        "precio_adicional": "11.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 115,
+    "fields": {
+        "nombre": "Nueces",
+        "tipo": "Toppings",
+        "precio_adicional": "12.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 116,
+    "fields": {
+        "nombre": "Salsa de caramelo",
+        "tipo": "Toppings",
+        "precio_adicional": "10.50",
+        "calorias": "120"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 117,
+    "fields": {
+        "nombre": "Crema batida",
+        "tipo": "Extras",
+        "precio_adicional": "12.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 118,
+    "fields": {
+        "nombre": "Mantequilla",
+        "tipo": "Extras",
+        "precio_adicional": "11.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 119,
+    "fields": {
+        "nombre": "Jarabe de chocolate",
+        "tipo": "Extras",
+        "precio_adicional": "13.00",
+        "calorias": "120"
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 120,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 105
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 121,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 106
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 122,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 107
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 123,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 108
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 124,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 109
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 125,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 110
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 126,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 111
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 127,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 112
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 128,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 113
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 129,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 114
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 130,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 115
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 131,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 116
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 132,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 117
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 133,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 118
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 134,
+    "fields": {
+        "categoria_id": 4,
+        "ingrediente_id": 119
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 135,
+    "fields": {
+        "nombre": "Masa de vainilla",
+        "tipo": "Masa",
+        "precio_adicional": "60.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 136,
+    "fields": {
+        "nombre": "Masa de chocolate",
+        "tipo": "Masa",
+        "precio_adicional": "65.00",
+        "calorias": "250"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 137,
+    "fields": {
+        "nombre": "Masa gourmet",
+        "tipo": "Masa",
+        "precio_adicional": "70.00",
+        "calorias": "280"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 138,
+    "fields": {
+        "nombre": "Relleno de chocolate",
+        "tipo": "Relleno",
+        "precio_adicional": "75.00",
+        "calorias": "350"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 139,
+    "fields": {
+        "nombre": "Relleno de crema pastelera",
+        "tipo": "Relleno",
+        "precio_adicional": "80.00",
+        "calorias": "300"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 140,
+    "fields": {
+        "nombre": "Relleno de frutas",
+        "tipo": "Relleno",
+        "precio_adicional": "85.00",
+        "calorias": "250"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 141,
+    "fields": {
+        "nombre": "Topping de nueces premium",
+        "tipo": "Topping",
+        "precio_adicional": "60.00",
+        "calorias": "150"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 142,
+    "fields": {
+        "nombre": "Topping de frutas frescas deluxe",
+        "tipo": "Topping",
+        "precio_adicional": "65.00",
+        "calorias": "100"
+    }
+  },
+  {
+    "model": "main.ingrediente",
+    "pk": 143,
+    "fields": {
+        "nombre": "Topping de chispas de chocolate gourmet",
+        "tipo": "Topping",
+        "precio_adicional": "70.00",
+        "calorias": "200"
+    }
+  }, {
+    "model": "main.categoriaingrediente",
+    "pk": 144,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 135
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 145,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 136
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 146,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 137
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 147,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 138
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 148,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 139
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 149,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 140
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 150,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 141
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 151,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 142
+    }
+  },
+  {
+    "model": "main.categoriaingrediente",
+    "pk": 152,
+    "fields": {
+        "categoria_id": 6,
+        "ingrediente_id": 143
     }
   }
 ]
