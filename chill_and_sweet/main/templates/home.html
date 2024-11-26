@@ -101,22 +101,52 @@
       </div>
   </div>
 
-  <h2 class="title">Categorías</h2>
-  <div class="container">
-      <div class="slider-container">
-          <!-- Slider -->
-          <div id="slider" class="slider">
-              {% for category in categorias %}
-                  <div class="category">
-                      <a href="{% url 'personalize' categoria_id=category.id %}">
-                          <img class="category-img" src="{{ category.imagen.url }}" alt="Imagen de {{ category.nombre }}">
-                          <p class="category-title">{{ category.nombre }}</p>
-                      </a>
-                  </div>
-              {% endfor %}
-          </div>
-      </div>
+  <!-- Slider de Categorías -->
+<div style="margin-top: 20px;">
+  <h2 style="text-align: center; font-family: Arial, sans-serif;">Categorías</h2>
+  <div class="slider-container" style="position: relative; width: 100%; overflow: hidden;">
+    <!-- Botón de navegación izquierda -->
+    <button class="slider-btn left" style="position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; cursor: pointer; z-index: 1000; border-radius: 50%; left: 10px;" onclick="moveSlider(-1)">&#10094;</button>
+
+    <!-- Contenedor del Slider -->
+    <div id="slider" style="display: flex; transition: transform 0.3s ease-in-out;">
+      {% for category in categorias %}
+        <div class="menu-categor" style="flex: 0 0 auto; width: 120px; text-align: center; margin: 0 10px;">
+          <a href="{% url 'personalize' categoria_id=category.id %}">
+            <img class="category-img" style="width: 100%; border-radius: 8px;" src="{{ category.imagen.url }}" alt="Imagen de {{ category.nombre }}">
+            <p class="category-title" style="margin-top: 5px; font-size: 14px; color: #333;">{{ category.nombre }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Botón de navegación derecha -->
+    <button class="slider-btn right" style="position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; cursor: pointer; z-index: 1000; border-radius: 50%; right: 10px;" onclick="moveSlider(1)">&#10095;</button>
   </div>
+</div>
+
+<!-- Script de funcionalidad -->
+<script>
+  let sliderIndex = 0;
+
+  function moveSlider(direction) {
+    const slider = document.getElementById('slider');
+    const items = document.querySelectorAll('.menu-categor');
+    const itemWidth = items[0].offsetWidth + 20; // Tamaño del elemento más márgenes
+    const sliderWidth = slider.scrollWidth;
+    const visibleWidth = slider.offsetWidth;
+
+    sliderIndex += direction;
+
+    // Limitar el índice para que no pase del principio o final
+    const maxIndex = Math.ceil((sliderWidth - visibleWidth) / itemWidth);
+    if (sliderIndex < 0) sliderIndex = 0;
+    if (sliderIndex > maxIndex) sliderIndex = maxIndex;
+
+    slider.style.transform = `translateX(-${sliderIndex * itemWidth}px)`;
+  }
+</script>
+
 
 <!-- Points Section -->
 <div class="help-section">
