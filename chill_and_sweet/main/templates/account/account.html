@@ -14,144 +14,146 @@
 <!--
     Cntenido principal, titulo y secciones de la cuenta del usuario
 -->
-<div class="page-container">
-    <div class="menu-section">
-        <h2 class="menu-title">Mi cuenta</h2>
-        
-            <!--
-                Sección de información del usuario
-            -->
-            <section class="info-account-container">
-                <div class="img-user-container">
-                    <img class="img-profile" src="{% static 'img/user-circle.png' %}" alt="Imagen de usuario">
+<main class="main-content">
+    <div class="page-container">
+        <div class="menu-section">
+            <h2 class="menu-title">Mi cuenta</h2>
+            
+                <!--
+                    Sección de información del usuario
+                -->
+                <section class="info-account-container">
+                    <div class="img-user-container">
+                        <img class="img-profile" src="{% static 'img/user-circle.png' %}" alt="Imagen de usuario">
 
-                    <p class="change-profile-img-text">Cambiar imagen de perfil</p>
-                </div>
+                        <p class="change-profile-img-text">Cambiar imagen de perfil</p>
+                    </div>
 
-                <form class="info-user-form" method="POST">
-                    {% csrf_token %}
-                    <!-- Este input nos sirve para poder diferenciar los formularios en la parte de views.py -->
-                    <input type="hidden" name="form_type" value="info_edit_form">
+                    <form class="info-user-form" method="POST">
+                        {% csrf_token %}
+                        <!-- Este input nos sirve para poder diferenciar los formularios en la parte de views.py -->
+                        <input type="hidden" name="form_type" value="info_edit_form">
 
 
-                    {% if info_user %}
-                        <div class="field">
-                            <label for="name">Nombre</label>
+                        {% if info_user %}
+                            <div class="field">
+                                <label for="name">Nombre</label>
 
-                            <div class="input-containet">
-                                <input type="text" id="name" name="name" value="{{ info_user.nombre }}" disabled>
-                                <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon" id="name_btn">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="lastname">Apellido</label>
-                            <div class="input-containet">
-                                <input type="text" id="lastname" name="lastname" value="{{ info_user.apellido }}" disabled>
-                                <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon" id="lastname_btn">
+                                <div class="input-containet">
+                                    <input type="text" id="name" name="name" value="{{ info_user.nombre }}" disabled>
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon" id="name_btn">
+                                </div>
                             </div>
 
-                        </div>
+                            <div class="field">
+                                <label for="lastname">Apellido</label>
+                                <div class="input-containet">
+                                    <input type="text" id="lastname" name="lastname" value="{{ info_user.apellido }}" disabled>
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon" id="lastname_btn">
+                                </div>
 
-                        <div class="field">
-                            <label for="email">Correo Electronico</label>
-
-                            <div class="input-containet">
-                                <input type="email" id="email" name="email" value="{{ info_user.correo }}" disabled>
-                                <img src="{% static 'svg/pecil.svg' %}" alt="penil icon" id="email_btn">
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="field">
-                            <label for="name">Nombre</label>
-
-                            <div class="input-containet">
-                                <input type="text" id="name" name="name" value="Null">
-                                <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="lastname">Apellido</label>
-                            <div class="input-containet">
-                                <input type="text" id="lastname" name="lastname" class="Null">
-                                <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon">
                             </div>
 
-                        </div>
+                            <div class="field">
+                                <label for="email">Correo Electronico</label>
 
-                        <div class="field">
-                            <label for="email">Correo Electronico</label>
-
-                            <div class="input-containet">
-                                <input type="email" id="email" name="email" class="Null">
-                                <img src="{% static 'svg/pecil.svg' %}" alt="penil icon">
+                                <div class="input-containet">
+                                    <input type="email" id="email" name="email" value="{{ info_user.correo }}" disabled>
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="penil icon" id="email_btn">
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% else %}
+                            <div class="field">
+                                <label for="name">Nombre</label>
 
-                    <div class="btn-container">
-                        <button class="btn-save-changes" id="btn_save_changes">
+                                <div class="input-containet">
+                                    <input type="text" id="name" name="name" value="Null">
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="lastname">Apellido</label>
+                                <div class="input-containet">
+                                    <input type="text" id="lastname" name="lastname" class="Null">
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="pencil icon">
+                                </div>
+
+                            </div>
+
+                            <div class="field">
+                                <label for="email">Correo Electronico</label>
+
+                                <div class="input-containet">
+                                    <input type="email" id="email" name="email" class="Null">
+                                    <img src="{% static 'svg/pecil.svg' %}" alt="penil icon">
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="btn-container">
+                            <button class="btn-save-changes" id="btn_save_changes">
+                                Guardar cambios
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!--
+                    Sección de puntos del usuario
+                -->
+                <section class="points-container">
+                    <div class="aviable-points-container">
+                        <p class="title-points-section">Puntos disponibles:</p>
+                        <p class="aviable-points">{{ info_user.puntos_acumulados }}</p>
+                    </div>
+
+                    <div class="equivalences-cointainer">
+                        <p class="equivalence">Equivalente a ${{equivalente}}</p>
+                        <p class="info-promo">Por cada $10 en compras: 5 puntos adicionales</p>
+                    </div>  
+                </section>
+
+                <!--
+                    Sección para cambio de contraseña
+                -->
+                <section class="password-change-container">
+                    <h2 class="title-section-special">Cambio de contraseña</h2>
+
+                    <form class="form-new-pass" method="POST">
+                        {% csrf_token %}
+                        <!-- Este input nos sirve para poder diferenciar los formularios en la parte de views.py -->
+                        <input type="hidden" name="form_type" value="pass_edit_form">
+
+                        <!-- Captar error de contraseña actual incorrecta -->
+                        <input id="act_pass_error" type="hidden" name="act_pass_error" value="{{error_act_pass}}">
+
+                        <!-- Captar error de contraseña actual incorrecta -->
+                        <input id="new_pass_error" type="hidden" name="new_pass_error" value="{{error_new_pass}}">
+
+                        <div class="pass-field">
+                            <label for="actual-passaword">Contraseña actual</label>
+                            <input type="password" id="actual-passaword" name="actualpass" placeholder="Ingresa tu contraseña actual">
+                        </div>
+
+                        <div class="pass-field">
+                            <label for="new-passaword">Nueva contraseña</label>
+                            <input type="password" id="new-passaword" name="newpass">
+                        </div>
+
+                        <div class="pass-field">
+                            <label for="conf-passaword">Confirma nueva contraseña</label>
+                            <input type="password" id="conf-passaword" name="confpass">
+                        </div>
+
+                        <button class="order-button" type="submit">
                             Guardar cambios
                         </button>
-                    </div>
-                </form>
-            </section>
-
-            <!--
-                Sección de puntos del usuario
-            -->
-            <section class="points-container">
-                <div class="aviable-points-container">
-                    <p class="title-points-section">Puntos disponibles:</p>
-                    <p class="aviable-points">{{ info_user.puntos_acumulados }}</p>
-                </div>
-
-                <div class="equivalences-cointainer">
-                    <p class="equivalence">Equivalente a ${{equivalente}}</p>
-                    <p class="info-promo">Por cada $10 en compras: 5 puntos adicionales</p>
-                </div>  
-            </section>
-
-            <!--
-                Sección para cambio de contraseña
-            -->
-            <section class="password-change-container">
-                <h2 class="title-section-special">Cambio de contraseña</h2>
-
-                <form class="form-new-pass" method="POST">
-                    {% csrf_token %}
-                    <!-- Este input nos sirve para poder diferenciar los formularios en la parte de views.py -->
-                    <input type="hidden" name="form_type" value="pass_edit_form">
-
-                    <!-- Captar error de contraseña actual incorrecta -->
-                    <input id="act_pass_error" type="hidden" name="act_pass_error" value="{{error_act_pass}}">
-
-                    <!-- Captar error de contraseña actual incorrecta -->
-                    <input id="new_pass_error" type="hidden" name="new_pass_error" value="{{error_new_pass}}">
-
-                    <div class="pass-field">
-                        <label for="actual-passaword">Contraseña actual</label>
-                        <input type="password" id="actual-passaword" name="actualpass" placeholder="Ingresa tu contraseña actual">
-                    </div>
-
-                    <div class="pass-field">
-                        <label for="new-passaword">Nueva contraseña</label>
-                        <input type="password" id="new-passaword" name="newpass">
-                    </div>
-
-                    <div class="pass-field">
-                        <label for="conf-passaword">Confirma nueva contraseña</label>
-                        <input type="password" id="conf-passaword" name="confpass">
-                    </div>
-
-                    <button class="order-button" type="submit">
-                        Guardar cambios
-                    </button>
-                </form>
-            </section>
+                    </form>
+                </section>
+        </div>
     </div>
-</div>
+</main>
 {% endblock %}
 
 
